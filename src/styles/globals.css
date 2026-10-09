@@ -1,0 +1,229 @@
+@import 'tailwindcss';
+
+/*
+ * Tokens de design da Via Lumina.
+ * Valores extraídos do CSS do site original (ver docs/design-tokens.md).
+ */
+@theme {
+  /* Azuis institucionais */
+  --color-navy-950: #041a36;
+  --color-navy-900: #0a2e5c; /* --primary-blue das páginas de roteiro */
+  --color-navy-800: #1e3a5f; /* azul dos títulos da homepage */
+  --color-navy-700: #344d6f; /* botões dos cards da homepage */
+  --color-navy-600: #143f72;
+  --color-blue-700: #0f4c81; /* degradê das faixas */
+  --color-blue-500: #0073b6; /* --secondary-blue */
+
+  /* Dourados */
+  --color-gold-700: #8a6114; /* derivado, para texto dourado sobre fundo claro (contraste AA) */
+  --color-gold-600: #a6925f;
+  --color-gold-500: #c9922a; /* dourado principal */
+  --color-gold-450: #c99a2e; /* --accent-gold dos roteiros */
+  --color-gold-400: #d29c35;
+  --color-gold-300: #e2b04a;
+  --color-gold-200: #f2d58a;
+  --color-gold-100: #f8efd9;
+
+  /* Neutros */
+  --color-cream-50: #fbfaf8;
+  --color-cream-100: #faf7f2;
+  --color-mist: #f7f9fa; /* --bg-light */
+  --color-ink-900: #333333; /* --text-dark */
+  --color-slate-700: #3a4a5c;
+  --color-slate-500: #5c6a7c; /* ajustado de #6b7a8d (site original) para contraste AA em fundos claros */
+  --color-muted: #666666; /* --text-light */
+
+  /* Ações */
+  --color-whatsapp: #12813c; /* verde do site original (hover) — contraste AA com texto branco */
+  --color-whatsapp-dark: #0e6b31;
+  --color-alert: #d32f2f;
+
+  /* Tipografia */
+  --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-sans: var(--font-lato), 'Lato', system-ui, sans-serif;
+  --font-label: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
+
+  /* Raios e sombras */
+  --radius-card: 18px;
+  --radius-panel: 28px;
+  --shadow-soft: 0 12px 35px rgb(10 46 92 / 0.07);
+  --shadow-lift: 0 18px 45px rgb(10 46 92 / 0.12);
+  --shadow-deep: 0 24px 70px rgb(10 46 92 / 0.14);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-up: fade-up 0.7s var(--ease-out-soft) both;
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-cream-50 font-sans text-[1.0625rem] leading-relaxed text-ink-900 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-navy-900;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-500;
+  }
+  ::selection {
+    @apply bg-gold-200 text-navy-950;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply font-label text-xs font-bold tracking-[0.2em] text-gold-700 uppercase;
+  }
+  .eyebrow-light {
+    @apply font-label text-xs font-bold tracking-[0.2em] text-gold-200 uppercase;
+  }
+  /* Traço dourado sob títulos de seção, como no site original. */
+  .title-rule::after {
+    content: '';
+    @apply mt-5 block h-1 w-[60px] rounded-full bg-gold-450;
+  }
+  .title-rule-center::after {
+    @apply mx-auto;
+  }
+  .prose-trip p + p {
+    @apply mt-3;
+  }
+}
+
+/* Entrada das seções ao rolar (ver Reveal/RevealObserver). Só oculta quando há JS. */
+.js [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.js [data-reveal] {
+  transition:
+    opacity 0.7s var(--ease-out-soft) var(--reveal-delay, 0ms),
+    transform 0.7s var(--ease-out-soft) var(--reveal-delay, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal]:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Barra de rolagem horizontal discreta para listas de filtros no celular. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+@keyframes rule-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Expansão animada dos dias do itinerário (navegadores com ::details-content). */
+:root {
+  interpolate-size: allow-keywords;
+}
+.itinerary-day::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.35s var(--ease-out-soft),
+    content-visibility 0.35s allow-discrete;
+}
+.itinerary-day[open]::details-content {
+  block-size: auto;
+}
+@media print {
+  .itinerary-day::details-content {
+    block-size: auto;
+    content-visibility: visible;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes slide-out-right {
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes slide-in-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes slide-out-down {
+  to {
+    transform: translateY(100%);
+  }
+}
+/* Títulos principais: animação só de posição, visíveis desde a primeira pintura (bom para LCP). */
+@keyframes rise {
+  from {
+    transform: translateY(14px);
+  }
+}

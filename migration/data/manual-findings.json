@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "santuarios-marianos-tito",
+    "type": "acompanhante",
+    "message": "A página do roteiro identifica o sacerdote como \"Padre Tito Simão\", mas o PDF linkado na homepage e a publicação do Instagram (reel DeKHs1_D6_U) usam \"Pe. José Tito Lívio\" — \"Povoado Triunfo - Simão Dias/SE\". \"Simão Dias\" parece ser a cidade, não o sobrenome. Mantido o nome da página até confirmação."
+  },
+  {
+    "slug": "santuarios-marianos-tito",
+    "type": "divergencia",
+    "message": "A publicação do Instagram anuncia \"13 Dias de Fé e Devoção\", enquanto a página publica 16 dias (13 a 28 de outubro de 2027, 13 noites)."
+  },
+  {
+    "slug": "mexico-guadalupe-cancun-2028",
+    "type": "data",
+    "message": "Os dois PDFs publicados divergem no Dia 10: \"24/mar\" (PDF da página) e \"29/mar\" (PDF da homepage). Pela data de saída, o Dia 10 seria 24/03/2028."
+  },
+  {
+    "slug": "egito-terra-santa",
+    "type": "texto",
+    "message": "O itinerário contém a grafia \"SANTHE CATHARINE\" (provável \"Santa Catarina\"). Mantida a grafia original."
+  },
+  {
+    "slug": "aparecida-agosto-2027",
+    "type": "texto",
+    "message": "Os rótulos dos dias usam a abreviação \"agos\" (ex.: \"10/agos\") em vez de \"ago\". Mantida a grafia original."
+  },
+  {
+    "slug": "portugal-e-franca",
+    "type": "texto",
+    "message": "As observações citam \"condições gerais da Via Ilumina\" (provável \"Via Lumina\"). Mantida a grafia original."
+  },
+  {
+    "slug": null,
+    "type": "texto",
+    "message": "Textos de cards da homepage com palavras unidas no original: \"pararenovar\", \"pelosgrandes\", \"lugaresque\", \"Nacionalde\", \"espiritualidade,cultura\". Corrigir na revisão editorial (o novo site usa os textos das páginas de roteiro)."
+  },
+  {
+    "slug": null,
+    "type": "titulo",
+    "message": "O 1º card da homepage tem o título \"Grupo México,Guadalupe e Cancún\", mas o PDF associado (vlm_italia_portugal_padre_silas_roteiro.pdf) é do roteiro \"Grupo Itália e Portugal\" do Padre Silas de Oliveira, RCJ (16 a 30/10/2027, saída de São Paulo)."
+  },
+  {
+    "slug": null,
+    "type": "data",
+    "message": "PDF \"Grupo México, Guadalupe e Cancún\" (Padre Diogo Albuquerque e Fred Pacheco) anuncia JANEIRO 2028 (17 a 30/01/2028), mas o Dia 10 aparece como \"26/abr\"."
+  },
+  {
+    "slug": null,
+    "type": "texto",
+    "message": "PDF \"Grupo México, Guadalupe e Cancún\" (Formadora Elaine Floriano): período escrito \"03 a 15 de Abril e 2027\" e o Dia 2 repete o texto do Dia 1."
+  },
+  {
+    "slug": null,
+    "type": "acompanhante",
+    "message": "O arquivo do roteiro especial Portugal, Itália e Vaticano se chama \"padre-adainton_fernando\", mas o PDF escreve \"Padre Adailton e Fernando Vinhote\". Confirmar a grafia."
+  },
+  {
+    "slug": null,
+    "type": "rota",
+    "message": "A página /lp-roteiro-guadalupe-2026/ (\"Mistérios de Guadalupe – México e Cancún\", Padre Davi da Cruz, 06 a 17/11/2026) segue publicada, mas não aparece no menu nem na homepage. Inventariada como pendente; decidir se deve ser mantida."
+  },
+  {
+    "slug": null,
+    "type": "roteiro",
+    "message": "O card \"Círio de Nazaré — Belém do Pará\" está na homepage sem página, datas ou PDF; o botão aponta para #contato."
+  },
+  {
+    "slug": null,
+    "type": "identidade",
+    "message": "O kit global do Elementor ainda define cores e fontes padrão (Roboto, Roboto Slab, #6EC1E4). A identidade real usada nas seções é Playfair Display (títulos), Lato (textos) e Montserrat (rótulos), conforme o CSS das páginas. O CSS pede Playfair Display com peso 300, que não existe na família (o navegador usa 400)."
+  }
+]

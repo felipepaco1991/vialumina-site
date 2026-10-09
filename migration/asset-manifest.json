@@ -1,0 +1,2564 @@
+{
+  "generatedAt": "2026-10-08T21:56:01.390Z",
+  "source": "https://vialuminaviagens.com.br/",
+  "files": [
+    {
+      "path": "/assets/logos/via-lumina-logo.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/LogoViaLumina-scaled.png",
+      "duplicateUrls": [],
+      "sha256": "ce45a971c1fbd3810f15dca0533e40299a6ca78dfc00e465585ce6621d3a4f9d",
+      "bytes": 221399,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Logotipo principal (cabeçalho)"
+        }
+      ],
+      "width": 2560,
+      "height": 1050,
+      "optimized": {
+        "path": "/assets/logos/via-lumina-logo.webp",
+        "bytes": 210534,
+        "width": 2400,
+        "height": 984
+      }
+    },
+    {
+      "path": "/assets/logos/via-lumina-logo-branco.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/LogoLuminaBranco-scaled.png",
+      "duplicateUrls": [],
+      "sha256": "ac145155e681503d709243ba7ef04948e5b81e2e822b34d4baeffbd90d21e6e1",
+      "bytes": 158874,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Logotipo branco (rodapé)"
+        }
+      ],
+      "width": 2560,
+      "height": 1050,
+      "optimized": {
+        "path": "/assets/logos/via-lumina-logo-branco.webp",
+        "bytes": 114870,
+        "width": 2400,
+        "height": 984
+      }
+    },
+    {
+      "path": "/assets/logos/grupo-arbo.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/LogoArbo.png",
+      "duplicateUrls": [],
+      "sha256": "e3c1f96d935c1360a4c2cbf181f04250856a6251e825c24c18924e05e6effb89",
+      "bytes": 46919,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Logotipo Grupo Arbo"
+        }
+      ],
+      "width": 1416,
+      "height": 444,
+      "optimized": {
+        "path": "/assets/logos/grupo-arbo.webp",
+        "bytes": 22764,
+        "width": 1416,
+        "height": 444
+      }
+    },
+    {
+      "path": "/assets/logos/grupo-arbo.svg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/grupo-arbo-2.svg",
+      "duplicateUrls": [],
+      "sha256": "f6859e4287e50169e48c6dee7234fd8ed73e6a37716e315ecabe03661e589d37",
+      "bytes": 1532,
+      "contentType": "image/svg+xml",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Logotipo Grupo Arbo (vetor, biblioteca de mídia)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/logos/via-lumina-logo-final.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/03/Logo_vialumina_final-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "53b44c0973fd3a2ab594b49aea8d16f5ff86018ec2e7ad20ff6fbe4cd3d0156a",
+      "bytes": 169164,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Logotipo (página /links)"
+        }
+      ],
+      "width": 2560,
+      "height": 1050,
+      "optimized": {
+        "path": "/assets/logos/via-lumina-logo-final.webp",
+        "bytes": 46074,
+        "width": 2400,
+        "height": 984
+      }
+    },
+    {
+      "path": "/assets/logos/favicon-via-lumina.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/03/favicon_vlm.png",
+      "duplicateUrls": [],
+      "sha256": "0c47f356c878dc35c20486f873ca572ef4708038fe0090efd9b028c07751d907",
+      "bytes": 7705,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Favicon"
+        }
+      ],
+      "width": 361,
+      "height": 361,
+      "optimized": {
+        "path": "/assets/logos/favicon-via-lumina.webp",
+        "bytes": 4004,
+        "width": 361,
+        "height": 361
+      }
+    },
+    {
+      "path": "/assets/logos/favicon-via-lumina-alta.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/03/favicon_vialumina-05-scaled.png",
+      "duplicateUrls": [],
+      "sha256": "cdc80fd71f38734163cfcb07911b4632d6972b8c50dd92068f677e1582a4781f",
+      "bytes": 285950,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Favicon em alta resolução (biblioteca)"
+        }
+      ],
+      "width": 2560,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/logos/favicon-via-lumina-alta.webp",
+        "bytes": 274608,
+        "width": 2400,
+        "height": 2400
+      }
+    },
+    {
+      "path": "/assets/logos/raios-via-lumina.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/raios_vlm-scaled.png",
+      "duplicateUrls": [],
+      "sha256": "c360330e752071cc745b4c0468541e0bf69e29106a7b2a593326029fd308e7c5",
+      "bytes": 244788,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Marca d'água dos raios (páginas de roteiro)"
+        }
+      ],
+      "width": 1272,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/logos/raios-via-lumina.webp",
+        "bytes": 173268,
+        "width": 1272,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/icons/valor-fe.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/Prancheta-1.png",
+      "duplicateUrls": [],
+      "sha256": "e3bb0c145af72729ae0a4c88fc4ac2195956fd2658337003bf6aec11f972ead3",
+      "bytes": 7516,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Ícone do valor Fé"
+        }
+      ],
+      "width": 150,
+      "height": 150,
+      "optimized": {
+        "path": "/assets/icons/valor-fe.webp",
+        "bytes": 1208,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "path": "/assets/icons/valor-responsabilidade.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/Prancheta-2.png",
+      "duplicateUrls": [],
+      "sha256": "284ba6c5f35b6b56e7ba84949731f99a2a85471b15fa746f9faf80d355f06174",
+      "bytes": 28001,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Ícone do valor Responsabilidade"
+        }
+      ],
+      "width": 150,
+      "height": 150,
+      "optimized": {
+        "path": "/assets/icons/valor-responsabilidade.webp",
+        "bytes": 4624,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "path": "/assets/icons/valor-experiencia.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/Prancheta-3.png",
+      "duplicateUrls": [],
+      "sha256": "52d9e5be36867e173df375188db0cc11e93f353a3db7466322f40b3993f7eb1b",
+      "bytes": 14014,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Ícone do valor Experiência"
+        }
+      ],
+      "width": 150,
+      "height": 150,
+      "optimized": {
+        "path": "/assets/icons/valor-experiencia.webp",
+        "bytes": 2328,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "path": "/assets/icons/valor-excelencia.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/Prancheta-5.png",
+      "duplicateUrls": [],
+      "sha256": "7fad6ee4d23fa79dea3b610d27ca746f48556eaed6981f3a11d66897c541abfc",
+      "bytes": 14983,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Ícone do valor Excelência"
+        }
+      ],
+      "width": 150,
+      "height": 150,
+      "optimized": {
+        "path": "/assets/icons/valor-excelencia.webp",
+        "bytes": 2880,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "path": "/assets/icons/valor-proposito.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/Prancheta-4.png",
+      "duplicateUrls": [],
+      "sha256": "5b9934355d77dcce5379ebaabaa729816c9e4c6db51dbb54d48451ce9104d93c",
+      "bytes": 25850,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Ícone do valor Propósito"
+        }
+      ],
+      "width": 150,
+      "height": 150,
+      "optimized": {
+        "path": "/assets/icons/valor-proposito.webp",
+        "bytes": 4272,
+        "width": 150,
+        "height": 150
+      }
+    },
+    {
+      "path": "/assets/home/hero-banner-topo.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/banner_topo-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "c800996381b13054f4a380e382afa811eb328da8dfd02d5c5f07651b67a0119c",
+      "bytes": 462125,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Hero da homepage"
+        }
+      ],
+      "width": 2560,
+      "height": 1285,
+      "optimized": {
+        "path": "/assets/home/hero-banner-topo.webp",
+        "bytes": 182382,
+        "width": 2400,
+        "height": 1205
+      }
+    },
+    {
+      "path": "/assets/home/banner-meio-roteiros.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/banner_meio_roteiros-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "43d09abd96f1558975f0d77bce72b26a269e672e2495d9bcf8d23c6e017343d4",
+      "bytes": 687465,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Fundo da seção de roteiros da homepage"
+        }
+      ],
+      "width": 2560,
+      "height": 1285,
+      "optimized": {
+        "path": "/assets/home/banner-meio-roteiros.webp",
+        "bytes": 347134,
+        "width": 2400,
+        "height": 1205
+      }
+    },
+    {
+      "path": "/assets/institucional/quem-somos.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/Prancheta-1-1.png",
+      "duplicateUrls": [],
+      "sha256": "cfe3c95ef19ce58eefa9b859d6405c8ad6c5238d4343a8f0ebc79ae192f17e7c",
+      "bytes": 1157810,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Imagem da seção Quem Somos"
+        }
+      ],
+      "width": 1080,
+      "height": 1080,
+      "optimized": {
+        "path": "/assets/institucional/quem-somos.webp",
+        "bytes": 72738,
+        "width": 1080,
+        "height": 1080
+      }
+    },
+    {
+      "path": "/assets/institucional/seguranca.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/Seguro.jpg",
+      "duplicateUrls": [],
+      "sha256": "b5c2bdeaf2c32359d4021af08c59332c1dbd21599c0eb52a9a874ccc1a0e3bbe",
+      "bytes": 61112,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Imagem da seção Quem Somos (segurança)"
+        }
+      ],
+      "width": 577,
+      "height": 251,
+      "optimized": {
+        "path": "/assets/institucional/seguranca.webp",
+        "bytes": 9778,
+        "width": 577,
+        "height": 251
+      }
+    },
+    {
+      "path": "/assets/institucional/paisagem-sagrada.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/AdobeStock_456923731.jpg",
+      "duplicateUrls": [],
+      "sha256": "552918df2d64f5c289c19b9c41c97aedeb85c04d8db08a20e19955f9b2874927",
+      "bytes": 550365,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Faixa de imagem da homepage (CSS)"
+        }
+      ],
+      "width": 1920,
+      "height": 1080,
+      "optimized": {
+        "path": "/assets/institucional/paisagem-sagrada.webp",
+        "bytes": 374500,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "path": "/assets/institucional/instagram-avatar.webp",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/sb-instagram-feed-images/vialuminaviagens.webp",
+      "duplicateUrls": [],
+      "sha256": "341c4168218eaba56f748fe80ed6eef7da5455dbbf272fdfc6d246e9670ca63a",
+      "bytes": 2968,
+      "contentType": "image/webp",
+      "usages": [
+        {
+          "page": "home",
+          "role": "Avatar do Instagram"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/portugal-e-franca/galeria-01-santuario-de-fatima.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1401183473.jpg",
+      "duplicateUrls": [],
+      "sha256": "3ed197aceee55d2e1085eab024d37cebaf2b6092905f242169aa7a6e3c293834",
+      "bytes": 1087093,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "portugal-e-franca",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 1197,
+      "height": 877,
+      "optimized": {
+        "path": "/assets/destinos/portugal-e-franca/galeria-01-santuario-de-fatima.webp",
+        "bytes": 214466,
+        "width": 1197,
+        "height": 877
+      }
+    },
+    {
+      "path": "/assets/destinos/portugal-e-franca/galeria-02-santuario-de-nossa-senhora-de-lourdes.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2262763009-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "37567196cb1d7203ce6d98fe6008e0ac571404ae71206df5d849927c34dbd02b",
+      "bytes": 1150166,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "portugal-e-franca",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1502,
+      "optimized": {
+        "path": "/assets/destinos/portugal-e-franca/galeria-02-santuario-de-nossa-senhora-de-lourdes.webp",
+        "bytes": 706278,
+        "width": 2400,
+        "height": 1408
+      }
+    },
+    {
+      "path": "/assets/destinos/portugal-e-franca/galeria-03-historia-beleza-e-espiritualidade-em-paris.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1318968050-scaled.jpg",
+      "duplicateUrls": [
+        "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1318968050-1-1-scaled.jpg"
+      ],
+      "sha256": "9b73d8b61b79030374e970860fb780c34c2d8d5efaad22e575747d01e4bc6cf2",
+      "bytes": 747968,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "portugal-e-franca",
+          "role": "galeria #3"
+        },
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/portugal-e-franca/galeria-03-historia-beleza-e-espiritualidade-em-paris.webp",
+        "bytes": 418716,
+        "width": 2400,
+        "height": 1266
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-donizete.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/padre-donizete.png",
+      "duplicateUrls": [],
+      "sha256": "394ee8602cb8b7be44a548af126ba78d56294ac56dae1c17db29a5e0e20bff41",
+      "bytes": 1359506,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "portugal-e-franca",
+          "role": "foto de Padre Donizete"
+        }
+      ],
+      "width": 960,
+      "height": 1280,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-donizete.webp",
+        "bytes": 138942,
+        "width": 960,
+        "height": 1280
+      }
+    },
+    {
+      "path": "/assets/pdfs/portugal-e-franca.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_roteiro_portugal_franca_donizete-1.pdf",
+      "duplicateUrls": [],
+      "sha256": "e199b54df85be8a8c62bdad406f0563b72c54b2daa674b28d2952bc4f65ca02b",
+      "bytes": 705544,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "portugal-e-franca",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #9"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2284074028-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "101f053122328349bb827306953d18b5bc37d1fd82680c67c735eeaa7dd26bfb",
+      "bytes": 1046905,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "sao-paulo-aparecida-cancao-nova",
+          "role": "hero"
+        },
+        {
+          "page": "sao-paulo-aparecida-cancao-nova",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1440,
+      "optimized": {
+        "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/hero.webp",
+        "bytes": 678226,
+        "width": 2400,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/galeria-02-arquitetura-e-charme-na-serra-da-mantiqueira.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-856217166-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "6c0e137d21cc8de3a15b724fd6c5a9061dcb80e4b0302cadd87977277334c0db",
+      "bytes": 884961,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "sao-paulo-aparecida-cancao-nova",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/galeria-02-arquitetura-e-charme-na-serra-da-mantiqueira.webp",
+        "bytes": 413502,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/galeria-03-natureza-e-contemplacao-ao-longo-da-jornada.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1490608738.jpg",
+      "duplicateUrls": [],
+      "sha256": "b942aeb69198f524edc20c9b18342b9792b7c2e74c4338c1ecace418f1f0db14",
+      "bytes": 2830600,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "sao-paulo-aparecida-cancao-nova",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 1500,
+      "height": 2000,
+      "optimized": {
+        "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/galeria-03-natureza-e-contemplacao-ao-longo-da-jornada.webp",
+        "bytes": 970808,
+        "width": 1500,
+        "height": 2000
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-moises-coelho.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/padre_moises-scaled.png",
+      "duplicateUrls": [],
+      "sha256": "02a1eb2d7e9a312cb48a30c3dcf8715dc6206b9d51be722af932577cff199bc3",
+      "bytes": 3343303,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "sao-paulo-aparecida-cancao-nova",
+          "role": "foto de Padre Moisés Coelho"
+        }
+      ],
+      "width": 1920,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-moises-coelho.webp",
+        "bytes": 217796,
+        "width": 1920,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/pdfs/sao-paulo-aparecida-cancao-nova.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_roteiro_aparecida_cancao-nova_moises.pdf",
+      "duplicateUrls": [],
+      "sha256": "b3c6146fb6313b38b6f15f7282d5966eb31e02b187aca8f09e9e2c4fba81d739",
+      "bytes": 719142,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "sao-paulo-aparecida-cancao-nova",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #10"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2027/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-510179500-1-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "00e0baebf5c6065afe0e1ea8fdc4203f5a50f9f1382b2166136875e27091094f",
+      "bytes": 863930,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "hero"
+        },
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1706,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2027/hero.webp",
+        "bytes": 418030,
+        "width": 2400,
+        "height": 1599
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-02-fe-historia-e-cultura-na-capital.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-625653516-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "11bf9f16f1cf4c94739a163dd8ea50a3474df53204fe59e775e3632f16f7918a",
+      "bytes": 470019,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1354,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-02-fe-historia-e-cultura-na-capital.webp",
+        "bytes": 222138,
+        "width": 2400,
+        "height": 1269
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-03-tradicao-arquitetura-e-a-cidade-da-prata.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1408264486-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "392034593d20c8406eefc2fe413e58e54fc27bfa26fe3ac6f9d12c7526bd081a",
+      "bytes": 1150649,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 1440,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-03-tradicao-arquitetura-e-a-cidade-da-prata.webp",
+        "bytes": 659926,
+        "width": 2400,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-04-mar-caribenho-descanso-e-contemplacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1359239820.jpg",
+      "duplicateUrls": [],
+      "sha256": "43ee746d077af0d0e9518d76e2ea7ac91c671f4f58c8405960a3a7cbe388a94e",
+      "bytes": 3022687,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "galeria #4"
+        }
+      ],
+      "width": 2199,
+      "height": 1363,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-04-mar-caribenho-descanso-e-contemplacao.webp",
+        "bytes": 597104,
+        "width": 2199,
+        "height": 1363
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-05-patrimonio-maia-entre-as-opcoes-do-percurso.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-527550100-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "4eed3602adb3696be140cd916c1f348fcb1bc547b0e89a30c95b5f9a1f785efd",
+      "bytes": 872420,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "galeria #5"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2027/galeria-05-patrimonio-maia-entre-as-opcoes-do-percurso.webp",
+        "bytes": 556890,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-fabio-fernandes.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/Design-sem-nome.png",
+      "duplicateUrls": [],
+      "sha256": "4ced53f749d128e3636143a5d839c513ce83de62c372b96ed407a3b0b97ee8cf",
+      "bytes": 307481,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "foto de Padre Fábio Fernandes"
+        }
+      ],
+      "width": 433,
+      "height": 577,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-fabio-fernandes.webp",
+        "bytes": 16358,
+        "width": 433,
+        "height": 577
+      }
+    },
+    {
+      "path": "/assets/pdfs/mexico-guadalupe-cancun-2027.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_roteiro_guadalupe_padre-fabio-fernandes_web.pdf",
+      "duplicateUrls": [],
+      "sha256": "d8df7c876963743c21cb33b511053e34d81f0abc6cc7a194ebc2549d200476ea",
+      "bytes": 855581,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2027",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #11"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/rio-de-janeiro-aparecida/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-518230906-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "94ed7a0128b5eb8a384e9f0c46fd4b22a169be42164cb5e0bd025f80a5242c3b",
+      "bytes": 1311965,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "rio-de-janeiro-aparecida",
+          "role": "hero"
+        },
+        {
+          "page": "rio-de-janeiro-aparecida",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/rio-de-janeiro-aparecida/hero.webp",
+        "bytes": 744432,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/destinos/rio-de-janeiro-aparecida/galeria-02-historia-imperial-e-fe-na-serra-fluminense.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1031459548-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "85d0b56c241b53650dc674e3c0010c713b69180813b53ad9cd801884b51d343e",
+      "bytes": 917681,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "rio-de-janeiro-aparecida",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/rio-de-janeiro-aparecida/galeria-02-historia-imperial-e-fe-na-serra-fluminense.webp",
+        "bytes": 519616,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/destinos/rio-de-janeiro-aparecida/galeria-03-devocao-e-acolhimento-no-santuario-nacional.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1266640600-1-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "659772afc11667d8d765bde973e4eeefb809c11342f262839ac07651fe80097b",
+      "bytes": 862953,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "rio-de-janeiro-aparecida",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 2058,
+      "optimized": {
+        "path": "/assets/destinos/rio-de-janeiro-aparecida/galeria-03-devocao-e-acolhimento-no-santuario-nacional.webp",
+        "bytes": 424634,
+        "width": 2400,
+        "height": 1929
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/adriana.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/adriana.png",
+      "duplicateUrls": [],
+      "sha256": "7958905f94ecd4c5203d7af31fdac25becf240203486f8c3c3f0147e4596b65f",
+      "bytes": 1600635,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "rio-de-janeiro-aparecida",
+          "role": "foto de Adriana"
+        }
+      ],
+      "width": 1200,
+      "height": 1600,
+      "optimized": {
+        "path": "/assets/acompanhantes/adriana.webp",
+        "bytes": 101574,
+        "width": 1200,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/pdfs/rio-de-janeiro-aparecida.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/banner_vlm_rio-aparecida_adriana_web.pdf",
+      "duplicateUrls": [],
+      "sha256": "91d7a7468272e455b236c3e816a7672b263dbbdd7836c3cfccfc0be7677689a1",
+      "bytes": 526260,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "rio-de-janeiro-aparecida",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #12"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/portugal-italia-vaticano/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1880439446-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "24e11c0c3b6aa175221a4099d6f0ec621547a548151c19e02c380346e5a62c71",
+      "bytes": 966169,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "portugal-italia-vaticano",
+          "role": "hero"
+        },
+        {
+          "page": "portugal-italia-vaticano",
+          "role": "galeria #2"
+        },
+        {
+          "page": "europa-sagrada",
+          "role": "hero"
+        },
+        {
+          "page": "santuarios-italianos",
+          "role": "hero"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/portugal-italia-vaticano/hero.webp",
+        "bytes": 500714,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/destinos/portugal-italia-vaticano/galeria-01-santuario-de-nossa-senhora-de-fatima.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2227879596-scaled.jpg",
+      "duplicateUrls": [
+        "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2227879596-1-scaled.jpg"
+      ],
+      "sha256": "cc61e721d6d62477b127f7a2205835bc1e996a376d10b8d4505ca461eb6a3d97",
+      "bytes": 535191,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "portugal-italia-vaticano",
+          "role": "galeria #1"
+        },
+        {
+          "page": "santuarios-marianos-tito",
+          "role": "hero"
+        },
+        {
+          "page": "santuarios-marianos-tito",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/portugal-italia-vaticano/galeria-01-santuario-de-nossa-senhora-de-fatima.webp",
+        "bytes": 262632,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/destinos/portugal-italia-vaticano/galeria-03-historia-e-espiritualidade-as-margens-do-tibre.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2160294332-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "27714417ef0f990c097cd96daa65a123b5dd3ac6c089dbbde75c92eed33ae77f",
+      "bytes": 1013858,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "portugal-italia-vaticano",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 1766,
+      "optimized": {
+        "path": "/assets/destinos/portugal-italia-vaticano/galeria-03-historia-e-espiritualidade-as-margens-do-tibre.webp",
+        "bytes": 591514,
+        "width": 2400,
+        "height": 1656
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-assis-jordao.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2026-06-12-at-18.38.21-002-removebg-preview.png",
+      "duplicateUrls": [],
+      "sha256": "728de6ed973fafb8af21dffd344adf02c84ed6772fcf1e92c405d3d060ea0a7d",
+      "bytes": 186884,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "portugal-italia-vaticano",
+          "role": "foto de Padre Assis Jordão"
+        }
+      ],
+      "width": 500,
+      "height": 500,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-assis-jordao.webp",
+        "bytes": 9304,
+        "width": 500,
+        "height": 500
+      }
+    },
+    {
+      "path": "/assets/pdfs/portugal-italia-vaticano.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_roteiro_port-italia-vaticano_padre-assis.pdf",
+      "duplicateUrls": [],
+      "sha256": "a1ff8af0adccc7a10c63646af8ddfb075df56203fd7b014ab5caa1a7ffd103d2",
+      "bytes": 1076815,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "portugal-italia-vaticano",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #13"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-brasilia/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2249365573.jpg",
+      "duplicateUrls": [],
+      "sha256": "fb279976b81b32712befc680d60cd544d769308a33c63e3751025c9f5a6be19a",
+      "bytes": 1032413,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-brasilia",
+          "role": "hero"
+        },
+        {
+          "page": "santuarios-marianos-brasilia",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 1254,
+      "height": 836,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-brasilia/hero.webp",
+        "bytes": 228504,
+        "width": 1254,
+        "height": 836
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-brasilia/galeria-02-gruta-procissao-das-velas-e-espiritualidade-mariana.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1419140197.jpg",
+      "duplicateUrls": [],
+      "sha256": "707e2747b5a95afd92a0d37c3870ab8c254dd8e5f2e3da9bed4b15113ce763c7",
+      "bytes": 646715,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-brasilia",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 1254,
+      "height": 837,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-brasilia/galeria-02-gruta-procissao-das-velas-e-espiritualidade-mariana.webp",
+        "bytes": 123288,
+        "width": 1254,
+        "height": 837
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-brasilia/galeria-03-capela-da-medalha-milagrosa-e-sacre-coeur.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-503153299.jpg",
+      "duplicateUrls": [],
+      "sha256": "d333d304c4af4dd7962661dbfec8fab2afe0940b46f2b5c5438fb352e6a8ce01",
+      "bytes": 1122022,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-brasilia",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 1255,
+      "height": 836,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-brasilia/galeria-03-capela-da-medalha-milagrosa-e-sacre-coeur.webp",
+        "bytes": 251062,
+        "width": 1255,
+        "height": 836
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-joao-carlos.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/padre.png",
+      "duplicateUrls": [],
+      "sha256": "47e5b79a4d14aad4f10221ecb02acf94462846156b726055dabd364aebc9d1f7",
+      "bytes": 204886,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "santuarios-marianos-brasilia",
+          "role": "foto de Padre João Carlos"
+        }
+      ],
+      "width": 321,
+      "height": 501,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-joao-carlos.webp",
+        "bytes": 17462,
+        "width": 321,
+        "height": 501
+      }
+    },
+    {
+      "path": "/assets/pdfs/santuarios-marianos-brasilia.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_roteiro_santuarios_marianos_Joao-Carlos_AJUSTADO.pdf",
+      "duplicateUrls": [],
+      "sha256": "c968b801012a1ef15148749a4bb9f8aab18aea51c1095230c5fcafd30d899a08",
+      "bytes": 2076894,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "santuarios-marianos-brasilia",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #14"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-londrina/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-456892175-1-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "15b096df069f27bbba9829048a4b424d974766e67dfab70ce2b9ee3296f4f564",
+      "bytes": 401123,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "hero"
+        },
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1318,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-londrina/hero.webp",
+        "bytes": 210724,
+        "width": 2400,
+        "height": 1236
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-londrina/galeria-02-santuario-de-nossa-senhora-de-lourdes.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1433819332-1-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "cdbe54d450c3a39c1868438aa21ff4986acdba10fbb8fb6580dff95f613ad902",
+      "bytes": 999234,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1440,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-londrina/galeria-02-santuario-de-nossa-senhora-de-lourdes.webp",
+        "bytes": 597704,
+        "width": 2400,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-londrina/galeria-04-torre-eiffel-e-paisagens-da-cidade-luz.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2231515643-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "65b49e341f69198b3b1a8ecd2057d5d8b15703aeb80bd9c00bc12d3cce4685cb",
+      "bytes": 929677,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "galeria #4"
+        }
+      ],
+      "width": 2560,
+      "height": 1725,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-londrina/galeria-04-torre-eiffel-e-paisagens-da-cidade-luz.webp",
+        "bytes": 458806,
+        "width": 2400,
+        "height": 1617
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-londrina/galeria-05-fe-e-peregrinacao-em-medjugorje.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2228363198-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "16c6564b54330c71ce2ab441c5ef13d218b1a9d12c4ef4501eb8300ae08aa8ff",
+      "bytes": 2037426,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "galeria #5"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-londrina/galeria-05-fe-e-peregrinacao-em-medjugorje.webp",
+        "bytes": 1196684,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-paulo-sergio.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/foto-padre_edit.jpg",
+      "duplicateUrls": [],
+      "sha256": "855999d33c717575fd5104e788aae816caf92c7459790fdc43b8092045cca29f",
+      "bytes": 119434,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "foto de Padre Paulo Sérgio"
+        }
+      ],
+      "width": 956,
+      "height": 960,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-paulo-sergio.webp",
+        "bytes": 42280,
+        "width": 956,
+        "height": 960
+      }
+    },
+    {
+      "path": "/assets/pdfs/santuarios-marianos-londrina.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_roteiro_santuarios_marianos_AJUSTADO.pdf",
+      "duplicateUrls": [],
+      "sha256": "8897721f953943542515c8e8b7ff0e4f5247eadf3baa3d25718892b3f74372fb",
+      "bytes": 12147164,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "santuarios-marianos-londrina",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #15"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/aparecida-agosto-2027/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1266640600-2-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "2bcf0e77c22f53937e1c190a3dc8f8c3af1c4f4178558f8e4075bdb862f5df37",
+      "bytes": 865018,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "aparecida-agosto-2027",
+          "role": "hero"
+        },
+        {
+          "page": "aparecida-agosto-2027",
+          "role": "galeria #1"
+        },
+        {
+          "page": "aparecida-carlos-2027",
+          "role": "hero"
+        }
+      ],
+      "width": 2560,
+      "height": 1671,
+      "optimized": {
+        "path": "/assets/destinos/aparecida-agosto-2027/hero.webp",
+        "bytes": 484598,
+        "width": 2400,
+        "height": 1567
+      }
+    },
+    {
+      "path": "/assets/destinos/aparecida-agosto-2027/galeria-02-espiritualidade-e-paisagens-ao-longo-do-caminho.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-855867074.jpg",
+      "duplicateUrls": [],
+      "sha256": "2a702957ce25043283fb818d3480f1738ed6068c96a67fc7ec19f5e014f98d72",
+      "bytes": 1982780,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "aparecida-agosto-2027",
+          "role": "galeria #2"
+        },
+        {
+          "page": "aparecida-carlos-2027",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2119,
+      "height": 1414,
+      "optimized": {
+        "path": "/assets/destinos/aparecida-agosto-2027/galeria-02-espiritualidade-e-paisagens-ao-longo-do-caminho.webp",
+        "bytes": 405130,
+        "width": 2119,
+        "height": 1414
+      }
+    },
+    {
+      "path": "/assets/destinos/aparecida-agosto-2027/galeria-03-charme-e-contemplacao-na-serra-da-mantiqueira.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-502300755.jpg",
+      "duplicateUrls": [],
+      "sha256": "b89cd353a0af513adc50a4b1c5d5917288878ee351270620c91e64b82e65211c",
+      "bytes": 933082,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "aparecida-agosto-2027",
+          "role": "galeria #3"
+        },
+        {
+          "page": "aparecida-carlos-2027",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 1254,
+      "height": 836,
+      "optimized": {
+        "path": "/assets/destinos/aparecida-agosto-2027/galeria-03-charme-e-contemplacao-na-serra-da-mantiqueira.webp",
+        "bytes": 217910,
+        "width": 1254,
+        "height": 836
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-marcelo-silva.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/padre_marcelo.png",
+      "duplicateUrls": [],
+      "sha256": "8a80c138448f516e6f0fc74610deeb0b910a2e33bc04f1acc8c4896c9b7d6e6f",
+      "bytes": 675597,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "aparecida-agosto-2027",
+          "role": "foto de Padre Marcelo Silva"
+        }
+      ],
+      "width": 720,
+      "height": 1280,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-marcelo-silva.webp",
+        "bytes": 49734,
+        "width": 720,
+        "height": 1280
+      }
+    },
+    {
+      "path": "/assets/pdfs/aparecida-agosto-2027.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/Roteiro-Aparecida-do-Norte_Agosto_v2_web.pdf",
+      "duplicateUrls": [],
+      "sha256": "6cf13815c966819083e2d94c1a6e93dbefb0c60820327a7141ba8f1031688ada",
+      "bytes": 1737709,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "aparecida-agosto-2027",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #16"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/galeria-01-paisagens-alpinas-e-cidades-historicas.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2215506380.jpg",
+      "duplicateUrls": [],
+      "sha256": "0b19eca1756946a5497773efa5b3de6583c197c9d03f50799d8cb015ad352c77",
+      "bytes": 4009135,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2156,
+      "height": 1391,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/galeria-01-paisagens-alpinas-e-cidades-historicas.webp",
+        "bytes": 914990,
+        "width": 2156,
+        "height": 1391
+      }
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/galeria-02-historia-arquitetura-e-a-atmosfera-dos-alpes.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2204388021.jpg",
+      "duplicateUrls": [],
+      "sha256": "9fa18f625bb981f078f93977bf5e1fe934bbec1f746646a951965337b461096a",
+      "bytes": 2676549,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2045,
+      "height": 1466,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/galeria-02-historia-arquitetura-e-a-atmosfera-dos-alpes.webp",
+        "bytes": 484400,
+        "width": 2045,
+        "height": 1466
+      }
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/galeria-03-encanto-veneziano-entre-canais-e-arte.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2171622192.jpg",
+      "duplicateUrls": [],
+      "sha256": "ed4b2031ea1d6894725feda04b39976c3035fce45518e45499f29cccbb9293a0",
+      "bytes": 2096503,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2121,
+      "height": 1414,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/galeria-03-encanto-veneziano-entre-canais-e-arte.webp",
+        "bytes": 346178,
+        "width": 2121,
+        "height": 1414
+      }
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/galeria-04-espiritualidade-franciscana-e-cidade-medieval.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1306048067.jpg",
+      "duplicateUrls": [],
+      "sha256": "b8c0596c919b79648daf59b821fe22f85b49f67ac97759de55d414574c0dad29",
+      "bytes": 2627411,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "galeria #4"
+        }
+      ],
+      "width": 2121,
+      "height": 1414,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/galeria-04-espiritualidade-franciscana-e-cidade-medieval.webp",
+        "bytes": 463660,
+        "width": 2121,
+        "height": 1414
+      }
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/galeria-05-basilicas-tradicao-e-o-coracao-da-cristandade.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1030822696.jpg",
+      "duplicateUrls": [],
+      "sha256": "6e9ca7b0dcd706b4393be02f1bc4fd3fe56e187d5d6eac151712e6a04ef9edd8",
+      "bytes": 3380111,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "galeria #5"
+        }
+      ],
+      "width": 2121,
+      "height": 1414,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/galeria-05-basilicas-tradicao-e-o-coracao-da-cristandade.webp",
+        "bytes": 687266,
+        "width": 2121,
+        "height": 1414
+      }
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/galeria-06-elegancia-imperial-e-cultura-europeia.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1002181306.jpg",
+      "duplicateUrls": [],
+      "sha256": "f93c1cc78ac69792b125073fd2f33540823716d1f02b2d8dbec52dfb4ea661e3",
+      "bytes": 1823702,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "galeria #6"
+        }
+      ],
+      "width": 2121,
+      "height": 1414,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/galeria-06-elegancia-imperial-e-cultura-europeia.webp",
+        "bytes": 327510,
+        "width": 2121,
+        "height": 1414
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-marcos-fernando.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2026-05-26-at-11.56.04-2.jpg",
+      "duplicateUrls": [],
+      "sha256": "6d38b174810c8322b8c66bfad8d157a7c5c669f5fafbecd5e6d742516e371310",
+      "bytes": 67898,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "foto de Padre Marcos Fernando"
+        }
+      ],
+      "width": 960,
+      "height": 1466,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-marcos-fernando.webp",
+        "bytes": 19112,
+        "width": 960,
+        "height": 1466
+      }
+    },
+    {
+      "path": "/assets/pdfs/europa-sagrada.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/roteiro_vlm_europa_sagrada_2_AJUSTADO.pdf",
+      "duplicateUrls": [],
+      "sha256": "079c5ddc3102f7200970f4d1118352f28d0b13be340e9b916f041f27e3f61338",
+      "bytes": 8115081,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "europa-sagrada",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #17"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/santuarios-italianos/galeria-01-basilicas-e-espiritualidade-no-coracao-da-fe-catolica.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/italia_basilica.jpg",
+      "duplicateUrls": [],
+      "sha256": "76d4c52ecf79ede12f6ce2434b8dc494200890c0dd9631cea1ada9699fb9a499",
+      "bytes": 2840943,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-italianos",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 1819,
+      "height": 1526,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-italianos/galeria-01-basilicas-e-espiritualidade-no-coracao-da-fe-catolica.webp",
+        "bytes": 540068,
+        "width": 1819,
+        "height": 1526
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-italianos/galeria-02-historia-devocao-e-grandes-santos-pelo-caminho.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2225997532-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "8a4443cfcf2503b9623f70fbb548722e23c6d64e5ded2bd7427e603f2ef1930c",
+      "bytes": 961276,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-italianos",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1440,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-italianos/galeria-02-historia-devocao-e-grandes-santos-pelo-caminho.webp",
+        "bytes": 699806,
+        "width": 2400,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-italianos/galeria-03-milagres-santuarios-e-contemplacao-entre-cascia-lanciano-e-m.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2200009655-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "8064091a9eb1d05a2dde042969581602ead43344107694e2a8503f15ec4a1c42",
+      "bytes": 775140,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-italianos",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 1713,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-italianos/galeria-03-milagres-santuarios-e-contemplacao-entre-cascia-lanciano-e-m.webp",
+        "bytes": 366230,
+        "width": 2400,
+        "height": 1606
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-thiago-bispo.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/padre-thiago.png",
+      "duplicateUrls": [],
+      "sha256": "68893e266c8051f26fcdbd44ea59a4d083f7571593b206ba30bb6568b18b16e9",
+      "bytes": 590727,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "santuarios-italianos",
+          "role": "foto de Padre Thiago Bispo"
+        }
+      ],
+      "width": 844,
+      "height": 1114,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-thiago-bispo.webp",
+        "bytes": 33178,
+        "width": 844,
+        "height": 1114
+      }
+    },
+    {
+      "path": "/assets/pdfs/santuarios-italianos.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_santuarios_italianos_roteiro_AJUSTADO.pdf",
+      "duplicateUrls": [],
+      "sha256": "5302bf93a007f7da733030b18be242d40e59dbb6c980f7b5b504f9b739e162ee",
+      "bytes": 2225074,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "santuarios-italianos",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #18"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/aparecida-carlos-2027/galeria-01-devocao-e-acolhimento-no-santuario-nacional.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1746327884-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "9e48ce9ea198ac03ef67ec6de02f2cacb44e751a94057c8c2a9fd38139911bc4",
+      "bytes": 900716,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "aparecida-carlos-2027",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/aparecida-carlos-2027/galeria-01-devocao-e-acolhimento-no-santuario-nacional.webp",
+        "bytes": 630120,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-carlos-eduardo.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2026-06-15-at-11.37.14_1_-removebg-preview.png",
+      "duplicateUrls": [],
+      "sha256": "e42e06417b0310df390d54c2b43899b1654730fe3684f78d4d5a476e225d5ba1",
+      "bytes": 166377,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "aparecida-carlos-2027",
+          "role": "foto de Padre Carlos Eduardo"
+        }
+      ],
+      "width": 433,
+      "height": 577,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-carlos-eduardo.webp",
+        "bytes": 8600,
+        "width": 433,
+        "height": 577
+      }
+    },
+    {
+      "path": "/assets/pdfs/aparecida-carlos-2027.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_aparecida1_maio_roteiro_web.pdf",
+      "duplicateUrls": [],
+      "sha256": "99a9da1bcc47c3e5f86c62efc0166e28e6473f2770d73999f50491945a674a34",
+      "bytes": 910854,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "aparecida-carlos-2027",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #19"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-tito/galeria-02-gruta-procissao-das-velas-e-profunda-devocao-mariana.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1301579230-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "97efee3c0f257e58a3b5eb386dad1e2bf2df3bc3c175b5fffaf470f234429ef6",
+      "bytes": 868951,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-tito",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1557,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-tito/galeria-02-gruta-procissao-das-velas-e-profunda-devocao-mariana.webp",
+        "bytes": 429118,
+        "width": 2400,
+        "height": 1460
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-tito/galeria-03-aparicoes-e-peregrinacao-no-santuario-de-fatima.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-898769106-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "1ea5b9f6d0f01f48830e6c4e91e6914be8e9d99dd0d2114c0a3dc98f7c3030a8",
+      "bytes": 903415,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "santuarios-marianos-tito",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 1707,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-tito/galeria-03-aparicoes-e-peregrinacao-no-santuario-de-fatima.webp",
+        "bytes": 508416,
+        "width": 2400,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-tito-simao.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/padre_tito.png",
+      "duplicateUrls": [],
+      "sha256": "2e0e27eb8b224b0b47f3befb3d5a61fa91633385843ba6544950348b8c0a0de1",
+      "bytes": 2152789,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "santuarios-marianos-tito",
+          "role": "foto de Padre Tito Simão"
+        }
+      ],
+      "width": 1066,
+      "height": 1600,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-tito-simao.webp",
+        "bytes": 243252,
+        "width": 1066,
+        "height": 1600
+      }
+    },
+    {
+      "path": "/assets/pdfs/santuarios-marianos-tito.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_roteiro_santuarios_marianos_padre-tito.pdf",
+      "duplicateUrls": [],
+      "sha256": "850b757745cb962d47b354accda89834bb1cce508be744b088ae71b5a1b25ea7",
+      "bytes": 317723,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "santuarios-marianos-tito",
+          "role": "PDF do roteiro (página)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2028/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-510179500-2-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "6382d39ec295dc35b2d50114bd3f6c2c0b10be363cd067bb5069d68880fc2844",
+      "bytes": 869553,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2028",
+          "role": "hero"
+        },
+        {
+          "page": "mexico-guadalupe-cancun-2028",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1706,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2028/hero.webp",
+        "bytes": 420628,
+        "width": 2400,
+        "height": 1599
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2028/galeria-02-cidade-dos-anjos-e-dos-azulejos.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-2198764548-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "0c8a3f9bc1e6a84925eba13f757c477f7b2099073d3835ec913ad5081c4d6244",
+      "bytes": 1215074,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2028",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1920,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2028/galeria-02-cidade-dos-anjos-e-dos-azulejos.webp",
+        "bytes": 643836,
+        "width": 2400,
+        "height": 1800
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2028/galeria-03-patrimonio-maia-entre-as-opcoes-em-cancun.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1371308086-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "3069d5ed5fa90dc166bee4194e49193c7d2a98841c6d38cad742e81cac4f8db1",
+      "bytes": 1084589,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2028",
+          "role": "galeria #3"
+        }
+      ],
+      "width": 2560,
+      "height": 1440,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2028/galeria-03-patrimonio-maia-entre-as-opcoes-em-cancun.webp",
+        "bytes": 704086,
+        "width": 2400,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/frei-jose-adriano-o-carm.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/padre-freijose.png",
+      "duplicateUrls": [],
+      "sha256": "94f9a5a3f6dd16ad29ae6a5694a4b245fc2c511ef87e678e86a501512018e976",
+      "bytes": 793721,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2028",
+          "role": "foto de Frei José Adriano, O.Carm."
+        }
+      ],
+      "width": 1006,
+      "height": 1280,
+      "optimized": {
+        "path": "/assets/acompanhantes/frei-jose-adriano-o-carm.webp",
+        "bytes": 57634,
+        "width": 1006,
+        "height": 1280
+      }
+    },
+    {
+      "path": "/assets/pdfs/mexico-guadalupe-cancun-2028.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/roteiro_vlm_mexico_guadalupe_frei-jose.pdf",
+      "duplicateUrls": [],
+      "sha256": "c4ac9e475904a7a79adfd15644fc8c2be2aa230e2bdfe7f7fba883b4f341717d",
+      "bytes": 602825,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "mexico-guadalupe-cancun-2028",
+          "role": "PDF do roteiro (página)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/egito-terra-santa/hero.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-496628602-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "027bc2ce43883d5da93a318b30767c736ff96523b621e5adca7cb4cf18840225",
+      "bytes": 1024447,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "egito-terra-santa",
+          "role": "hero"
+        },
+        {
+          "page": "egito-terra-santa",
+          "role": "galeria #1"
+        }
+      ],
+      "width": 2560,
+      "height": 1696,
+      "optimized": {
+        "path": "/assets/destinos/egito-terra-santa/hero.webp",
+        "bytes": 559082,
+        "width": 2400,
+        "height": 1590
+      }
+    },
+    {
+      "path": "/assets/destinos/egito-terra-santa/galeria-02-galileia-belem-e-jerusalem-nos-passos-da-fe.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/iStock-1899665800-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "e4b80a623024ee4074f48e79ac5384111451c4f6b5ec3f4149b6f7a05f760c4a",
+      "bytes": 789261,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "egito-terra-santa",
+          "role": "galeria #2"
+        }
+      ],
+      "width": 2560,
+      "height": 1708,
+      "optimized": {
+        "path": "/assets/destinos/egito-terra-santa/galeria-02-galileia-belem-e-jerusalem-nos-passos-da-fe.webp",
+        "bytes": 361464,
+        "width": 2400,
+        "height": 1601
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/padre-paulo-junior.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2026-08-12-at-09.29.13-002-removebg-preview.png",
+      "duplicateUrls": [],
+      "sha256": "60ccf4f236bcc257f2e63f08740765a4ef9db3830be88f56bf8ce712e68df6fb",
+      "bytes": 348638,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "egito-terra-santa",
+          "role": "foto de Padre Paulo Júnior"
+        }
+      ],
+      "width": 339,
+      "height": 737,
+      "optimized": {
+        "path": "/assets/acompanhantes/padre-paulo-junior.webp",
+        "bytes": 29966,
+        "width": 339,
+        "height": 737
+      }
+    },
+    {
+      "path": "/assets/acompanhantes/dineia.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/WhatsApp_Image_2026-08-12_at_09.29.13__1___002_-removebg-preview.png",
+      "duplicateUrls": [],
+      "sha256": "65e183659cc31e73622c7068177d439c822e894ee045f025597146fd1f4cea19",
+      "bytes": 288961,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "egito-terra-santa",
+          "role": "foto de Dinéia"
+        }
+      ],
+      "width": 448,
+      "height": 557,
+      "optimized": {
+        "path": "/assets/acompanhantes/dineia.webp",
+        "bytes": 18874,
+        "width": 448,
+        "height": 557
+      }
+    },
+    {
+      "path": "/assets/pdfs/egito-terra-santa.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/roteiro_vlm_egito_terrasanta_padre-paulo.pdf",
+      "duplicateUrls": [],
+      "sha256": "a99e9799a85a8412977adbfade8a0683b8651d915c0fde858171556b00ef0509",
+      "bytes": 447754,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "egito-terra-santa",
+          "role": "PDF do roteiro (página)"
+        },
+        {
+          "page": "home",
+          "role": "PDF do card #8"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-italia-portugal-padre-silas-roteiro/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/10/vlm_italia_portugal_padre_silas_roteiro_feed-stories-01-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "79bb9b3ceaf8885e8246fb04b0870a18730217701cecac2b02084b766cfdfc45",
+      "bytes": 754280,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #1 (pendente)"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos-pendentes/vlm-italia-portugal-padre-silas-roteiro/arte-divulgacao.webp",
+        "bytes": 338402,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-italia-portugal-padre-silas-roteiro/roteiro.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/10/vlm_italia_portugal_padre_silas_roteiro.pdf",
+      "duplicateUrls": [],
+      "sha256": "4cd81e04cf4319ec44eed28e360f4f185e53e420c1c1215ec997b0c130e1932e",
+      "bytes": 823859,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #1 (pendente)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-guadalupe-formadora-elaine/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_roteiro_guadalupe_Formadora-Elaine_post_stories-01-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "2e637041cf2d28b795caa002faa77940ee415351c07ff65fa06961dac4c4c8f4",
+      "bytes": 790389,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #2 (pendente)"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos-pendentes/vlm-roteiro-guadalupe-formadora-elaine/arte-divulgacao.webp",
+        "bytes": 379396,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-guadalupe-formadora-elaine/roteiro.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_roteiro_guadalupe_Formadora-Elaine.pdf",
+      "duplicateUrls": [],
+      "sha256": "a2c6cd814f18d8c0f692322419fa0965f39bab0bdbaab3a5d73d3c6d1457fcbd",
+      "bytes": 719679,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #2 (pendente)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-guadalupe-padre-diogo-fred-pacheco-v2/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_guadalupe_padre-diogo_fred-pacheco_post-stories-01-1.jpg",
+      "duplicateUrls": [],
+      "sha256": "c5b5cb6c468871dd014602d81a1de9e6f00c25c4e0ad6d30427ee56bb554f548",
+      "bytes": 955092,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #3 (pendente)"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos-pendentes/vlm-roteiro-guadalupe-padre-diogo-fred-pacheco-v2/arte-divulgacao.webp",
+        "bytes": 155104,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-guadalupe-padre-diogo-fred-pacheco-v2/roteiro.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_roteiro_guadalupe_padre-diogo_fred-pacheco_V2.pdf",
+      "duplicateUrls": [],
+      "sha256": "538b98b7c7c9896c935b9e7fc956b493dffa8a7f87bb111658dc296739eddb61",
+      "bytes": 742424,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #3 (pendente)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-portugal-italia-vaticano-gracielle/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_portugal_italia_vaticano_gracielle_post_stories-01.jpg",
+      "duplicateUrls": [],
+      "sha256": "6409c5a154c36d4f2e790ecb9ce918804fba1048a7dca69fce8327e44186c3ae",
+      "bytes": 1151143,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #4 (pendente)"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos-pendentes/vlm-roteiro-portugal-italia-vaticano-gracielle/arte-divulgacao.webp",
+        "bytes": 193408,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-portugal-italia-vaticano-gracielle/roteiro.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_roteiro_portugal_italia_vaticano_gracielle.pdf",
+      "duplicateUrls": [],
+      "sha256": "4a4b865009471341a4ece2bcc4d294c56cf2ed488f9f7dd8c1663f4a9f466495",
+      "bytes": 880554,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #4 (pendente)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-portugal-italia-vaticano-padre-adainton-fernando/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_portugal_italia_vaticano_padre-adainton_fernando_post-stories-01-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "4605ac0239c336552d2e28533931a490c4fc8d9c1532a0f9c4ce7d88a4eb3aae",
+      "bytes": 1121540,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #5 (pendente)"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos-pendentes/vlm-roteiro-portugal-italia-vaticano-padre-adainton-fernando/arte-divulgacao.webp",
+        "bytes": 619328,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos-pendentes/vlm-roteiro-portugal-italia-vaticano-padre-adainton-fernando/roteiro.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/09/vlm_roteiro_portugal_italia_vaticano_padre-adainton_fernando.pdf",
+      "duplicateUrls": [],
+      "sha256": "122432765ef1db3e0f170ec2b40392dfe889ea295e525e7b3e6b6f5ad374b872",
+      "bytes": 922471,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #5 (pendente)"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-tito/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_post-stories_santuarios_marianos_padre-tito-01-1-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "e8cea22c6ee30e5dd77e1a5515e2f70290256baafefeb6280f8cc80cbaf22074",
+      "bytes": 781700,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #6"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-tito/arte-divulgacao.webp",
+        "bytes": 367146,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/pdfs/santuarios-marianos-tito-home.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_roteiro_santuarios_marianos_padre-tito_web.pdf",
+      "duplicateUrls": [],
+      "sha256": "63d64bc07f320ad65aaa6ab815564249012fd9ca8bbe233b0664685410c525a3",
+      "bytes": 333281,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #6"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2028/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/feed-stories_vlm_mexico_guadalupe_frei-jose-01-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "12c566c9fb22d43e05012ee243749dbb6df8729da04cb669a56ab8936ddf624e",
+      "bytes": 1163793,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #7"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2028/arte-divulgacao.webp",
+        "bytes": 666674,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/pdfs/mexico-guadalupe-cancun-2028-home.pdf",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/roteiro_vlm_mexico_guadalupe_frei-jose-1.pdf",
+      "duplicateUrls": [],
+      "sha256": "4433cfe79dc7e559449b37ac6c257f363bc392dc2434ce5fec381f8051d81856",
+      "bytes": 603006,
+      "contentType": "application/pdf",
+      "usages": [
+        {
+          "page": "home",
+          "role": "PDF do card #7"
+        }
+      ]
+    },
+    {
+      "path": "/assets/destinos/egito-terra-santa/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/post-stories_vlm_egito_terrasanta_padre-paulo-01-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "9b6e58731003c23f4f269227a1aa43381bf7aaa474ba4743591aa9bed427abf8",
+      "bytes": 1020118,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #8"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/egito-terra-santa/arte-divulgacao.webp",
+        "bytes": 530072,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos/portugal-e-franca/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_feed-stories_portugal_franca_donizete-01.jpg",
+      "duplicateUrls": [],
+      "sha256": "9eb74cec0aabc8775c82603cdd202177199e0e17139bb1fe182e211261fd0a11",
+      "bytes": 963152,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #9"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/portugal-e-franca/arte-divulgacao.webp",
+        "bytes": 168884,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/08/vlm_aparecida_cancao-nova_moises_feed-stories-01.jpg",
+      "duplicateUrls": [],
+      "sha256": "0193f66c4041ec6713c45dd3ffe61efb818b9c955916608f4c502d88080c894f",
+      "bytes": 916999,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #10"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/sao-paulo-aparecida-cancao-nova/arte-divulgacao.webp",
+        "bytes": 165422,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/mexico-guadalupe-cancun-2027/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_roteiro_guadalupe_padre-fabio-fernandes-feed-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "d1128b4fc431b66959cb975f02ab21600d7abb92048cd23242bfde04a14b3e6e",
+      "bytes": 808094,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #11"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/mexico-guadalupe-cancun-2027/arte-divulgacao.webp",
+        "bytes": 393652,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos/rio-de-janeiro-aparecida/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/feed-stories_vlm_rio-aparecida_adriana-01-1.jpg",
+      "duplicateUrls": [],
+      "sha256": "5c4fec499990ca4615923163f65165ff46ceeecb3c1bf2e0f76298c2aecd250d",
+      "bytes": 1482362,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #12"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/rio-de-janeiro-aparecida/arte-divulgacao.webp",
+        "bytes": 291754,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/portugal-italia-vaticano/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_roteiro_port-italia-vaticano_padre-assis-feed-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "589e20728b59068a5f9b9f528662922d2b2f48c0f2e307b994d62aa9d2cd2432",
+      "bytes": 631583,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #13"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/portugal-italia-vaticano/arte-divulgacao.webp",
+        "bytes": 281042,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-brasilia/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/santuarios_marianos_Joao-Carlos-feed_feed-1.jpg",
+      "duplicateUrls": [],
+      "sha256": "f2ce6c45ae614169833faa8094810109c59d2eff8863c13c9dca94bce564e133",
+      "bytes": 1204068,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #14"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-brasilia/arte-divulgacao.webp",
+        "bytes": 131248,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-marianos-londrina/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/vlm_roteiro_santuarios_marianos-01-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "8b6981b4429467ef0693b996fdc8005d5638e349b2c570c08629af6132eb9840",
+      "bytes": 1063182,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #15",
+          "referencedAs": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/vlm_roteiro_santuarios_marianos-01-819x1024.jpg"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-marianos-londrina/arte-divulgacao.webp",
+        "bytes": 588458,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos/aparecida-agosto-2027/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/Aparecida-do-Norte_Agosto_Feed-2-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "31d120951bf9f04762eb965102f9455c5ec7f61b864ecc241b88b582fc806044",
+      "bytes": 717692,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #16",
+          "referencedAs": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/Aparecida-do-Norte_Agosto_Feed-2-819x1024.jpg"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/aparecida-agosto-2027/arte-divulgacao.webp",
+        "bytes": 316070,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos/europa-sagrada/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/roteiro_vlm_europa_sagrada_2-03.jpg",
+      "duplicateUrls": [],
+      "sha256": "465766553536c58e95ac39127d5b142894f4e699f7506afa26dcd6d0ef56b9c7",
+      "bytes": 811497,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #17",
+          "referencedAs": "https://vialuminaviagens.com.br/wp-content/uploads/2026/06/roteiro_vlm_europa_sagrada_2-03-819x1024.jpg"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/europa-sagrada/arte-divulgacao.webp",
+        "bytes": 278644,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos/santuarios-italianos/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/05/roteiro_vlm_santuarios_italianos-03-scaled.jpg",
+      "duplicateUrls": [],
+      "sha256": "2c5522f9732b937b2584c69e112ee6cbce4f9fa4a80aee2ee6f1cdc712319486",
+      "bytes": 924497,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #18"
+        }
+      ],
+      "width": 2048,
+      "height": 2560,
+      "optimized": {
+        "path": "/assets/destinos/santuarios-italianos/arte-divulgacao.webp",
+        "bytes": 461280,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "path": "/assets/destinos/aparecida-carlos-2027/arte-divulgacao.jpg",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/07/vlm_aparecida1_maio_roteiro_feed_semcontatos-05.jpg",
+      "duplicateUrls": [],
+      "sha256": "b26ebc52017e5c2e8aa371cea85099024b936ad75934187ee08c46ab9dd6063f",
+      "bytes": 1057287,
+      "contentType": "image/jpeg",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #19"
+        }
+      ],
+      "width": 1080,
+      "height": 1350,
+      "optimized": {
+        "path": "/assets/destinos/aparecida-carlos-2027/arte-divulgacao.webp",
+        "bytes": 196134,
+        "width": 1080,
+        "height": 1350
+      }
+    },
+    {
+      "path": "/assets/destinos-pendentes/cirio-de-nazare/arte-divulgacao.png",
+      "originalUrl": "https://vialuminaviagens.com.br/wp-content/uploads/2026/04/Cirio-de-nazare.png",
+      "duplicateUrls": [],
+      "sha256": "59a6bb1750676b5a036d89c55d7300f370031de410b4d1c8a66a8c76f9454e6f",
+      "bytes": 5896824,
+      "contentType": "image/png",
+      "usages": [
+        {
+          "page": "home",
+          "role": "card #20 (pendente)"
+        }
+      ],
+      "width": 1819,
+      "height": 2551,
+      "optimized": {
+        "path": "/assets/destinos-pendentes/cirio-de-nazare/arte-divulgacao.webp",
+        "bytes": 354170,
+        "width": 1819,
+        "height": 2551
+      }
+    }
+  ],
+  "failures": []
+}
