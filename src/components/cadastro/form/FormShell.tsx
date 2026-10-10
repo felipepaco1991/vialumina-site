@@ -5,12 +5,11 @@ import { useEffect, useRef, type FormEventHandler, type ReactNode } from 'react'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
 import { AnimatePresence, m } from '../motion'
-import { TONES, type LandingTone } from '../tone'
 
 /** Card do formulário: destaque visual com o azul e dourado da marca. */
-export function FormCard({ id, tone, eyebrow, title, description, children }: { id: string; tone: LandingTone; eyebrow: string; title: string; description: string; children: ReactNode }) {
+export function FormCard({ id, eyebrow, title, description, children }: { id: string; eyebrow: string; title: string; description: string; children: ReactNode }) {
   return (
-    <section id="cadastro" aria-labelledby={id} className={`relative isolate overflow-hidden py-20 sm:py-28 ${TONES[tone].form}`}>
+    <section id="cadastro" aria-labelledby={id} className="relative isolate overflow-hidden bg-[linear-gradient(160deg,#041a36_0%,#0a2e5c_55%,#0d3568_100%)] py-20 sm:py-28">
       <div className="container-site grid items-start gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="text-white lg:sticky lg:top-28">
           <p className="eyebrow-light mb-3">{eyebrow}</p>

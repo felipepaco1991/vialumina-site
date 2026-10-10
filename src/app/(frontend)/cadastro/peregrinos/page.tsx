@@ -27,7 +27,7 @@ export default async function PeregrinosPage() {
     <>
       <LandingMeta event="view_lp_peregrinos" path={P.path} name={P.meta.title} description={P.meta.description} />
       <LandingHero
-        tone="peregrinos"
+        variant="peregrinos"
         imageKey="peregrinos"
         eyebrow={P.hero.eyebrow}
         title={P.hero.title}
@@ -39,7 +39,7 @@ export default async function PeregrinosPage() {
       <AboutBlock id="peregrinos-sobre" eyebrow="Viajar também pode ser uma experiência de fé" title={P.about.title} paragraphs={P.about.paragraphs} />
       <DestinationCards id="peregrinos-destinos" eyebrow="Descubra onde sua fé pode te levar" title={P.destinations.title} items={P.destinations.items} />
       <CareList id="peregrinos-cuidado" eyebrow="Por que viajar com a Via Lumina?" title={P.care.title} keys={P.care.items} />
-      <FormCard id="peregrinos-formulario" tone="peregrinos" eyebrow="Cadastro de clientes" title={P.form.title} description={P.form.description}>
+      <FormCard id="peregrinos-formulario" eyebrow="Cadastro de clientes" title={P.form.title} description={P.form.description}>
         <PilgrimForm whatsappHref={wa} communityHref={community} />
       </FormCard>
       {community ? <CommunityInvite href={community} {...P.community} /> : null}

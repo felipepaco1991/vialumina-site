@@ -22,7 +22,8 @@ export const LANDING_IMAGES = {
   },
   peregrinos: {
     ai: { src: '/assets/cadastro/peregrinos-hero.webp', alt: 'Ilustração criada por inteligência artificial: peregrinos adultos de diferentes idades diante de um santuário, em luz natural' },
-    fallback: { src: '/assets/institucional/quem-somos.webp', alt: 'Peregrina fotografa a Basílica de São Pedro, no Vaticano', position: 'center' },
+    // Hero imersivo (largura total): precisa de uma foto larga; a de "Quem somos" é quadrada.
+    fallback: { src: '/assets/home/hero-banner-topo.webp', alt: 'Muralhas da Cidade Antiga de Jerusalém ao entardecer, com os raios dourados da Via Lumina', position: '60% center' },
   },
 } as const satisfies Record<string, LandingImageSpec>
 export type LandingImageKey = keyof typeof LANDING_IMAGES
