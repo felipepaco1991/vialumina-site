@@ -38,12 +38,12 @@ export function PriestForm({ whatsappHref }: { whatsappHref: string }) {
             <TextField form={form} name="whatsapp" label="WhatsApp com DDD" required type="tel" autoComplete="tel" inputMode="tel" placeholder="(11) 99999-9999" mask={maskPhone} maxLength={16} />
             <SelectField form={form} name="state" label="Estado" required options={UF_LIST} placeholder="Selecione" />
             <TextField form={form} name="city" label="Cidade" required autoComplete="address-level2" />
+            <TextField form={form} name="parish" label="Nome da paróquia ou comunidade" required className="sm:col-span-2" />
+            <TextField form={form} name="diocese" label="Diocese ou arquidiocese" required placeholder="Ex.: Arquidiocese de São Paulo" className="sm:col-span-2" />
           </div>
         ) : null}
         {step === 1 ? (
           <>
-            <TextField form={form} name="diocese" label="Diocese" required placeholder="Ex.: Arquidiocese de São Paulo" />
-            <TextField form={form} name="parish" label="Paróquia ou comunidade" required />
             <TextField form={form} name="ministry" label="Função ou ministério exercido" required placeholder="Ex.: Pároco, vigário paroquial, capelão" />
             <ChipGroup form={form} name="mainInterest" label="Interesse principal" required options={PRIEST_INTERESTS} />
           </>

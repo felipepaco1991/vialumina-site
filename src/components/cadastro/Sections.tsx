@@ -31,9 +31,9 @@ export function AboutBlock({ id, eyebrow, title, paragraphs, tone = 'white' }: {
             {title}
           </h2>
         </ScrollReveal>
-        <ScrollReveal delay={0.1} className="space-y-5 text-lg leading-relaxed text-slate-700">
+        <ScrollReveal delay={0.1} className="space-y-6 text-lg leading-[1.75] text-slate-700">
           {paragraphs.map((p, i) => (
-            <p key={p} className={i === 0 ? 'text-xl text-navy-800' : undefined}>
+            <p key={p} className={i === 0 ? 'border-l-4 border-gold-450 pl-6 font-display text-[1.4rem] leading-snug text-navy-800 sm:text-[1.55rem]' : undefined}>
               {p}
             </p>
           ))}

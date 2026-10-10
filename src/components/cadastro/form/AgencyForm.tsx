@@ -9,7 +9,7 @@ import { FormActions, FormElement, ServerError, StepHeader, StepPanel, SuccessPa
 import { Turnstile } from './Turnstile'
 import { useLeadForm } from './useLeadForm'
 
-const STEP_LABELS = ['A empresa', 'Responsável e interesse', 'Perfil comercial']
+const STEP_LABELS = ['Empresa e responsável', 'Contato e interesse', 'Perfil comercial']
 
 export function AgencyForm({ whatsappHref }: { whatsappHref: string }) {
   const { form, step, direction, back, next, handleSubmit, pending, serverError, done, onStart, setTurnstileToken, captchaKey } = useLeadForm<AgencyInput>({
@@ -52,14 +52,14 @@ export function AgencyForm({ whatsappHref }: { whatsappHref: string }) {
               />
               <SelectField form={form} name="state" label="Estado" required options={UF_LIST} placeholder="Selecione" />
               <TextField form={form} name="city" label="Cidade" required autoComplete="address-level2" />
+              <TextField form={form} name="contactName" label="Nome do agente responsável" required autoComplete="name" />
+              <TextField form={form} name="contactRole" label="Cargo ou função" required autoComplete="organization-title" />
             </div>
           </>
         ) : null}
         {step === 1 ? (
           <>
             <div className="grid gap-5 sm:grid-cols-2">
-              <TextField form={form} name="contactName" label="Nome do responsável" required autoComplete="name" />
-              <TextField form={form} name="contactRole" label="Cargo ou função" required autoComplete="organization-title" />
               <TextField form={form} name="email" label="E-mail comercial" required type="email" autoComplete="email" inputMode="email" />
               <TextField form={form} name="whatsapp" label="WhatsApp" required type="tel" autoComplete="tel" inputMode="tel" placeholder="(11) 99999-9999" mask={maskPhone} maxLength={16} />
             </div>

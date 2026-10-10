@@ -2,6 +2,7 @@ import { Building2, Church, Compass } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ScrollReveal } from '@/components/cadastro/motion'
+import { TONES } from '@/components/cadastro/tone'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { AGENCY_PAGE, HUB, PILGRIM_PAGE, PRIEST_PAGE } from '@/content/cadastro'
 
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 }
 
 const CARDS = [
-  { page: PILGRIM_PAGE, icon: Compass, title: 'Sou peregrino', text: 'Quero receber informações sobre as próximas peregrinações.', cta: 'Cadastre-se' },
-  { page: PRIEST_PAGE, icon: Church, title: 'Sou padre', text: 'Quero conhecer as possibilidades de parceria e organizar peregrinações com minha comunidade.', cta: 'Conhecer a parceria' },
-  { page: AGENCY_PAGE, icon: Building2, title: 'Tenho uma agência', text: 'Quero conhecer as oportunidades de colaboração com a Via Lumina.', cta: 'Cadastrar minha agência' },
+  { page: PILGRIM_PAGE, tone: 'peregrinos', icon: Compass, title: 'Sou cliente (peregrino)', text: 'Quero me cadastrar como cliente e receber informações sobre as próximas peregrinações.', cta: 'Cadastre-se como cliente' },
+  { page: PRIEST_PAGE, tone: 'padres', icon: Church, title: 'Sou padre', text: 'Quero conhecer as possibilidades de parceria e organizar peregrinações com minha comunidade.', cta: 'Conhecer a parceria' },
+  { page: AGENCY_PAGE, tone: 'agencias', icon: Building2, title: 'Tenho uma agência', text: 'Quero conhecer as oportunidades de colaboração com a Via Lumina.', cta: 'Cadastrar minha agência' },
 ] as const
 
 export default function CadastroHubPage() {
@@ -28,7 +29,7 @@ export default function CadastroHubPage() {
         <ul className="mt-14 grid gap-6 md:grid-cols-3">
           {CARDS.map((c, i) => (
             <ScrollReveal as="li" key={c.page.path} delay={i * 0.08} className="group relative flex flex-col rounded-[var(--radius-card)] bg-white p-8 shadow-soft ring-1 ring-navy-900/5 transition duration-500 hover:-translate-y-1.5 hover:shadow-lift">
-              <span className="mb-6 inline-flex size-14 items-center justify-center rounded-full bg-gold-100 text-gold-700">
+              <span className={`mb-6 inline-flex size-14 items-center justify-center rounded-full ${TONES[c.tone].chip}`}>
                 <c.icon className="size-7" aria-hidden="true" strokeWidth={1.6} />
               </span>
               <h2 className="font-display text-2xl text-navy-900">{c.title}</h2>

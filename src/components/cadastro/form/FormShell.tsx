@@ -1,15 +1,16 @@
 'use client'
-import { CircleCheck, Compass, LoaderCircle, Send, ArrowLeft, ArrowRight } from 'lucide-react'
+import { CircleCheck, Compass, LoaderCircle, Send, ArrowLeft, ArrowRight, UsersRound } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef, type FormEventHandler, type ReactNode } from 'react'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
 import { AnimatePresence, m } from '../motion'
+import { TONES, type LandingTone } from '../tone'
 
 /** Card do formulário: destaque visual com o azul e dourado da marca. */
-export function FormCard({ id, eyebrow, title, description, children }: { id: string; eyebrow: string; title: string; description: string; children: ReactNode }) {
+export function FormCard({ id, tone, eyebrow, title, description, children }: { id: string; tone: LandingTone; eyebrow: string; title: string; description: string; children: ReactNode }) {
   return (
-    <section id="cadastro" aria-labelledby={id} className="relative isolate overflow-hidden bg-[linear-gradient(160deg,#041a36_0%,#0a2e5c_55%,#0d3568_100%)] py-20 sm:py-28">
+    <section id="cadastro" aria-labelledby={id} className={`relative isolate overflow-hidden py-20 sm:py-28 ${TONES[tone].form}`}>
       <div className="container-site grid items-start gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="text-white lg:sticky lg:top-28">
           <p className="eyebrow-light mb-3">{eyebrow}</p>
@@ -103,7 +104,7 @@ export function ServerError({ message }: { message: string | null }) {
 }
 
 /** Confirmação visual depois que o servidor recebeu o cadastro. */
-export function SuccessPanel({ title, text, whatsappHref }: { title: string; text: string; whatsappHref: string }) {
+export function SuccessPanel({ title, text, whatsappHref, communityHref }: { title: string; text: string; whatsappHref: string; communityHref?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     ref.current?.focus()
@@ -116,6 +117,15 @@ export function SuccessPanel({ title, text, whatsappHref }: { title: string; tex
       </m.div>
       <h3 className="font-display text-3xl text-navy-900">{title}</h3>
       <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-slate-700">{text}</p>
+      {communityHref ? (
+        <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-cream-100 px-6 py-5">
+          <p className="font-display text-xl text-navy-900">Acompanhe de perto: entre para a comunidade Via Lumina</p>
+          <p className="mt-1.5 text-slate-700">Novidades e avisos das peregrinações chegam primeiro por lá.</p>
+          <a href={communityHref} target="_blank" rel="noopener" data-track="click_comunidade" data-track-label="sucesso-cadastro" className="mt-4 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-navy-900 px-6 font-label text-sm font-semibold text-white transition hover:bg-navy-800">
+            <UsersRound className="size-5" aria-hidden="true" /> Entrar na comunidade
+          </a>
+        </div>
+      ) : null}
       <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
         <Link href="/destinos" data-track="click_destinos" data-track-label="sucesso-cadastro" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-navy-900/20 bg-white px-6 font-label text-sm font-semibold text-navy-900 transition hover:border-navy-900">
           <Compass className="size-5" aria-hidden="true" /> Conhecer os destinos

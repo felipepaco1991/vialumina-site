@@ -20,7 +20,7 @@ test.describe('Landing pages: estrutura e navegação', () => {
   for (const [path, h1, cta] of [
     ['/cadastro/padres', 'Sua missão pode levar a fé ainda mais longe.', 'Quero conhecer a parceria'],
     ['/cadastro/agencias', 'Amplie as possibilidades da sua agência com o turismo religioso.', 'Quero ser uma agência parceira'],
-    ['/cadastro/peregrinos', 'Sua próxima jornada de fé pode começar aqui.', 'Quero conhecer as peregrinações'],
+    ['/cadastro/peregrinos', 'Sua próxima jornada de fé pode começar aqui.', 'Quero me cadastrar como cliente'],
   ] as const) {
     test(`${path}: conteúdo, CTA para o formulário, metadados e breadcrumbs`, async ({ page }) => {
       await page.goto(path)
@@ -89,6 +89,9 @@ test.describe('Formulário de padres (em etapas)', () => {
     await expect(form.getByText('Informe seu nome completo.')).toBeVisible()
     await expect(form.getByText('Informe um e-mail válido.').or(form.getByText('Informe seu e-mail.'))).toBeVisible()
     await expect(form.getByText('Selecione o estado.')).toBeVisible()
+    // Paróquia e diocese já são pedidas na primeira etapa.
+    await expect(form.getByText('Informe o nome da paróquia ou comunidade.')).toBeVisible()
+    await expect(form.getByText('Informe a diocese ou arquidiocese.')).toBeVisible()
     expect(await events(page)).toEqual(expect.arrayContaining(['start_form_padres', 'form_error']))
 
     await L(form, 'Nome completo').fill('Pe. Teste E2E')
@@ -97,27 +100,27 @@ test.describe('Formulário de padres (em etapas)', () => {
     await expect(L(form, 'WhatsApp com DDD')).toHaveValue('(11) 98765-4321') // máscara
     await L(form, 'Estado').selectOption('SP')
     await L(form, 'Cidade').fill('Campinas')
+    await L(form, 'Nome da paróquia ou comunidade').fill('Paróquia São José')
+    await L(form, 'Diocese ou arquidiocese').fill('Diocese de Campinas')
     await form.getByRole('button', { name: 'Continuar' }).click()
 
     // Etapa 2
     await expect(form.getByText('Etapa 2 de 3')).toBeVisible()
     await form.getByRole('button', { name: 'Continuar' }).click()
-    await expect(form.getByText('Informe a diocese.')).toBeVisible()
+    await expect(form.getByText('Informe sua função ou ministério.')).toBeVisible()
     await expect(form.getByText('Selecione o interesse principal.')).toBeVisible()
-    await L(form, 'Diocese').fill('Diocese de Campinas')
-    await L(form, 'Paróquia ou comunidade').fill('Paróquia São José')
     await L(form, 'Função ou ministério exercido').fill('Pároco')
     // Aguarda as mensagens de erro desaparecerem para o layout não se deslocar durante o clique.
     await expect(form.getByText('Informe sua função ou ministério.')).toBeHidden()
-    await expect(form.getByText('Informe a diocese.')).toBeHidden()
     await L(form, 'Acompanhar espiritualmente uma peregrinação').check()
 
     // Voltar preserva os dados da etapa 1
     await form.getByRole('button', { name: 'Voltar' }).click()
     await expect(L(form, 'Nome completo')).toHaveValue('Pe. Teste E2E')
     await expect(L(form, 'Cidade')).toHaveValue('Campinas')
+    await expect(L(form, 'Diocese ou arquidiocese')).toHaveValue('Diocese de Campinas')
     await form.getByRole('button', { name: 'Continuar' }).click()
-    await expect(L(form, 'Diocese')).toHaveValue('Diocese de Campinas')
+    await expect(L(form, 'Função ou ministério exercido')).toHaveValue('Pároco')
     await form.getByRole('button', { name: 'Continuar' }).click()
 
     // Etapa 3: o consentimento de privacidade é obrigatório; o de marketing, não
@@ -158,6 +161,8 @@ test.describe('Formulário de agências (em etapas)', () => {
     await L(form, 'Cidade').fill('Belo Horizonte')
     await form.getByRole('button', { name: 'Continuar' }).click()
     await expect(form.getByText('CNPJ inválido. Confira os 14 dígitos.')).toBeVisible()
+    // O agente responsável também é pedido já na primeira etapa.
+    await expect(form.getByText('Informe o nome do agente responsável.')).toBeVisible()
 
     // Consultor independente: CNPJ vira opcional
     await L(form, 'Consultor de turismo independente').check()
@@ -165,10 +170,10 @@ test.describe('Formulário de agências (em etapas)', () => {
     await expect(form.getByText('Opcional para consultores independentes sem CNPJ.')).toBeVisible()
     await L(form, 'Agência de viagens').check()
     await L(form, 'CNPJ').fill('11222333000181')
+    await L(form, 'Nome do agente responsável').fill('Maria E2E Souza')
+    await L(form, 'Cargo ou função').fill('Diretora comercial')
     await form.getByRole('button', { name: 'Continuar' }).click()
 
-    await L(form, 'Nome do responsável').fill('Maria E2E Souza')
-    await L(form, 'Cargo ou função').fill('Diretora comercial')
     await L(form, 'E-mail comercial').fill(email)
     await L(form, 'WhatsApp').fill('31988887777')
     await L(form, 'Conhecer condições comerciais').check()
@@ -195,7 +200,7 @@ test.describe('Formulário de peregrinos (curto)', () => {
     const email = mail('peregrino')
     await page.goto('/cadastro/peregrinos?origem=home&utm_source=e2e')
     const form = page.locator('#cadastro form')
-    await form.getByRole('button', { name: 'Quero receber informações' }).click()
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click()
     await expect(form.getByText('Informe seu nome completo.')).toBeVisible()
     await expect(form.getByText('Selecione ao menos um destino de interesse.')).toBeVisible()
     await expect(form.getByText('Informe quando pretende viajar.')).toBeVisible()
@@ -211,7 +216,7 @@ test.describe('Formulário de peregrinos (curto)', () => {
     await L(form, 'Entre 6 e 12 meses').check()
     await form.getByLabel(/Li e concordo/).check()
     await page.waitForTimeout(3200)
-    await form.getByRole('button', { name: 'Quero receber informações' }).click()
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click()
     await expect(page.getByRole('heading', { name: 'Cadastro realizado com sucesso!' })).toBeVisible()
     expect(await events(page)).toEqual(expect.arrayContaining(['start_form_peregrinos', 'form_error', 'submit_form_peregrinos']))
 
@@ -235,9 +240,9 @@ test.describe('Formulário de peregrinos (curto)', () => {
     await form.getByLabel(/Li e concordo/).check()
     // O tempo mínimo é contado desde a abertura da página; corrompe-o para simular um robô.
     await page.evaluate(() => (document.querySelector('form') as HTMLFormElement | null)?.dispatchEvent(new Event('focusin', { bubbles: true })))
-    await form.getByRole('button', { name: 'Quero receber informações' }).click({ trial: true })
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click({ trial: true })
     const started = Date.now()
-    await form.getByRole('button', { name: 'Quero receber informações' }).click()
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click()
     const res = await Promise.race([
       page.getByRole('alert').filter({ hasText: /Aguarde alguns segundos/ }).waitFor({ timeout: 2500 }).then(() => 'erro'),
       page.getByRole('heading', { name: 'Cadastro realizado com sucesso!' }).waitFor({ timeout: 2500 }).then(() => 'ok'),
@@ -265,7 +270,7 @@ test.describe('Formulário de peregrinos (curto)', () => {
     await form.getByLabel(/Li e concordo/).check()
     await form.getByLabel(/aceito receber novidades/).check()
     await page.waitForTimeout(3200)
-    await form.getByRole('button', { name: 'Quero receber informações' }).click()
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click()
     await expect(page.getByRole('heading', { name: 'Cadastro realizado com sucesso!' })).toBeVisible()
 
     const { getPayload } = await import('payload')
@@ -301,7 +306,7 @@ test.describe('Painel “Cadastros e Parcerias”', () => {
     await L(form, 'Nos próximos 3 meses').check()
     await form.getByLabel(/Li e concordo/).check()
     await page.waitForTimeout(3200)
-    await form.getByRole('button', { name: 'Quero receber informações' }).click()
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click()
     await expect(page.getByRole('heading', { name: 'Cadastro realizado com sucesso!' })).toBeVisible()
 
     await page.goto('/admin/login')

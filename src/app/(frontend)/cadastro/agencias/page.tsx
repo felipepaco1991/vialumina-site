@@ -26,6 +26,7 @@ export default async function AgenciasPage() {
     <>
       <LandingMeta event="view_lp_agencias" path={P.path} name={P.meta.title} description={P.meta.description} />
       <LandingHero
+        tone="agencias"
         imageKey="agencias"
         eyebrow={P.hero.eyebrow}
         title={P.hero.title}
@@ -38,7 +39,7 @@ export default async function AgenciasPage() {
       <BenefitCards id="agencias-estrutura" eyebrow="Conheça nossa estrutura" title={P.benefits.title} items={P.benefits.items} />
       <BenefitCards id="agencias-perfis" eyebrow="Para quem é esta parceria?" title={P.audience.title} items={P.audience.items} tone="white" columns={3} />
       <Timeline id="agencias-passos" eyebrow="Como começar?" title={P.steps.title} items={P.steps.items} />
-      <FormCard id="agencias-formulario" eyebrow="Cadastro para agências" title={P.form.title} description={P.form.description}>
+      <FormCard id="agencias-formulario" tone="agencias" eyebrow="Cadastro para agências" title={P.form.title} description={P.form.description}>
         <AgencyForm whatsappHref={wa} />
       </FormCard>
       <Faq id="agencias-faq" title={P.faq.title} items={P.faq.items} />

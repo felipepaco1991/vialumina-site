@@ -26,6 +26,7 @@ export default async function PadresPage() {
     <>
       <LandingMeta event="view_lp_padres" path={P.path} name={P.meta.title} description={P.meta.description} />
       <LandingHero
+        tone="padres"
         imageKey="padres"
         eyebrow={P.hero.eyebrow}
         title={P.hero.title}
@@ -37,7 +38,7 @@ export default async function PadresPage() {
       <AboutBlock id="padres-sobre" eyebrow="Mais do que uma viagem" title={P.about.title} paragraphs={P.about.paragraphs} />
       <BenefitCards id="padres-beneficios" eyebrow="Por que conhecer a Via Lumina?" title={P.benefits.title} items={P.benefits.items} />
       <Timeline id="padres-passos" eyebrow="Como funciona a parceria?" title={P.steps.title} items={P.steps.items} />
-      <FormCard id="padres-formulario" eyebrow="Cadastro para padres" title={P.form.title} description={P.form.description}>
+      <FormCard id="padres-formulario" tone="padres" eyebrow="Cadastro para padres" title={P.form.title} description={P.form.description}>
         <PriestForm whatsappHref={wa} />
       </FormCard>
       <Faq id="padres-faq" title={P.faq.title} items={P.faq.items} />

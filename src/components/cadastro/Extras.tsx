@@ -1,4 +1,4 @@
-import { ArrowRight, Compass } from 'lucide-react'
+import { ArrowRight, Compass, UsersRound } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { ScrollReveal } from './motion'
@@ -34,6 +34,30 @@ export function FinalCtaDestinations({ title, text, cta }: { title: string; text
               {cta}
             </ButtonLink>
           </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  )
+}
+
+/** Convite à comunidade no WhatsApp (cadastro de clientes): é onde a equipe acompanha os peregrinos de perto. */
+export function CommunityInvite({ href, title, text, cta }: { href: string; title: string; text: string; cta: string }) {
+  return (
+    <section aria-labelledby="comunidade-titulo" className="bg-white py-16 sm:py-20">
+      <div className="container-site">
+        <ScrollReveal className="flex flex-col items-center gap-8 rounded-[var(--radius-panel)] bg-cream-100 px-8 py-10 text-center sm:px-12 lg:flex-row lg:text-left">
+          <span className="inline-flex size-16 shrink-0 items-center justify-center rounded-full bg-gold-100 text-gold-700">
+            <UsersRound className="size-8" aria-hidden="true" strokeWidth={1.6} />
+          </span>
+          <div className="flex-1">
+            <h2 id="comunidade-titulo" className="font-display text-[1.7rem] leading-snug font-medium text-navy-900">
+              {title}
+            </h2>
+            <p className="mt-2 max-w-2xl text-lg text-slate-700">{text}</p>
+          </div>
+          <ButtonLink href={href} variant="primary" size="lg" icon={<UsersRound className="size-5" aria-hidden="true" />} data-track="click_comunidade" data-track-label="lp-peregrinos">
+            {cta}
+          </ButtonLink>
         </ScrollReveal>
       </div>
     </section>

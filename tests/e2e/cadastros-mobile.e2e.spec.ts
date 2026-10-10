@@ -25,7 +25,7 @@ test.describe('Cadastros no celular', () => {
 
   test('CTA do hero fica visível sem rolar e leva ao formulário', async ({ page }) => {
     await page.goto('/cadastro/peregrinos')
-    const cta = page.getByRole('link', { name: 'Quero conhecer as peregrinações' })
+    const cta = page.getByRole('link', { name: 'Quero me cadastrar como cliente' })
     await expect(cta).toBeInViewport()
     await cta.click()
     await expect(page.locator('#cadastro')).toBeInViewport()
@@ -48,7 +48,7 @@ test.describe('Cadastros no celular', () => {
     await form.getByLabel('Entre 3 e 6 meses').tap()
     await form.getByLabel(/Li e concordo/).check()
     await page.waitForTimeout(3200)
-    await form.getByRole('button', { name: 'Quero receber informações' }).tap()
+    await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).tap()
     await expect(page.getByRole('heading', { name: 'Cadastro realizado com sucesso!' })).toBeVisible()
     const [lead] = await findLeads(email)
     expect(lead).toMatchObject({ type: 'PEREGRINO', state: 'SP', destinations: ['franca-lourdes'] })

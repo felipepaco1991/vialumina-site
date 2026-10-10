@@ -13,7 +13,7 @@ import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/cn'
 
 /** Formulário curto e direto: os campos opcionais ficam recolhidos para não alongar a página. */
-export function PilgrimForm({ whatsappHref }: { whatsappHref: string }) {
+export function PilgrimForm({ whatsappHref, communityHref }: { whatsappHref: string; communityHref?: string }) {
   const [more, setMore] = useState(false)
   const { form, handleSubmit, pending, serverError, done, onStart, setTurnstileToken, captchaKey } = useLeadForm<PilgrimInput>({
     type: 'peregrinos',
@@ -22,7 +22,7 @@ export function PilgrimForm({ whatsappHref }: { whatsappHref: string }) {
     defaults: { fullName: '', email: '', whatsapp: '', state: '', city: '', destinations: [], travelPeriod: '', boardingCity: '', partySize: '', previousPilgrimage: '', groupWithCommunity: '', message: '', consentPrivacy: false },
   })
 
-  if (done) return <SuccessPanel {...PILGRIM_PAGE.form.success} whatsappHref={whatsappHref} />
+  if (done) return <SuccessPanel {...PILGRIM_PAGE.form.success} whatsappHref={whatsappHref} communityHref={communityHref} />
 
   return (
     <FormElement onSubmit={handleSubmit} onFocusCapture={onStart}>
@@ -53,7 +53,7 @@ export function PilgrimForm({ whatsappHref }: { whatsappHref: string }) {
         </div>
       </div>
 
-      <ConsentFields form={form} purpose="registrar seu interesse e permitir que a Via Lumina entre em contato com informações sobre as peregrinações escolhidas." />
+      <ConsentFields form={form} purpose="registrar seu cadastro como cliente na base da Via Lumina e permitir que a equipe entre em contato com informações sobre as peregrinações do seu interesse." />
       <Turnstile onToken={setTurnstileToken} resetKey={captchaKey} />
       <ServerError message={serverError} />
       <SubmitButton pending={pending} label={PILGRIM_PAGE.form.submit} />

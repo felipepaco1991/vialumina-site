@@ -56,8 +56,8 @@ export const priestSchema = z.object({
   whatsapp: phone,
   state: uf,
   city: requiredText('a cidade', 2, 100),
-  diocese: requiredText('a diocese', 2, 120),
-  parish: requiredText('a paróquia ou comunidade', 2, 140),
+  diocese: requiredText('a diocese ou arquidiocese', 2, 120),
+  parish: requiredText('o nome da paróquia ou comunidade', 2, 140),
   ministry: requiredText('sua função ou ministério', 2, 100),
   mainInterest: z.enum(values(PRIEST_INTERESTS), { message: 'Selecione o interesse principal.' }),
   hasOrganized: optionalEnum([{ value: 'sim' }, { value: 'nao' }]),
@@ -93,7 +93,7 @@ export const agencySchema = z
     legalName: requiredText('a razão social', 2, 160),
     tradeName: requiredText('o nome fantasia', 2, 160),
     cnpj: z.string().trim().max(18).optional().default(''),
-    contactName: requiredText('o nome do responsável', 5, 120),
+    contactName: requiredText('o nome do agente responsável', 5, 120),
     contactRole: requiredText('o cargo ou função', 2, 80),
     email,
     whatsapp: phone,
@@ -137,13 +137,13 @@ export type PilgrimData = z.output<typeof pilgrimSchema>
 
 /** Campos validados em cada etapa dos formulários em etapas. */
 export const PRIEST_STEPS: (keyof PriestInput)[][] = [
-  ['fullName', 'displayName', 'email', 'whatsapp', 'state', 'city'],
-  ['diocese', 'parish', 'ministry', 'mainInterest'],
+  ['fullName', 'displayName', 'email', 'whatsapp', 'state', 'city', 'parish', 'diocese'],
+  ['ministry', 'mainInterest'],
   ['hasOrganized', 'groupSize', 'destinations', 'travelPeriod', 'message', 'consentPrivacy', 'consentMarketing'],
 ]
 export const AGENCY_STEPS: (keyof AgencyInput)[][] = [
-  ['legalName', 'tradeName', 'profile', 'cnpj', 'state', 'city'],
-  ['contactName', 'contactRole', 'email', 'whatsapp', 'interest'],
+  ['legalName', 'tradeName', 'profile', 'cnpj', 'state', 'city', 'contactName', 'contactRole'],
+  ['email', 'whatsapp', 'interest'],
   ['cadastur', 'website', 'instagram', 'tenure', 'worksWithReligious', 'volume', 'destinations', 'message', 'consentPrivacy', 'consentMarketing'],
 ]
 

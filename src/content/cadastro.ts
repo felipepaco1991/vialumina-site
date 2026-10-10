@@ -20,13 +20,13 @@ export const PRIEST_PAGE = {
   hero: {
     eyebrow: 'Parceria com sacerdotes',
     title: 'Sua missão pode levar a fé ainda mais longe.',
-    text: 'A Via Lumina Viagens conecta espiritualidade, experiência e cuidado para transformar peregrinações em jornadas significativas. Conheça as possibilidades de parceria e descubra como podemos caminhar ao lado da sua comunidade.',
+    text: 'A Via Lumina Viagens une espiritualidade, experiência e cuidado para transformar peregrinações em jornadas significativas. Conheça as possibilidades de parceria e descubra como podemos caminhar ao lado da sua comunidade.',
     cta: 'Quero conhecer a parceria',
   },
   about: {
     title: 'Uma peregrinação é também uma oportunidade de evangelizar.',
     paragraphs: [
-      'Para muitas pessoas, visitar um santuário, participar de uma celebração em um lugar sagrado ou percorrer caminhos de fé representa um momento especial na caminhada espiritual.',
+      'Para muitas pessoas, visitar um Santuário, participar de uma celebração em um lugar sagrado ou percorrer caminhos de fé, representa um momento especial na caminhada espiritual.',
       'A Via Lumina compreende a importância dessa experiência e trabalha para oferecer organização, suporte e cuidado durante cada etapa da jornada.',
       'Nosso propósito é contribuir para que sacerdotes e comunidades possam vivenciar peregrinações com significado, acolhimento e tranquilidade.',
     ],
@@ -36,7 +36,7 @@ export const PRIEST_PAGE = {
     items: [
       { icon: 'planning', title: 'Planejamento especializado', text: 'Roteiros organizados com atenção aos deslocamentos, hospedagens, visitas e necessidades do grupo.' },
       { icon: 'care', title: 'Acompanhamento e cuidado', text: 'Estrutura de apoio durante a peregrinação, permitindo uma experiência mais tranquila e organizada.' },
-      { icon: 'destinations', title: 'Destinos de espiritualidade', text: 'Peregrinações a santuários e lugares de relevância religiosa no Brasil e no exterior.' },
+      { icon: 'destinations', title: 'Destinos de espiritualidade', text: 'Peregrinações a Santuários e lugares de relevância religiosa no Brasil e no exterior.' },
       { icon: 'experience', title: 'Experiência no turismo', text: 'A Via Lumina integra um grupo com mais de quatro décadas de trajetória no setor turístico.' },
     ] satisfies Benefit[],
   },
@@ -146,8 +146,8 @@ export const PILGRIM_PAGE = {
   hero: {
     eyebrow: 'Faça parte da Via Lumina',
     title: 'Sua próxima jornada de fé pode começar aqui.',
-    text: 'Cadastre-se para conhecer as peregrinações da Via Lumina Viagens, descobrir destinos sagrados e receber informações sobre experiências que unem fé, cultura e espiritualidade.',
-    cta: 'Quero conhecer as peregrinações',
+    text: 'Cadastre-se como cliente e entre para a nossa base de peregrinos: conheça as peregrinações da Via Lumina Viagens, descubra destinos sagrados e receba informações sobre experiências de fé, cultura e espiritualidade.',
+    cta: 'Quero me cadastrar como cliente',
   },
   about: {
     title: 'Existem destinos que marcam a memória. Outros também tocam a alma.',
@@ -160,7 +160,7 @@ export const PILGRIM_PAGE = {
     title: 'Caminhos de fé pelo Brasil e pelo mundo.',
     items: [
       { title: 'Aparecida e destinos religiosos do Brasil', text: 'Conheça lugares de devoção, história e espiritualidade em roteiros cuidadosamente organizados.', image: '/assets/destinos/aparecida-agosto-2027/hero.webp', alt: 'Santuário Nacional de Aparecida, no interior de São Paulo', href: '/destinos?regiao=brasil' },
-      { title: 'Portugal, França e Espanha', text: 'Descubra santuários e cidades ligados à tradição cristã europeia.', image: '/assets/destinos/portugal-e-franca/galeria-01-santuario-de-fatima.webp', alt: 'Vista aérea do Santuário de Fátima, em Portugal', href: '/destinos?regiao=europa' },
+      { title: 'Portugal, França e Espanha', text: 'Descubra Santuários e cidades ligados à tradição cristã europeia.', image: '/assets/destinos/portugal-e-franca/galeria-01-santuario-de-fatima.webp', alt: 'Vista aérea do Santuário de Fátima, em Portugal', href: '/destinos?regiao=europa' },
       { title: 'Itália e Vaticano', text: 'Explore lugares marcantes da história da Igreja e da espiritualidade cristã.', image: '/assets/destinos/portugal-italia-vaticano/hero.webp', alt: 'Basílica de São Pedro e a cidade do Vaticano', href: '/destinos?regiao=europa' },
       { title: 'México e Guadalupe', text: 'Conheça uma das mais importantes expressões da devoção mariana nas Américas.', image: '/assets/destinos/mexico-guadalupe-cancun-2027/hero.webp', alt: 'Basílica de Nossa Senhora de Guadalupe, na Cidade do México, ao entardecer', href: '/destinos?regiao=america-do-norte' },
       { title: 'Egito e Terra Santa', text: 'Uma oportunidade de conhecer cenários relacionados à história bíblica e à tradição cristã, conforme a disponibilidade de roteiros.', image: '/assets/destinos/egito-terra-santa/hero.webp', alt: 'Mosteiro construído na encosta de uma montanha no deserto da Terra Santa', href: '/destinos?regiao=oriente-medio-africa' },
@@ -173,12 +173,18 @@ export const PILGRIM_PAGE = {
   },
   form: {
     title: 'Quer receber informações sobre nossas próximas peregrinações?',
-    description: 'Conte-nos um pouco sobre seus interesses para que possamos compartilhar roteiros e informações relevantes para você.',
-    submit: 'Quero receber informações',
+    description:
+      'Este é o cadastro de clientes da Via Lumina: ao preencher, você entra para a nossa base de peregrinos e passa a receber roteiros e informações de acordo com seus interesses. Seus dados só são usados com a sua ciência e autorização, e você confirma isso antes de enviar.',
+    submit: 'Cadastrar-me como cliente',
     success: {
       title: 'Cadastro realizado com sucesso!',
       text: 'Cadastro realizado com sucesso! Agradecemos seu interesse na Via Lumina Viagens. Você poderá receber informações sobre peregrinações de acordo com suas preferências e autorizações.',
     },
+  },
+  community: {
+    title: 'Acompanhe de perto: entre para a comunidade Via Lumina.',
+    text: 'Depois do cadastro, convidamos você a participar da nossa comunidade no WhatsApp. É lá que compartilhamos novidades, saídas e avisos das peregrinações e que nossa equipe fica mais perto de você.',
+    cta: 'Entrar na comunidade',
   },
   finalCta: {
     title: 'Os caminhos mais especiais começam com uma decisão.',
