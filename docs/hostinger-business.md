@@ -82,11 +82,13 @@ A Hostinger informa que os comandos npm de build são executados automaticamente
 
 ## Hostinger — comando de compilação
 
-Na Hostinger, em **Configurações de compilação e saída > Alterar**, selecione o framework Next.js, Node 22, raiz `./` e configure o comando de build como:
+Na Hostinger, em **Configurações de compilação e saída > Alterar**, selecione o framework Next.js, Node 22, raiz `./` e mantenha o comando de build padrão que a Hostinger oferece (o seletor não permite personalização):
 
 ```bash
-npm run build:hostinger
+npm run build
 ```
+
+Na branch de adaptação o script padrão aponta para `npm run build:hostinger`.
 
 O script realiza, na ordem: migrações do Payload com conexão direta, importação inicial dos 14 roteiros + pendentes se ainda estiverem ausentes, e `next build`.
 
@@ -120,3 +122,11 @@ O script de build exige a variável direta: não reutilize a URL pooled ou alter
 - Build Next.js 16 com banco vazio migrado e adapter R2 habilitado (credenciais de teste sem bucket real): aprovado.
 - **Não coberto por este teste:** conexão real ao Neon, importação de 14 roteiros e mídia para o R2, autenticação do admin, formulários, desempenho na Hostinger e retenção de uploads após redeploy.
 
+
+## Confirmação do comando fixo (13/10/2026)
+
+- A Hostinger Business exibiu seletor **sem entrada de comando personalizado**. Por isso o `package.json` da branch de adaptação usa `"build": "npm run build:hostinger"`.
+- GitHub Actions <https://github.com/felipepaco1991/vialumina-site/actions/runs/38447305427>: **aprovado** com o comando exato `npm run build`, migrações e compilação com PostgreSQL descartável.
+- Na execução do CI, a importação de conteúdo foi **propositadamente ignorada** por não haver bucket R2 real nem credenciais: ainda é obrigatório testar a primeira carga em homologação na Hostinger, sem mudar o DNS da produção.
+- Importação parcial: o guard em `src/seed/if-empty.ts` interrompe o processo para não sobrescrever roteiros já existentes. Corrigir inconsistências e só então publicar novamente.
+- Na Hostinger, mantenha gerenciador `npm`, diretório de saída `.next`, preset Next.js, Node 22.x, branch `hostinger-business-adaptacao` e raiz `./`.
