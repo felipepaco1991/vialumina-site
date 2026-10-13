@@ -29,6 +29,15 @@ if (missing.length === 0) {
   process.exit(0)
 }
 
+if (existing.size > 0) {
+  throw new Error(
+    'Importacao inicial incompleta: ' + missing.length +
+    ' roteiros ausentes e ' + existing.size +
+    ' ja cadastrados. Corrija a carga manualmente antes de novo deploy; ' +
+    'seed automatico bloqueado para proteger edicoes existentes.',
+  )
+}
+
 if (!process.env.SEED_ADMIN_EMAIL || !process.env.SEED_ADMIN_PASSWORD) {
   throw new Error('SEED_ADMIN_EMAIL e SEED_ADMIN_PASSWORD sao obrigatorios na primeira importacao.')
 }
