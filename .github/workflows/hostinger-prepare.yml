@@ -90,6 +90,8 @@ jobs:
       R2_SECRET_ACCESS_KEY: placeholder
       NODE_ENV: production
       NODE_OPTIONS: --no-deprecation --max-old-space-size=2048
+      DATABASE_URL_UNPOOLED: postgres://vialumina:test-only@localhost:5432/vialumina
+      HOSTINGER_CI_SKIP_SEED_FOR_TESTS: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -100,5 +102,5 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Run versioned migrations against test Postgres
         run: npm run migrate
-      - name: Build Next.js with empty but migrated test database
-        run: npm exec -- next build
+      - name: Run Hostinger standard build command on disposable database
+        run: npm run build
