@@ -21,7 +21,8 @@
     "migrate": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts NODE_OPTIONS=--no-deprecation payload migrate",
     "migrate:create": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts NODE_OPTIONS=--no-deprecation payload migrate:create",
     "build:hostinger": "node scripts/hostinger-build.mjs",
-    "seed:if-empty": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts NODE_OPTIONS=--no-deprecation payload run src/seed/if-empty.ts"
+    "seed:if-empty": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts NODE_OPTIONS=--no-deprecation payload run src/seed/if-empty.ts",
+    "repair:media": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts NODE_OPTIONS=--no-deprecation payload run scripts/repair-media.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

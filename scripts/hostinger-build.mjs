@@ -15,9 +15,11 @@ if (!directUrl) {
 const skipSeedInCI = process.env.CI === 'true' && process.env.HOSTINGER_CI_SKIP_SEED_FOR_TESTS === '1'
 const steps = [
   ['run', 'migrate'],
-  ...(skipSeedInCI ? [] : [['run', 'seed:if-empty']]),
+  ...(skipSeedInCI ? [] : [['run', 'seed:if-empty'], ['run', 'repair:media']]),
   ['exec', '--', 'next', 'build', '--webpack'],
 ]
+// Etapas cuja falha apenas avisa: o site continua publicável (ex.: reparo de mídia no R2).
+const optionalSteps = new Set(['repair:media'])
 
 for (const args of steps) {
   process.stdout.write('[Hostinger] Executando: npm ' + args.join(' ') + '\n')
@@ -31,6 +33,10 @@ for (const args of steps) {
       NODE_OPTIONS: '--no-deprecation --max-old-space-size=2048',
     },
   })
+  if ((proc.error || proc.status !== 0) && optionalSteps.has(args[1])) {
+    process.stderr.write('[Hostinger] Etapa opcional falhou (build segue): npm ' + args.join(' ') + '\n')
+    continue
+  }
   if (proc.error || proc.status !== 0) {
     process.stderr.write('[Hostinger] Etapa falhou: npm ' + args.join(' ') + '\n')
     if (proc.error) process.stderr.write(proc.error.message + '\n')
