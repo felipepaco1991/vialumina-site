@@ -47,3 +47,28 @@ A utilização de Neon PostgreSQL foi autorizada pelo responsável do projeto em
 ## Entrega segura
 
 A alteração da branch principal e a troca de DNS dependem de homologação, backups e aprovação explícita. Este documento representa avaliação, não implantação concluída.
+
+## Configuração confirmada no hPanel (13/10/2026)
+
+O usuário conseguiu chegar à tela da Hostinger para importar GitHub e confirmou visualmente:
+
+- Repositório `felipepaco1991/vialumina-site`;
+- Branch `hostinger-business-adaptacao`;
+- Preset `Next.js`;
+- Node `22.x`;
+- Diretório `./`;
+- Cinco variáveis de ambiente adicionadas: `DATABASE_URL`, `PAYLOAD_SECRET`, `NEXT_PUBLIC_SITE_URL`, `SEED_ADMIN_EMAIL` e `SEED_ADMIN_PASSWORD`.
+- Endereço de homologação `https://brown-mandrill-580646.hostingersite.com`.
+- Banco Neon PostgreSQL 18, região São Paulo, projeto `via-lumina`, banco `neondb`.
+
+**Importante:** inclusão no formulário de variáveis não confirma que o build ou banco funcionem. Nenhuma implantação foi validada até aqui. Não reproduzir os valores secretos neste documento.
+
+### Armazenamento: opções
+
+O [Neon Object Storage](https://neon.com/blog/neon-backend-is-ga) é S3-compatível e tem franquia gratuita de armazenamento no plano Free. Antes de adotá-lo, validar disponibilidade na região do projeto, método de criação de bucket, endpoint público/privado, credenciais e a franquia de tráfego de saída compartilhada com banco. Pode servir para **uploads novos e PDFs**, mantendo o acervo estático do site em `public/assets`.
+
+Cloudflare R2 continua como alternativa recomendável em caso de necessidade de maior tráfego de mídia, conforme [adaptador oficial do Payload](https://payloadcms.com/docs/upload/storage-adapters). **Nunca usar `hbuilds/` ou `public_html/` para guardar uploads permanentes**, porque são sobrescritos a cada implantação na Hostinger.
+
+### Inicialização do Payload
+
+A Hostinger informa que os comandos npm de build são executados automaticamente, mas não podem ser executados manualmente via SSH no plano Business. Portanto, implementar estratégia de bootstrap/migração segura **antes** da implantação que não execute o seed completo em toda atualização (o seed atual atualiza todos os roteiros e sobrescreveria edições do CMS). Validar migrations versionadas, build, criação do primeiro administrador, mídia e rollback em homologação.
