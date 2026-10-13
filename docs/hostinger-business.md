@@ -11,6 +11,20 @@
 
 A pasta `site-para-vps/` nesta branch referencia o conteúdo integral da árvore original no commit `dae809079770238c8e1d0b4843b2cacc92b97584`. Não editar o conteúdo desta pasta. **Nunca publicar esta pasta em `public_html`**. Manter também o commit/tag remoto como referência de recuperação.
 
+## Decisão aprovada: PostgreSQL externo Neon
+
+A utilização de Neon PostgreSQL foi autorizada pelo responsável do projeto em 13/10/2026. **Ainda não há um banco provisionado, credenciais ou deploy funcional.**
+
+- A aplicação já utiliza `@payloadcms/db-postgres`: manter Payload CMS e PostgreSQL, sem migrar desnecessariamente o frontend ou CMS para PHP/MySQL.
+- Criar projeto privado `via-lumina` no [Neon](https://console.neon.tech/), na região **próxima à hospedagem da aplicação**. O nome do banco pode ser `vialumina`.
+- Gerar string PostgreSQL com TLS (`sslmode=require`) e configurar como `DATABASE_URL` no painel de variáveis de ambiente da Hostinger; **nunca versionar ou publicar senhas, strings reais ou arquivos `.env`**.
+- Para execução persistente com Node, testar conexão direta e limites do pool; para migrations preferir conexão direta. Verificar se a Hostinger aceita a versão Node.js 22.
+- Definir `PAYLOAD_SECRET` (valor seguro, gerado localmente) e `NEXT_PUBLIC_SITE_URL` apontando ao **domínio provisório** de testes. Não alterar ainda o DNS.
+- Aplicar migrações versionadas e seed inicialmente em ambiente de homologação; validar se Hostinger permite executar comandos de inicialização e se o build do Next acessa o banco.
+- Configurar um armazenamento persistente separado para uploads do Payload (`media` e `documents`), preferencialmente S3/R2 através de plugin oficial. Os arquivos já versionados em `public/assets` continuam estáticos.
+- Implementar backups de banco e arquivos, teste de recuperação, e alertas de limites/custos do plano escolhido. A gratuidade do Neon não dispensa monitoramento ou política de backups.
+- Manter o site atual em produção até homologação completa.
+
 ## Decisão técnica pendente
 
 1. Testar no hPanel a execução e publicação de Next.js com Payload CMS (memória, duração do build e rotas de API).
