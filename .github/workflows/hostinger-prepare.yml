@@ -8,6 +8,8 @@ on:
       - package.json
       - src/payload.config.ts
       - tsconfig.json
+      - scripts/hostinger-build.mjs
+      - src/seed/if-empty.ts
       - .github/workflows/hostinger-prepare.yml
   workflow_dispatch:
 
@@ -60,3 +62,43 @@ jobs:
 
       - name: Lint source
         run: npm run lint
+
+  build-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: vialumina
+          POSTGRES_PASSWORD: test-only
+          POSTGRES_DB: vialumina
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U vialumina -d vialumina"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgres://vialumina:test-only@localhost:5432/vialumina
+      PAYLOAD_SECRET: integration-test-only-hostinger-build
+      NEXT_PUBLIC_SITE_URL: https://example.invalid
+      R2_BUCKET: placeholder-bucket
+      R2_ENDPOINT: https://placeholder.r2.cloudflarestorage.com
+      R2_ACCESS_KEY_ID: placeholder
+      R2_SECRET_ACCESS_KEY: placeholder
+      NODE_ENV: production
+      NODE_OPTIONS: --no-deprecation --max-old-space-size=2048
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run versioned migrations against test Postgres
+        run: npm run migrate
+      - name: Build Next.js with empty but migrated test database
+        run: npm exec -- next build
