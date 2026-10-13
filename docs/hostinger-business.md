@@ -13,7 +13,7 @@ A pasta `site-para-vps/` nesta branch referencia o conteúdo integral da árvore
 
 ## Decisão aprovada: PostgreSQL externo Neon
 
-A utilização de Neon PostgreSQL foi autorizada pelo responsável do projeto em 13/10/2026. **Ainda não há um banco provisionado, credenciais ou deploy funcional.**
+A utilização de Neon PostgreSQL foi autorizada pelo responsável do projeto em 13/10/2026. **Banco Neon provisionado e variáveis configuradas pelo usuário na Hostinger. Ainda não há deploy validado.**
 
 - A aplicação já utiliza `@payloadcms/db-postgres`: manter Payload CMS e PostgreSQL, sem migrar desnecessariamente o frontend ou CMS para PHP/MySQL.
 - Criar projeto privado `via-lumina` no [Neon](https://console.neon.tech/), na região **próxima à hospedagem da aplicação**. O nome do banco pode ser `vialumina`.
@@ -29,7 +29,7 @@ A utilização de Neon PostgreSQL foi autorizada pelo responsável do projeto em
 
 1. Testar no hPanel a execução e publicação de Next.js com Payload CMS (memória, duração do build e rotas de API).
 2. Verificar armazenamento persistente fora dos diretórios substituídos em redeploy, inclusive para uploads e banco.
-3. Verificar disponibilidade de PostgreSQL externo gerenciado e custo; esta é a opção de menor risco técnico para reaproveitar todo o CMS.
+3. Neon PostgreSQL gerenciado escolhido e criado no plano Free, região São Paulo.
 4. Se só houver MySQL e nenhum PostgreSQL externo, comparar reimplementação de backend/CMS em PHP+MySQL **com testes de paridade**. Não substituir silenciosamente o Payload pelo MySQL: não são compatíveis.
 5. SQLite com Payload pode ser avaliado apenas com armazenamento persistente verificado, backups e testes de redeploy; não armazenar DB dentro do diretório da versão publicada.
 6. Revisar dados já cadastrados antes da migração; preservar hashes/sessões apenas quando suportados e garantir preservação de consentimentos e leads.
@@ -63,6 +63,13 @@ O usuário conseguiu chegar à tela da Hostinger para importar GitHub e confirmo
 
 **Importante:** inclusão no formulário de variáveis não confirma que o build ou banco funcionem. Nenhuma implantação foi validada até aqui. Não reproduzir os valores secretos neste documento.
 
+### Cloudflare R2 confirmado
+
+- O usuário criou o bucket privado `vialumina-media` (classe Standard) e forneceu ao hPanel as variáveis `R2_BUCKET`, `R2_ENDPOINT`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` sem compartilhá-las em chat.
+- A aplicação usa `@payloadcms/storage-s3` para `media` (prefixo `media/`) e `documents` (prefixo `documents/`); o proxy de acesso do Payload permanece ativo e o bucket continua privado.
+- Os arquivos versionados em `public/assets/` continuam no site. Uploads novos vão ao R2.
+- É imprescindível testar upload e leitura dos dois tipos após o primeiro deployment, além da reimplantação.
+
 ### Armazenamento: opções
 
 O [Neon Object Storage](https://neon.com/blog/neon-backend-is-ga) é S3-compatível e tem franquia gratuita de armazenamento no plano Free. Antes de adotá-lo, validar disponibilidade na região do projeto, método de criação de bucket, endpoint público/privado, credenciais e a franquia de tráfego de saída compartilhada com banco. Pode servir para **uploads novos e PDFs**, mantendo o acervo estático do site em `public/assets`.
@@ -72,3 +79,34 @@ Cloudflare R2 continua como alternativa recomendável em caso de necessidade de 
 ### Inicialização do Payload
 
 A Hostinger informa que os comandos npm de build são executados automaticamente, mas não podem ser executados manualmente via SSH no plano Business. Portanto, implementar estratégia de bootstrap/migração segura **antes** da implantação que não execute o seed completo em toda atualização (o seed atual atualiza todos os roteiros e sobrescreveria edições do CMS). Validar migrations versionadas, build, criação do primeiro administrador, mídia e rollback em homologação.
+
+## Hostinger — comando de compilação
+
+Na Hostinger, em **Configurações de compilação e saída > Alterar**, selecione o framework Next.js, Node 22, raiz `./` e configure o comando de build como:
+
+```bash
+npm run build:hostinger
+```
+
+O script realiza, na ordem: migrações do Payload com conexão direta, importação inicial dos 14 roteiros + pendentes se ainda estiverem ausentes, e `next build`.
+
+O fluxo **não está homologado na Hostinger**. Se houver limite de tempo, memória ou indisponibilidade no processo de seed (imagens), suspender a tentativa e separar a importação do build antes de prosseguir.
+
+### Variável adicional obrigatória
+
+No Neon: `Connect` -> `Connection pooling` **desativado** -> copie a connection string completa. No hPanel, adicione:
+
+- `DATABASE_URL_UNPOOLED`: string direta Neon (sem `-pooler`) para migrations.
+
+Preserve `DATABASE_URL` (string com pooling) para o tráfego comum da aplicação. A senha do banco deve permanecer somente nas variáveis privadas da Hostinger. Use a mesma base e o mesmo usuário Neon nas duas URLs.
+
+O script de build exige a variável direta: não reutilize a URL pooled ou altere as URLs manualmente com substituições de texto, pois isso pode mascarar configurações incorretas.
+
+### Segredos e controles pós-primeiro deploy
+
+- O código-fonte está em um repositório **público**: nunca adicionar valores secretos em commits, PRs, capturas de tela, documentação ou GitHub Actions.
+- As variáveis `SEED_ADMIN_EMAIL` e `SEED_ADMIN_PASSWORD` são usadas somente se o seed inicial ainda precisa importar roteiros. Depois da primeira criação bem-sucedida, retirar `SEED_ADMIN_PASSWORD` do hPanel, sem apagar o administrador que foi cadastrado.
+- O seed só é executado novamente se faltarem registros de roteiros da migração. Se houver importação parcial, uma nova tentativa pode atualizar os itens da migração; não editar conteúdo até validar a carga inicial.
+- Depois da publicação de homologação, testar login no Payload, 14 destinos, galeria, PDF, formulários e novos uploads via R2, sem alterar o DNS principal.
+- O bucket permanece privado, com acesso de escrita restrito à credencial configurada.
+- Gerir limites de memória, processamento e tráfego no painel da Hostinger e definir alertas de custo Neon/R2.
