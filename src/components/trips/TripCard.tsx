@@ -27,6 +27,7 @@ export function TripCard({ trip, variant = 'default', priority, sizes, className
   const when = formatDateRange(trip.startDate, trip.endDate)
   const duration = durationLabel(trip.days, trip.nights)
   const period = periodBadge(trip.startDate, trip.endDate)
+  const art = trip.cardArt
 
   return (
     <article
@@ -36,35 +37,55 @@ export function TripCard({ trip, variant = 'default', priority, sizes, className
         className,
       )}
     >
-      <div className={cn('relative overflow-hidden bg-navy-900', feature ? 'aspect-[4/3] lg:aspect-auto lg:w-[56%] lg:shrink-0' : 'aspect-[4/3]')}>
-        {trip.image ? (
+      {art ? (
+        // A arte já traz período e cidade de saída impressos: exibida inteira, na proporção original (sem recorte nem selos sobrepostos).
+        <div
+          className={cn('relative overflow-hidden bg-navy-900', feature && 'lg:w-[42%] lg:shrink-0 lg:self-start')}
+          style={{ aspectRatio: `${art.width} / ${art.height}` }}
+        >
           <Image
-            src={trip.image.url}
-            alt={trip.image.alt}
+            src={art.url}
+            alt={art.alt}
             fill
             loading={priority ? 'eager' : undefined}
-            sizes={sizes ?? (feature ? '(min-width: 1024px) 640px, 100vw' : '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw')}
-            className="object-cover transition duration-[1.2s] ease-[var(--ease-out-soft)] group-hover:scale-[1.06]"
-            style={{ objectPosition: `${trip.image.focalX}% ${trip.image.focalY}%` }}
+            sizes={sizes ?? (feature ? '(min-width: 1024px) 520px, 100vw' : '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw')}
+            className="object-cover transition duration-[1.2s] ease-[var(--ease-out-soft)] group-hover:scale-[1.03]"
           />
-        ) : null}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/55 via-transparent to-transparent" aria-hidden="true" />
-        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          {period ? (
-            <span className="rounded-full bg-gold-500 px-3 py-1 font-label text-xs font-bold tracking-wider text-navy-950">{period}</span>
+        </div>
+      ) : (
+        <div className={cn('relative overflow-hidden bg-navy-900', feature ? 'aspect-[4/3] lg:aspect-auto lg:w-[56%] lg:shrink-0' : 'aspect-[4/3]')}>
+          {trip.image ? (
+            <Image
+              src={trip.image.url}
+              alt={trip.image.alt}
+              fill
+              loading={priority ? 'eager' : undefined}
+              sizes={sizes ?? (feature ? '(min-width: 1024px) 640px, 100vw' : '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw')}
+              className="object-cover transition duration-[1.2s] ease-[var(--ease-out-soft)] group-hover:scale-[1.06]"
+              style={{ objectPosition: `${trip.image.focalX}% ${trip.image.focalY}%` }}
+            />
           ) : null}
-          {badge ? (
-            <span className="rounded-full bg-white/95 px-3 py-1 font-label text-xs font-bold tracking-wider text-navy-900 uppercase">{badge}</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/55 via-transparent to-transparent" aria-hidden="true" />
+          <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+            {period ? (
+              <span className="rounded-full bg-gold-500 px-3 py-1 font-label text-xs font-bold tracking-wider text-navy-950">{period}</span>
+            ) : null}
+            {badge ? (
+              <span className="rounded-full bg-white/95 px-3 py-1 font-label text-xs font-bold tracking-wider text-navy-900 uppercase">{badge}</span>
+            ) : null}
+          </div>
+          {trip.departureCity ? (
+            <p className="absolute bottom-4 left-4 flex items-center gap-1.5 font-label text-xs font-semibold tracking-wide text-white">
+              <PlaneTakeoff className="size-4" aria-hidden="true" /> Saída de {trip.departureCity}
+            </p>
           ) : null}
         </div>
-        {trip.departureCity ? (
-          <p className="absolute bottom-4 left-4 flex items-center gap-1.5 font-label text-xs font-semibold tracking-wide text-white">
-            <PlaneTakeoff className="size-4" aria-hidden="true" /> Saída de {trip.departureCity}
-          </p>
-        ) : null}
-      </div>
+      )}
 
       <div className={cn('flex flex-1 flex-col p-6', feature && 'lg:p-9')}>
+        {art && badge ? (
+          <p className="mb-3 self-start rounded-full bg-navy-900 px-3 py-1 font-label text-xs font-bold tracking-wider text-white uppercase">{badge}</p>
+        ) : null}
         {trip.countries.length ? <p className="eyebrow mb-2">{trip.countries.join(' · ')}</p> : null}
         <h3 className={cn('leading-tight font-medium text-navy-900', feature ? 'text-[1.75rem] lg:text-[2.25rem]' : 'text-[1.5rem]')}>{trip.title}</h3>
         {trip.cities.length ? (
