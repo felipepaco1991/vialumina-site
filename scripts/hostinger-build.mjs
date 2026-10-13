@@ -1,7 +1,7 @@
 /**
  * Hostinger Business: migra, importa apenas quando necessario, compila.
- * Uso em Build command: npm run build:hostinger
- * Mantem o script normal 'npm run build' intacto para a versao VPS.
+ * Hostinger seleciona obrigatoriamente npm run build, que chama este script.
+ * Alteracoes limitadas a branch hostinger-business-adaptacao; backup VPS preservado.
  */
 import { spawnSync } from 'node:child_process'
 
@@ -10,9 +10,12 @@ const directUrl = process.env.DATABASE_URL_UNPOOLED
 if (!directUrl) {
   throw new Error('Configure DATABASE_URL_UNPOOLED com a URL direta do Neon (pooling desativado) para as migracoes.')
 }
+// Exclusivamente CI isolado (PostgreSQL descartavel, sem acesso ao R2 real).
+// O ambiente da Hostinger nunca deve definir HOSTINGER_CI_SKIP_SEED_FOR_TESTS.
+const skipSeedInCI = process.env.CI === 'true' && process.env.HOSTINGER_CI_SKIP_SEED_FOR_TESTS === '1'
 const steps = [
   ['run', 'migrate'],
-  ['run', 'seed:if-empty'],
+  ...(skipSeedInCI ? [] : [['run', 'seed:if-empty']]),
   ['exec', '--', 'next', 'build'],
 ]
 
