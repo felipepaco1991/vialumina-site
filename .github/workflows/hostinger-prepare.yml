@@ -10,6 +10,8 @@ on:
       - tsconfig.json
       - scripts/hostinger-build.mjs
       - src/seed/if-empty.ts
+      - src/migrations/**
+      - scripts/ci-verify-r2.ts
       - .github/workflows/hostinger-prepare.yml
   workflow_dispatch:
 
@@ -102,5 +104,7 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Run versioned migrations against test Postgres
         run: npm run migrate
+      - name: Verify storage schema queries with R2 adapter enabled
+        run: npm run payload -- run scripts/ci-verify-r2.ts
       - name: Run Hostinger standard build command on disposable database
         run: npm run build
