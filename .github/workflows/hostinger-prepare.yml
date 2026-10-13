@@ -47,6 +47,14 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Generate route types for Next.js 16
+        env:
+          R2_BUCKET: placeholder-bucket
+          R2_ENDPOINT: https://placeholder.r2.cloudflarestorage.com
+          R2_ACCESS_KEY_ID: placeholder
+          R2_SECRET_ACCESS_KEY: placeholder
+        run: npx next typegen
+
       - name: Check TypeScript without contacting production databases
         run: npx tsc --noEmit
 
