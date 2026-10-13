@@ -130,3 +130,19 @@ O script de build exige a variável direta: não reutilize a URL pooled ou alter
 - Na execução do CI, a importação de conteúdo foi **propositadamente ignorada** por não haver bucket R2 real nem credenciais: ainda é obrigatório testar a primeira carga em homologação na Hostinger, sem mudar o DNS da produção.
 - Importação parcial: o guard em `src/seed/if-empty.ts` interrompe o processo para não sobrescrever roteiros já existentes. Corrigir inconsistências e só então publicar novamente.
 - Na Hostinger, mantenha gerenciador `npm`, diretório de saída `.next`, preset Next.js, Node 22.x, branch `hostinger-business-adaptacao` e raiz `./`.
+
+## Compatibilidade Next.js 16 com glibc da Hostinger (13/10/2026)
+
+Uma tentativa de deploy falhou depois da etapa de migração e seed com:
+`GLIBC_2.29 not found` ao carregar `@next/swc-linux-x64-gnu`, seguido de erro ao compilar `next.config.ts`. O sistema da Hostinger não fornece as interfaces de glibc exigidas pelo binding nativo do SWC.
+
+Solução implementada nesta branch:
+- `next.config.ts` convertido em `next.config.mjs`, sem carregamento de módulo TypeScript nesse estágio.
+- Redirecionamentos WordPress partilhados em `src/lib/legacy-redirects.json` com tipos mantidos em `legacy-redirects.ts`.
+- Script `scripts/hostinger-build.mjs` usa `next build --webpack` (evita Turbopack, que exige binding SWC nativo).
+- Hostinger mantém `npm run build`, Node.js 22 e saída `.next`.
+- Compilação isolada e consultas R2 no CI aprovadas: <https://github.com/felipepaco1991/vialumina-site/actions/runs/38452222500>.
+
+**Pendente**: retestar a implantação no ambiente Hostinger com glibc antigo. O GitHub Actions usa Linux mais recente, portanto sucesso no CI não demonstra compatibilidade do runtime real. Após deploy confirmar inicialização Node, SSR, otimização de imagens e uploads Cloudflare R2. Não mudar DNS oficial antes de homologação.
+
+O log também apresentou `No email adapter provided`, logo as notificações por e-mail não estão configuradas; configurar SMTP ou adaptador de e-mail antes de usar formulários publicamente. O npm relatou vulnerabilidades em dependências; auditar e corrigir de modo controlado, sem `npm audit fix --force` cego.
