@@ -1,0 +1,197 @@
+[
+  {
+    "slug": "portugal-e-franca",
+    "type": "imagem",
+    "message": "Imagem do hero da página original não pertence ao acervo da Via Lumina (placeholder externo). Usada a 1ª foto da galeria; substituir pela imagem oficial.",
+    "detail": {
+      "urlOriginal": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=2000"
+    }
+  },
+  {
+    "slug": "portugal-e-franca",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-08-07; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "mexico-guadalupe-cancun-2027",
+    "type": "contato",
+    "message": "Contato comercial específico (Nadja Albuquerque) informado no card da homepage; validar antes de exibir na página do roteiro."
+  },
+  {
+    "slug": "mexico-guadalupe-cancun-2027",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-07-17; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "rio-de-janeiro-aparecida",
+    "type": "telefone",
+    "message": "WhatsApp do contato Adriana Oliveira tem 10 dígitos (\"(81) 9645-7599\"); celular brasileiro deve ter 11 (DDD + 9 dígitos)."
+  },
+  {
+    "slug": "rio-de-janeiro-aparecida",
+    "type": "contato",
+    "message": "E-mail do contato Adriana Oliveira não pôde ser recuperado (proteção de e-mail sem endereço codificado no site original)."
+  },
+  {
+    "slug": "rio-de-janeiro-aparecida",
+    "type": "contato",
+    "message": "Contato comercial específico (Adriana Oliveira) informado no card da homepage; validar antes de exibir na página do roteiro."
+  },
+  {
+    "slug": "portugal-italia-vaticano",
+    "type": "contato",
+    "message": "Contato comercial específico (Nadja Albuquerque) informado no card da homepage; validar antes de exibir na página do roteiro."
+  },
+  {
+    "slug": "portugal-italia-vaticano",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 29790.04; total publicado é R$ 31.358,00 (diferença de R$ 1567.96).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "14x de R$ 2.127,86"
+    }
+  },
+  {
+    "slug": "portugal-italia-vaticano",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-06-17; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "santuarios-marianos-brasilia",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 30786.00; total publicado é R$ 32.406,36 (diferença de R$ 1620.36).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "15x de R$ 2.052,40"
+    }
+  },
+  {
+    "slug": "santuarios-marianos-brasilia",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-06-03; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "santuarios-marianos-londrina",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 31660.65; total publicado é R$ 32.697,00 (diferença de R$ 1036.35).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "15x de R$ 2.110,71"
+    }
+  },
+  {
+    "slug": "santuarios-marianos-londrina",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-06-03; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "aparecida-agosto-2027",
+    "type": "contato",
+    "message": "Contato comercial específico (Nadja Albuquerque) informado no card da homepage; validar antes de exibir na página do roteiro."
+  },
+  {
+    "slug": "aparecida-agosto-2027",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 5434.00; total publicado é R$ 5.720,00 (diferença de R$ 286.00).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "13x de R$ 418,00"
+    }
+  },
+  {
+    "slug": "europa-sagrada",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 38836.00; total publicado é R$ 39.879,00 (diferença de R$ 1043.00).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "14x de R$ 2.774,00"
+    }
+  },
+  {
+    "slug": "europa-sagrada",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-06-03; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "santuarios-italianos",
+    "type": "contato",
+    "message": "Contato comercial específico (Nadja Albuquerque) informado no card da homepage; validar antes de exibir na página do roteiro."
+  },
+  {
+    "slug": "santuarios-italianos",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 32170.29; total publicado é R$ 32.547,00 (diferença de R$ 376.71).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "17x de R$ 1.892,37"
+    }
+  },
+  {
+    "slug": "santuarios-italianos",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-06-03; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "aparecida-carlos-2027",
+    "type": "contato",
+    "message": "Contato comercial específico (Nadja Albuquerque) informado no card da homepage; validar antes de exibir na página do roteiro."
+  },
+  {
+    "slug": "aparecida-carlos-2027",
+    "type": "preco",
+    "message": "Parcelas (sem entrada informada) somam R$ 5434.00; total publicado é R$ 5.720,00 (diferença de R$ 286.00).",
+    "detail": {
+      "entrada": null,
+      "parcelas": "10x de R$ 543,40"
+    }
+  },
+  {
+    "slug": "santuarios-marianos-tito",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-08-13; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "mexico-guadalupe-cancun-2028",
+    "type": "data",
+    "message": "Dia 3 rotulado \"17/jun\", mas pela data de saída seria 17/03/2028.",
+    "detail": {
+      "titulo": "DIA 3 (17/jun) – CIDADE DO MÉXICO"
+    }
+  },
+  {
+    "slug": "mexico-guadalupe-cancun-2028",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-08-13; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "egito-terra-santa",
+    "type": "preco-desatualizado",
+    "message": "Câmbio de referência de 2026-08-13; valores exigem revalidação comercial."
+  },
+  {
+    "slug": "santuarios-marianos-tito",
+    "type": "pdf",
+    "message": "O card da homepage aponta para outro arquivo PDF (vlm_roteiro_santuarios_marianos_padre-tito_web.pdf) diferente do botão da página (santuarios-marianos-tito.pdf). Confirmar a versão vigente."
+  },
+  {
+    "slug": "mexico-guadalupe-cancun-2028",
+    "type": "pdf",
+    "message": "O card da homepage aponta para outro arquivo PDF (roteiro_vlm_mexico_guadalupe_frei-jose-1.pdf) diferente do botão da página (mexico-guadalupe-cancun-2028.pdf). Confirmar a versão vigente."
+  },
+  {
+    "slug": null,
+    "type": "imagem",
+    "message": "A mesma fotografia é capa de 3 roteiros: portugal-italia-vaticano, europa-sagrada, santuarios-italianos.",
+    "detail": {
+      "imagem": "/assets/destinos/portugal-italia-vaticano/hero.jpg"
+    }
+  },
+  {
+    "slug": null,
+    "type": "imagem",
+    "message": "A mesma fotografia é capa de 2 roteiros: aparecida-agosto-2027, aparecida-carlos-2027.",
+    "detail": {
+      "imagem": "/assets/destinos/aparecida-agosto-2027/hero.jpg"
+    }
+  }
+]

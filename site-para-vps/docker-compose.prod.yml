@@ -1,0 +1,38 @@
+# Exemplo de publicação em servidor próprio (VPS) com Docker.
+# Uso: docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build
+# Coloque um proxy com HTTPS (Caddy, Nginx, Traefik) na frente da porta 3000.
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-vialumina}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-vialumina}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-vialumina}']
+      interval: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env.production
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-vialumina}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-vialumina}
+    ports:
+      - '3000:3000'
+    volumes:
+      # Arquivos enviados pelo painel (fotos e PDFs) — faça backup junto com o banco.
+      - uploads_media:/app/media
+      - uploads_documents:/app/documents
+
+volumes:
+  pgdata:
+  uploads_media:
+  uploads_documents:
