@@ -2,6 +2,9 @@ import type { GlobalConfig } from 'payload'
 import { adminOnly, anyone } from '@/access'
 import { revalidateSite } from '@/hooks/revalidate'
 
+const validateEmails = (values: string[] | null | undefined) =>
+  !values?.length || values.every((v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) ? true : 'Informe apenas e-mails válidos.'
+
 /** Canais institucionais e integrações. Valores iniciais vêm do site original. */
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -88,20 +91,11 @@ export const SiteSettings: GlobalConfig = {
           label: 'Cadastros',
           fields: [
             {
-              name: 'leadRecipients',
-              label: 'Destinatários gerais dos cadastros',
-              type: 'text',
-              hasMany: true,
-              validate: (values: string[] | null | undefined) =>
-                !values?.length || values.every((v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) ? true : 'Informe apenas e-mails válidos.',
-              admin: { description: 'Recebem a notificação interna de novos cadastros. Se vazio, usa LEAD_RECIPIENTS e depois CONTACT_RECIPIENTS.' },
-            },
-            {
               type: 'row',
               fields: [
-                { name: 'leadRecipientsPadres', label: 'Só padres (opcional)', type: 'text', hasMany: true },
-                { name: 'leadRecipientsAgencias', label: 'Só agências (opcional)', type: 'text', hasMany: true },
-                { name: 'leadRecipientsPeregrinos', label: 'Só peregrinos (opcional)', type: 'text', hasMany: true },
+                { name: 'leadRecipientsPadres', label: 'Substituir destinatários · padres (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
+                { name: 'leadRecipientsAgencias', label: 'Substituir destinatários · agências (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
+                { name: 'leadRecipientsPeregrinos', label: 'Substituir destinatários · peregrinos (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
               ],
             },
             {

@@ -1354,11 +1354,16 @@ export interface SiteSetting {
    */
   contactRecipients?: string[] | null;
   /**
-   * Recebem a notificação interna de novos cadastros. Se vazio, usa LEAD_RECIPIENTS e depois CONTACT_RECIPIENTS.
+   * Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).
    */
-  leadRecipients?: string[] | null;
   leadRecipientsPadres?: string[] | null;
+  /**
+   * Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).
+   */
   leadRecipientsAgencias?: string[] | null;
+  /**
+   * Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).
+   */
   leadRecipientsPeregrinos?: string[] | null;
   /**
    * Só funciona com SMTP configurado. Desligado por padrão: nenhuma mensagem automática é enviada sem esta autorização.
@@ -1426,7 +1431,6 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   grupoArboUrl?: T;
   garupaUrl?: T;
   contactRecipients?: T;
-  leadRecipients?: T;
   leadRecipientsPadres?: T;
   leadRecipientsAgencias?: T;
   leadRecipientsPeregrinos?: T;

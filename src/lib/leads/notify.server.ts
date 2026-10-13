@@ -19,13 +19,14 @@ function transporter() {
 type Row = [label: string, value: string]
 
 /** Aviso interno de novo cadastro. Lança erro se o envio falhar (quem chama registra o status). */
-export async function sendInternalNotification(args: { to: string[]; type: LeadType; leadId: number | string; name: string; replyTo: string; rows: Row[]; duplicate: boolean }) {
-  const { to, type, leadId, name, replyTo, rows, duplicate } = args
+export async function sendInternalNotification(args: { to: string[]; cc?: string[]; type: LeadType; leadId: number | string; name: string; replyTo: string; rows: Row[]; duplicate: boolean }) {
+  const { to, cc, type, leadId, name, replyTo, rows, duplicate } = args
   const link = `${SITE_URL}/admin/collections/leads/${leadId}`
   const subject = `[Cadastro ${leadTypeLabel(type)}] ${name}${duplicate ? ' (possível duplicidade)' : ''}`
   await transporter().sendMail({
     from: process.env.SMTP_FROM || process.env.SMTP_USER,
     to,
+    cc: cc?.length ? cc : undefined,
     replyTo,
     subject,
     text: `${rows.map(([k, v]) => `${k}: ${v}`).join('\n')}\n\nAbrir no painel: ${link}`,

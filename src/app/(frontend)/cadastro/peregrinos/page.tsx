@@ -7,6 +7,7 @@ import { FormCard } from '@/components/cadastro/form/FormShell'
 import { AboutBlock, CareList, DestinationCards } from '@/components/cadastro/Sections'
 import { HERO } from '@/content/institutional'
 import { PILGRIM_PAGE as P } from '@/content/cadastro'
+import { leadWhatsapp } from '@/lib/leads/routing.server'
 import { getSiteSettings } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function PeregrinosPage() {
   const settings = await getSiteSettings()
-  const wa = whatsappUrl(settings.whatsapp, 'Olá! Gostaria de receber informações sobre as peregrinações da Via Lumina Viagens.')
+  const wa = whatsappUrl(leadWhatsapp('PEREGRINO', settings.whatsapp), 'Olá! Gostaria de receber informações sobre as peregrinações da Via Lumina Viagens.')
   const community = settings.communityUrl || undefined
   return (
     <>

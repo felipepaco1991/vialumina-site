@@ -64,7 +64,17 @@ Crie usuários em *Administração → Usuários* e marque “Equipe comercial (
 
 ## 3. Notificações e integrações
 
-Após gravar: (1) aviso interno por e-mail aos destinatários — por perfil → gerais (Configurações do site → **Cadastros**) → `LEAD_RECIPIENTS` → `CONTACT_RECIPIENTS`; (2) confirmação ao cadastrado **somente** se a opção “Enviar e-mail de confirmação” estiver ligada (padrão: desligada); (3) evento para integrações. **Sem `SMTP_HOST` e destinatários não há envio**: o cadastro fica salvo e a situação aparece no registro (“Pendente”).
+Após gravar: (1) aviso interno por e-mail, conforme o público (ver tabela abaixo); (2) confirmação ao cadastrado **somente** se a opção “Enviar e-mail de confirmação” estiver ligada (padrão: desligada); (3) evento para integrações. **Sem `SMTP_HOST` e destinatários não há envio**: o cadastro fica salvo e a situação aparece no registro (“Pendente”).
+
+**Quem recebe cada aviso** (definido em `src/lib/leads/routing.server.ts`; muda com um deploy):
+
+| Público | Para | Em cópia (CC) | WhatsApp dos botões da página |
+|---|---|---|---|
+| Padres | williton.santos@vialuminaviagens.com.br | fabiola.almeida@vialuminaviagens.com.br | +55 11 91799-2727 |
+| Agências | williton.santos@vialuminaviagens.com.br | fabiola.almeida@vialuminaviagens.com.br | +55 11 91799-2727 |
+| Peregrinos (cliente final) | fabiola.almeida@vialuminaviagens.com.br | — | +55 11 99252-6053 (WhatsApp do site) |
+
+Para trocar os destinatários de um público sem deploy, preencha **Configurações do site → Cadastros → Substituir destinatários**; nesse caso só os e-mails informados recebem (sem cópia). O contato do formulário geral (`/contato`) segue `CONTACT_RECIPIENTS`.
 
 Integrações futuras (CRM, e-mail marketing, automação): `src/lib/leads/integrations.server.ts`. Hoje há um adaptador de **webhook** (`LEAD_WEBHOOK_URL` + `LEAD_WEBHOOK_SECRET`; corpo JSON `lead.created`, assinatura `X-ViaLumina-Signature: sha256=<hmac>`). Outros destinos entram como novos adaptadores. O evento leva `marketingConsent`: respeite-o no destino.
 

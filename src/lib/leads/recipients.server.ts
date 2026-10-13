@@ -1,17 +1,15 @@
 import 'server-only'
 import type { SiteSettingsData } from '@/lib/settings.server'
 import type { LeadType } from './constants'
+import { LEAD_ROUTING } from './routing.server'
 
-const split = (v: string | undefined) => (v ?? '').split(',').map((s) => s.trim()).filter(Boolean)
-
-/** Destinatários da notificação interna: por perfil → gerais → LEAD_RECIPIENTS → CONTACT_RECIPIENTS. */
-export function leadRecipients(settings: SiteSettingsData, type: LeadType): string[] {
+/**
+ * Destinatários do aviso interno: o que estiver preenchido em Configurações do site → Cadastros
+ * (por público) vale como está, sem cópia; senão, o roteamento definido em `routing.server.ts`.
+ */
+export function leadRecipients(settings: SiteSettingsData, type: LeadType): { to: string[]; cc: string[] } {
   const byType = { PADRE: settings.leadRecipientsPadres, AGENCIA: settings.leadRecipientsAgencias, PEREGRINO: settings.leadRecipientsPeregrinos }[type]
-  return (
-    (byType?.length ? byType : null) ??
-    (settings.leadRecipients?.length ? settings.leadRecipients : null) ??
-    (split(process.env.LEAD_RECIPIENTS).length ? split(process.env.LEAD_RECIPIENTS) : null) ??
-    (settings.contactRecipients?.length ? settings.contactRecipients : null) ??
-    split(process.env.CONTACT_RECIPIENTS)
-  )
+  if (byType?.length) return { to: byType, cc: [] }
+  const { to, cc } = LEAD_ROUTING[type]
+  return { to, cc }
 }

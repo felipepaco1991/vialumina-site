@@ -181,11 +181,11 @@ export async function submitLead(type: LeadType, input: unknown, ctx: SubmitCont
 
   // Notificações e integrações: o cadastro já está salvo; falhas aqui apenas ficam registradas.
   const updates: Record<string, unknown> = {}
-  const recipients = leadRecipients(settings, type)
-  if (smtpConfigured() && recipients.length) {
+  const { to, cc } = leadRecipients(settings, type)
+  if (smtpConfigured() && to.length) {
     try {
       await sendInternalNotification({
-        to: recipients, type, leadId, name: n.name, replyTo: n.email, duplicate: Boolean(first),
+        to, cc, type, leadId, name: n.name, replyTo: n.email, duplicate: Boolean(first),
         rows: [['Nome', n.name], ['E-mail', n.email], ['WhatsApp', n.phone], ['Cidade/UF', `${n.city}/${n.state}`], ...n.summary, ['Origem', `${SOURCE_BY_TYPE[type]}${n.common.utm.utm_campaign ? ` · ${n.common.utm.utm_campaign}` : ''}`]],
       })
       updates.notificationStatus = 'enviado'

@@ -73,6 +73,6 @@ Os uploads do painel precisam ir para um armazenamento de objetos. Instale `@pay
 
 - **Migração:** `npm run migrate` aplica `20261009_165422_cadastros` (tabelas de cadastros e o perfil “Equipe comercial”). Rode antes do primeiro acesso às novas páginas.
 - **Proxy:** o limite de taxa dos formulários usa `CF-Connecting-IP`, `X-Real-IP` ou o último valor de `X-Forwarded-For`. Configure o proxy para **sobrescrever** esses cabeçalhos (no Nginx: `proxy_set_header X-Real-IP $remote_addr;`), nunca repassar o valor enviado pelo cliente.
-- **Variáveis novas (opcionais):** `LEAD_RECIPIENTS`, `LEAD_WEBHOOK_URL`/`LEAD_WEBHOOK_SECRET`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (embutida no build) e `TURNSTILE_SECRET_KEY`. Veja `.env.example`.
+- **Variáveis novas (opcionais):** `LEAD_WEBHOOK_URL`/`LEAD_WEBHOOK_SECRET`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (embutida no build) e `TURNSTILE_SECRET_KEY`. Veja `.env.example`.
 - **Retenção:** agende `npm run leads:purge -- --apply` (ex.: semanalmente). Teste antes sem `--apply`.
 - **Imagens de IA:** coloque os arquivos em `public/assets/cadastro/` (ver o README da pasta) e republique; sem eles a página usa fotos do acervo.

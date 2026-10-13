@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest'
 import { toCsv } from '@/lib/leads/csv'
 import { isValidCnpj, maskCnpj, maskPhone, normalizeBrPhone, normalizeInstagram, normalizeUrl, toStoredPhone } from '@/lib/leads/masks'
 import { parseLeadFilters } from '@/lib/leads/query'
+import { leadRecipients } from '@/lib/leads/recipients.server'
+import { leadWhatsapp } from '@/lib/leads/routing.server'
 import { agencySchema, pilgrimSchema, priestSchema } from '@/lib/leads/schemas'
 import { sanitizeUtm } from '@/lib/leads/utm'
 
@@ -114,5 +116,22 @@ describe('CSV', () => {
   it('neutraliza injeção de fórmulas em planilhas', () => {
     const csv = toCsv(['nome'], [['=HYPERLINK("http://x")'], ['+55 11'], ['@cmd'], ['-1+1']])
     for (const line of csv.split('\r\n').slice(1, 5)) expect(line.replace(/^"/, '').startsWith("'")).toBe(true)
+  })
+})
+
+describe('destinatários dos cadastros', () => {
+  const none = {} as Parameters<typeof leadRecipients>[0]
+  it('padres e agências: comercial com cópia para a Fabíola', () => {
+    for (const type of ['PADRE', 'AGENCIA'] as const) {
+      expect(leadRecipients(none, type)).toEqual({ to: ['williton.santos@vialuminaviagens.com.br'], cc: ['fabiola.almeida@vialuminaviagens.com.br'] })
+      expect(leadWhatsapp(type, '5511992526053')).toBe('5511917992727')
+    }
+  })
+  it('peregrinos: só a Fabíola, sem cópia, com o WhatsApp do site', () => {
+    expect(leadRecipients(none, 'PEREGRINO')).toEqual({ to: ['fabiola.almeida@vialuminaviagens.com.br'], cc: [] })
+    expect(leadWhatsapp('PEREGRINO', '5511992526053')).toBe('5511992526053')
+  })
+  it('destinatários definidos no painel substituem o padrão, sem cópia', () => {
+    expect(leadRecipients({ leadRecipientsPadres: ['outro@exemplo.com'] } as never, 'PADRE')).toEqual({ to: ['outro@exemplo.com'], cc: [] })
   })
 })

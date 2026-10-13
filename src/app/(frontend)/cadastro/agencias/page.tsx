@@ -7,6 +7,7 @@ import { AgencyForm } from '@/components/cadastro/form/AgencyForm'
 import { FormCard } from '@/components/cadastro/form/FormShell'
 import { AboutBlock, BenefitCards, Timeline } from '@/components/cadastro/Sections'
 import { AGENCY_PAGE as P } from '@/content/cadastro'
+import { leadWhatsapp } from '@/lib/leads/routing.server'
 import { getSiteSettings } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function AgenciasPage() {
   const settings = await getSiteSettings()
-  const wa = whatsappUrl(settings.whatsapp, 'Olá! Represento uma agência de turismo e gostaria de conhecer as oportunidades de parceria com a Via Lumina Viagens.')
+  const wa = whatsappUrl(leadWhatsapp('AGENCIA', settings.whatsapp), 'Olá! Represento uma agência de turismo e gostaria de conhecer as oportunidades de parceria com a Via Lumina Viagens.')
   return (
     <>
       <LandingMeta event="view_lp_agencias" path={P.path} name={P.meta.title} description={P.meta.description} />

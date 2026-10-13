@@ -7,6 +7,7 @@ import { PriestForm } from '@/components/cadastro/form/PriestForm'
 import { FormCard } from '@/components/cadastro/form/FormShell'
 import { AboutBlock, BenefitCards, Timeline } from '@/components/cadastro/Sections'
 import { PRIEST_PAGE as P } from '@/content/cadastro'
+import { leadWhatsapp } from '@/lib/leads/routing.server'
 import { getSiteSettings } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function PadresPage() {
   const settings = await getSiteSettings()
-  const wa = whatsappUrl(settings.whatsapp, 'Olá! Sou sacerdote e gostaria de conhecer as possibilidades de parceria com a Via Lumina Viagens.')
+  const wa = whatsappUrl(leadWhatsapp('PADRE', settings.whatsapp), 'Olá! Sou sacerdote e gostaria de conhecer as possibilidades de parceria com a Via Lumina Viagens.')
   return (
     <>
       <LandingMeta event="view_lp_padres" path={P.path} name={P.meta.title} description={P.meta.description} />
