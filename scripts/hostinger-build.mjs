@@ -16,7 +16,7 @@ const skipSeedInCI = process.env.CI === 'true' && process.env.HOSTINGER_CI_SKIP_
 const steps = [
   ['run', 'migrate'],
   ...(skipSeedInCI ? [] : [['run', 'seed:if-empty']]),
-  ['exec', '--', 'next', 'build'],
+  ['exec', '--', 'next', 'build', '--webpack'],
 ]
 
 for (const args of steps) {
