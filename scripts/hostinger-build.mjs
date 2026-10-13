@@ -6,6 +6,10 @@
 import { spawnSync } from 'node:child_process'
 
 const bin = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+const directUrl = process.env.DATABASE_URL_UNPOOLED
+if (!directUrl) {
+  throw new Error('Configure DATABASE_URL_UNPOOLED com a URL direta do Neon (pooling desativado) para as migracoes.')
+}
 const steps = [
   ['run', 'migrate'],
   ['run', 'seed:if-empty'],
@@ -18,6 +22,7 @@ for (const args of steps) {
     stdio: 'inherit',
     env: {
       ...process.env,
+      DATABASE_URL: args[1] === 'migrate' ? directUrl : process.env.DATABASE_URL,
       NODE_ENV: 'production',
       // Limite de heap conservador para hospedagem compartilhada.
       NODE_OPTIONS: '--no-deprecation --max-old-space-size=2048',
