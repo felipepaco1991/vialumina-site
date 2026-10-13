@@ -110,3 +110,13 @@ O script de build exige a variável direta: não reutilize a URL pooled ou alter
 - Depois da publicação de homologação, testar login no Payload, 14 destinos, galeria, PDF, formulários e novos uploads via R2, sem alterar o DNS principal.
 - O bucket permanece privado, com acesso de escrita restrito à credencial configurada.
 - Gerir limites de memória, processamento e tráfego no painel da Hostinger e definir alertas de custo Neon/R2.
+
+## Validação automatizada (13/10/2026)
+
+- GitHub Actions: <https://github.com/felipepaco1991/vialumina-site/actions/runs/38437596518> — **aprovada**.
+- Verificações de TypeScript e lint: aprovadas.
+- Instalação de dependências em modo de produção: aprovada, incluindo Next.js, Tailwind e TypeScript.
+- Aplicação das migrações em PostgreSQL 17 isolado: aprovada.
+- Build Next.js 16 com banco vazio migrado e adapter R2 habilitado (credenciais de teste sem bucket real): aprovado.
+- **Não coberto por este teste:** conexão real ao Neon, importação de 14 roteiros e mídia para o R2, autenticação do admin, formulários, desempenho na Hostinger e retenção de uploads após redeploy.
+
