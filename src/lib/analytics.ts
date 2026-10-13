@@ -23,6 +23,10 @@ export type AnalyticsEvent =
   | 'form_error'
   | 'click_whatsapp'
   | 'click_destinos'
+  // Promoções e parcerias (banners da home e páginas /promocoes/*)
+  | 'view_promo_trivva'
+  | 'view_promo_crescer'
+  | 'promo_click'
 
 type Params = Record<string, string | number | boolean | undefined>
 

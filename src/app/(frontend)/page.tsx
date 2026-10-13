@@ -21,7 +21,7 @@ export default async function HomePage() {
   const pdfWa = whatsappUrl(settings.whatsapp, 'Olá! Gostaria de receber o roteiro em PDF de uma peregrinação da Via Lumina.')
   return (
     <>
-      <HomeHero whatsappHref={wa} />
+      <HomeHero whatsappHref={wa} trips={featured} />
       <Differentials />
       <FeaturedTrips trips={featured} total={all.length} />
       <NewsletterInvite />

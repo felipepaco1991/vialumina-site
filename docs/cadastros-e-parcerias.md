@@ -122,3 +122,15 @@ npm run leads:purge      # simulação da retenção
 ```
 
 Cobertura: máscaras/CNPJ/esquemas/UTM/CSV (unidade); persistência, consentimentos, duplicidade, antispam, limite de taxa, retirada de consentimento, acesso por função, exportação e exclusão em cascata (integração); fluxos completos dos três formulários, painel, exportação, menu/rodapé e celular (e2e). Os testes criam cadastros com e-mails `@e2e-cadastros.example.com`/`@leads-test.example.com` e os removem ao final.
+
+
+## Promoções (Trivva e 30º Crescer)
+
+Menu **Promoções** (cabeçalho, menu celular e rodapé) com três páginas: `/promocoes` (índice), `/promocoes/trivva` e `/promocoes/crescer`. Os textos e links ficam em `src/content/promocoes.ts`; as páginas, em `src/app/(frontend)/promocoes/`.
+
+- **Trivva:** botão “Inscrever-se na Trivva” abre `TRIVVA_SIGNUP_URL` em nova aba (hero da home, hero da página e cartão de inscrição). O cadastro e os dados ficam no site da Trivva; a Via Lumina não coleta nada. Valores e planos **não** são exibidos, para não ficarem desatualizados.
+- **Crescer:** arte em `public/assets/promocoes/crescer-banner.webp`; inscrição gratuita, programação, caravanas e hospedagens apontam para o site oficial (`encontrodafamiliacatolica.com.br`).
+- **Hero da home** (`src/components/home/HomeHero.tsx` + `HeroCarousel.tsx`): troca a cada 2 s (`HERO_SLIDE_MS`). Ordem: apresentação, roteiro, Trivva, roteiro, Crescer, demais roteiros (até `HERO_TRIPS`, vindos dos destaques do CMS). Pausa com mouse/foco, aba em segundo plano e botão Pausar; não inicia sozinho com `prefers-reduced-motion`.
+- Analytics: `view_promo_trivva`, `view_promo_crescer` e `promo_click` (rótulo identifica o botão).
+
+Para incluir uma promoção: adicione o item em `PROMOTIONS` e em `PROMOTION_ITEMS` (`src/lib/nav.ts`), crie a página e (se for para a home) um slide em `HomeHero.tsx`.

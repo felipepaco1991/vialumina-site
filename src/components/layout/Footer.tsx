@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/components/ui/Icons'
 import type { SiteSettingsData } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
-import { NAV_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
+import { NAV_ITEMS, PROMOTION_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
 
 export function Footer({ settings }: { settings: SiteSettingsData }) {
   const a = settings.address
@@ -93,6 +93,16 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
                 Política de Privacidade
               </Link>
             </li>
+          </ul>
+          <h2 className="eyebrow-light mt-8 mb-4 font-label">Promoções</h2>
+          <ul className="space-y-3 text-[0.95rem]">
+            {PROMOTION_ITEMS.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="transition hover:text-gold-200">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <h2 className="eyebrow-light mt-8 mb-4 font-label">Cadastre-se</h2>
           <ul className="space-y-3 text-[0.95rem]">

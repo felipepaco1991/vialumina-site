@@ -8,17 +8,19 @@ import { useEffect, useRef, useState } from 'react'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
-import { NAV_ITEMS, PARTNERSHIP_ITEMS, SIGNUP_ITEM } from '@/lib/nav'
+import { NAV_ITEMS, PARTNERSHIP_ITEMS, PROMOTION_ITEMS, SIGNUP_ITEM } from '@/lib/nav'
 
 
 const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`))
 
 
-/** Menu suspenso "Parcerias": abre por clique/teclado (e ao passar o mouse), fecha com Esc ou clique fora. */
-function PartnershipMenu({ pathname, solid }: { pathname: string; solid: boolean }) {
+type MenuItem = { href: string; path: string; label: string }
+
+/** Menu suspenso ("Promoções", "Parcerias"): abre por clique/teclado (e ao passar o mouse), fecha com Esc ou clique fora. */
+function DropdownMenu({ label, items, pathname, solid, width = 'w-52' }: { label: string; items: readonly MenuItem[]; pathname: string; solid: boolean; width?: string }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLLIElement>(null)
-  const active = PARTNERSHIP_ITEMS.some((i) => isActive(pathname, i.path))
+  const active = items.some((i) => isActive(pathname, i.path))
 
   useEffect(() => {
     if (!open) return
@@ -45,14 +47,14 @@ function PartnershipMenu({ pathname, solid }: { pathname: string; solid: boolean
           solid ? 'text-navy-900 hover:text-gold-700' : 'text-white/90 hover:text-white',
         )}
       >
-        Parcerias
+        {label}
         <ChevronDown className={cn('size-3.5 transition-transform', open && 'rotate-180')} aria-hidden="true" />
         <span aria-hidden="true" className={cn('absolute inset-x-2.5 -bottom-0.5 xl:inset-x-4 h-0.5 origin-left rounded-full bg-gold-500 transition-transform duration-500', active ? 'scale-x-100' : 'scale-x-0')} />
       </button>
       {open ? (
-        <div className="absolute top-full left-0 z-10 w-52 pt-2">
+        <div className={cn('absolute top-full left-0 z-10 pt-2', width)}>
           <ul className="overflow-hidden rounded-2xl bg-white py-2 shadow-deep ring-1 ring-navy-900/10">
-            {PARTNERSHIP_ITEMS.map((item) => (
+            {items.map((item) => (
               <li key={item.path}>
                 <Link
                   href={item.href}
@@ -146,7 +148,8 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                 </li>
               )
             })}
-            <PartnershipMenu pathname={pathname} solid={solid} />
+            <DropdownMenu label="Promoções" items={PROMOTION_ITEMS} pathname={pathname} solid={solid} width="w-64" />
+            <DropdownMenu label="Parcerias" items={PARTNERSHIP_ITEMS} pathname={pathname} solid={solid} />
             <li>
               <Link
                 href={SIGNUP_ITEM.href}
@@ -218,6 +221,20 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                         </li>
                       )
                     })}
+                  </ul>
+                  <p className="eyebrow mt-6 mb-2 px-4">Promoções</p>
+                  <ul className="space-y-1">
+                    {PROMOTION_ITEMS.map((item) => (
+                      <li key={item.path}>
+                        <Link
+                          href={item.href}
+                          aria-current={isActive(pathname, item.path) ? 'page' : undefined}
+                          className={cn('flex items-center rounded-2xl px-4 py-3 font-display text-xl transition-colors', isActive(pathname, item.path) ? 'bg-navy-900 text-white' : 'text-navy-900 hover:bg-navy-900/5')}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                   <p className="eyebrow mt-6 mb-2 px-4">Parcerias</p>
                   <ul className="space-y-1">

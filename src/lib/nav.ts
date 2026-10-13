@@ -6,6 +6,13 @@ export const NAV_ITEMS = [
   { href: '/contato', label: 'Contato' },
 ] as const
 
+/** Menu "Promoções": página geral + uma página por promoção. */
+export const PROMOTION_ITEMS = [
+  { href: '/promocoes', path: '/promocoes', label: 'Todas as promoções' },
+  { href: '/promocoes/trivva', path: '/promocoes/trivva', label: 'Trivva — viagem de férias' },
+  { href: '/promocoes/crescer', path: '/promocoes/crescer', label: '30º Crescer — Família Católica' },
+] as const
+
 /** Menu "Parcerias" (padres e agências) e destaque "Cadastre-se" (peregrinos). */
 export const PARTNERSHIP_ITEMS = [
   { href: '/cadastro/padres?origem=menu', path: '/cadastro/padres', label: 'Para Padres' },
