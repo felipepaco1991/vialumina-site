@@ -150,7 +150,7 @@ function TripSlide({ trip }: { trip: TripCardData }) {
             >
               Conheça o roteiro completo
             </ButtonLink>
-            <ButtonLink href="/destinos" variant="ghost-light" size="lg">
+            <ButtonLink href="/destinos" variant="ghost-light" size="lg" className="max-sm:hidden">
               Ver todas as peregrinações
             </ButtonLink>
           </div>
