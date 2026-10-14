@@ -61,10 +61,11 @@ export function HeroDirectorFigure({
   return (
     <div
       style={vars}
-      className="relative mx-auto mt-4 w-[min(100%,21rem)] lg:pointer-events-none lg:absolute lg:inset-0 lg:mx-0 lg:mt-0 lg:w-auto"
+      // Celular: ocupa o que sobra da altura do slide (figura + faixa de nome); desktop: camada absoluta.
+      className="relative mx-auto flex w-full min-h-[8rem] flex-1 flex-col items-center max-lg:min-h-0 lg:pointer-events-none lg:absolute lg:inset-0 lg:mx-0 lg:block lg:w-auto"
     >
-      <figure className="relative lg:static">
-        <div className="relative aspect-[var(--hero-ar-m)] w-full overflow-hidden lg:absolute lg:top-[var(--hero-top)] lg:right-[var(--hero-right)] lg:aspect-[var(--hero-ar)] lg:w-[var(--hero-w)] lg:overflow-visible">
+      <figure className="relative flex min-h-0 w-full flex-1 flex-col items-center lg:static lg:block">
+        <div className="relative aspect-[var(--hero-ar-m)] min-h-0 max-w-full flex-1 overflow-hidden lg:absolute lg:top-[var(--hero-top)] lg:right-[var(--hero-right)] lg:aspect-[var(--hero-ar)] lg:w-[var(--hero-w)] lg:flex-none lg:overflow-visible">
           <Image
             src={photo.src}
             alt=""
@@ -83,16 +84,16 @@ export function HeroDirectorFigure({
           }}
           aria-hidden="true"
         />
-        <figcaption className="relative -mx-[10%] -mt-[22%] flex flex-col items-center text-center [text-shadow:0_2px_14px_rgb(0_0_0/0.65)] lg:absolute lg:inset-x-auto lg:bottom-[max(5.25rem,var(--np-bottom))] lg:left-[var(--np-x)] lg:mx-0 lg:mt-0 lg:w-[36vw] lg:-translate-x-1/2">
+        <figcaption className="relative z-[1] -mt-9 flex w-full shrink-0 flex-col max-lg:w-screen items-center text-center max-lg:bg-[linear-gradient(to_bottom,transparent_0%,rgb(3_12_28/0.8)_32%,rgb(3_12_28/0.85)_72%,transparent_100%)] max-lg:pt-7 max-lg:pb-3 [text-shadow:0_2px_14px_rgb(0_0_0/0.65)] lg:absolute lg:inset-x-auto lg:bottom-[max(5.25rem,var(--np-bottom))] lg:left-[var(--np-x)] lg:mt-0 lg:w-[36vw] lg:-translate-x-1/2">
           <CrossMark />
           <span className="mt-[0.35em] flex items-center gap-3">
             <span className={`${RULE} bg-gradient-to-r`} aria-hidden="true" />
-            <span className="font-label text-[0.72rem] font-medium tracking-[0.26em] whitespace-nowrap text-gold-300 uppercase lg:text-[clamp(0.7rem,2.1svh,1.2rem)] lg:tracking-[0.3em]">
+            <span className="font-label text-[0.68rem] font-medium tracking-[0.24em] whitespace-nowrap text-gold-300 uppercase lg:text-[clamp(0.7rem,2.1svh,1.2rem)] lg:tracking-[0.3em]">
               {role}
             </span>
             <span className={`${RULE} bg-gradient-to-l`} aria-hidden="true" />
           </span>
-          <span className="mt-1 font-display text-[1.6rem] leading-[1.1] font-normal tracking-[-0.01em] whitespace-nowrap text-white lg:text-[clamp(1.5rem,3.7svh,2.45rem)]">
+          <span className="mt-1 font-display text-[clamp(1.35rem,3.6svh,1.6rem)] leading-[1.1] font-normal tracking-[-0.01em] whitespace-nowrap text-white lg:text-[clamp(1.5rem,3.7svh,2.45rem)]">
             {name}
           </span>
           {parish?.length ? (
@@ -102,7 +103,7 @@ export function HeroDirectorFigure({
               ))}
             </span>
           ) : null}
-          <span className="mt-3 flex items-center gap-3" aria-hidden="true">
+          <span className="mt-2 flex items-center gap-3 lg:mt-3" aria-hidden="true">
             <span className={`${RULE} bg-gradient-to-r`} />
             <FleurMark />
             <span className={`${RULE} bg-gradient-to-l`} />
