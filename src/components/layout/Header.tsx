@@ -79,6 +79,17 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [lightHero, setLightHero] = useState(false)
+
+  useEffect(() => {
+    // Na home, o carrossel marca o slide ativo claro (data-hero-tone) e o cabeçalho passa a ser branco.
+    const root = document.documentElement
+    const sync = () => setLightHero(root.dataset.heroTone === 'light')
+    sync()
+    const observer = new MutationObserver(sync)
+    observer.observe(root, { attributes: true, attributeFilter: ['data-hero-tone'] })
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -93,7 +104,7 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
     setOpen(false)
   }
 
-  const solid = scrolled || open
+  const solid = scrolled || open || lightHero
 
   return (
     <header

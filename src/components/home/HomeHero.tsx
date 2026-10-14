@@ -209,46 +209,71 @@ function TripSlide({ trip }: { trip: TripCardData }) {
   )
 }
 
+/** Banner claro da parceria com a Trivva: fundo em degradê lilás/turquesa, headline com o logotipo e a colagem de serviços. */
 function TrivvaSlide() {
+  const btn =
+    'bg-[#f26a1b] text-white shadow-[0_14px_32px_rgb(242_106_27/0.3)] hover:bg-[#dc5a10] focus-visible:outline-[#f26a1b]'
   return (
-    <div className="relative isolate flex w-full items-start lg:items-center bg-[linear-gradient(135deg,#041a36_0%,#0a2e5c_55%,#0f4c81_100%)]">
+    <div className="relative isolate flex w-full items-center bg-white">
       <Image
-        src="/assets/logos/raios-via-lumina.webp"
+        src="/assets/promocoes/trivva-fundo.webp"
         alt=""
-        width={636}
-        height={1280}
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover"
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 -right-10 -z-10 h-full w-auto max-w-none opacity-[0.12] select-none"
       />
       <div className="container-site pt-28 pb-40 sm:pb-48">
-        <p className="eyebrow-light mb-4">Parceria Via Lumina + Trivva</p>
-        <h2 className="max-w-4xl text-[2.2rem] leading-[1.08] font-medium text-white sm:text-5xl lg:text-6xl">
-          Inscreva-se em sua peregrinação e garanta também com a nossa parceira{' '}
-          <span className="text-gold-300">Trivva</span> a sua viagem de férias.
-        </h2>
-        <p className="mt-5 max-w-2xl text-lg text-white/80">
-          Cadastre-se pelo link da Via Lumina e conheça o clube de turismo da Trivva.
-        </p>
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink
-            href={TRIVVA_SIGNUP_URL}
-            variant="gold"
-            size="lg"
-            iconAfter={<ExternalLink className="size-5" aria-hidden="true" />}
-            data-track="promo_click"
-            data-track-label="hero-trivva-inscricao"
-          >
-            Inscrever-se na Trivva
-          </ButtonLink>
-          <ButtonLink
-            href="/promocoes/trivva"
-            variant="ghost-light"
-            size="lg"
-            data-track="promo_click"
-            data-track-label="hero-trivva-saiba-mais"
-          >
-            Saiba mais sobre a parceria
-          </ButtonLink>
+        <div className="lg:max-w-[min(50%,40rem)]">
+          <p className="font-label text-xs font-bold tracking-[0.2em] text-[#5b1fc4] uppercase">
+            Parceria Via Lumina + Trivva
+          </p>
+          <h2 className="mt-4 text-[2.1rem] leading-[1.1] font-medium text-[#1c1a38] sm:text-5xl lg:text-[3.1rem]">
+            Inscreva-se em sua peregrinação e garanta também com a nossa parceira{' '}
+            <Image
+              src="/assets/promocoes/trivva-logo.webp"
+              alt="Trivva"
+              width={984}
+              height={282}
+              className="inline-block h-[0.82em] w-auto align-baseline"
+            />{' '}
+            a sua viagem de férias.
+          </h2>
+          <p className="mt-5 max-w-xl text-lg text-[#55536e]">
+            Cadastre-se pelo link da Via Lumina e conheça o clube de turismo da Trivva.
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink
+              href={TRIVVA_SIGNUP_URL}
+              size="lg"
+              className={btn}
+              iconAfter={<ExternalLink className="size-5" aria-hidden="true" />}
+              data-track="promo_click"
+              data-track-label="hero-trivva-inscricao"
+            >
+              Inscrever-se na Trivva
+            </ButtonLink>
+            <ButtonLink
+              href="/promocoes/trivva"
+              variant="outline"
+              size="lg"
+              className="border-[#5b1fc4]/40 bg-white/60 text-[#1c1a38] hover:border-[#5b1fc4]"
+              data-track="promo_click"
+              data-track-label="hero-trivva-saiba-mais"
+            >
+              Saiba mais sobre a parceria
+            </ButtonLink>
+          </div>
+        </div>
+        <div className="mx-auto mt-10 w-full max-w-md lg:pointer-events-none lg:absolute lg:top-[48%] lg:right-[2%] lg:mt-0 lg:w-[min(47vw,84svh)] lg:max-w-none lg:-translate-y-1/2">
+          <Image
+            src="/assets/promocoes/trivva-colagem.webp"
+            alt="Hotel, aéreo, passeios, locação de veículos, cruzeiros, shows e experiências: os serviços do clube de turismo Trivva"
+            width={1322}
+            height={1037}
+            sizes="(min-width: 1024px) 47vw, 448px"
+            className="h-auto w-full"
+          />
         </div>
       </div>
     </div>
@@ -323,6 +348,7 @@ export function HomeHero({
   const trivva: HeroSlide = {
     id: 'promo-trivva',
     label: 'Parceria Trivva: sua viagem de férias',
+    tone: 'light',
     node: <TrivvaSlide />,
   }
   const crescer: HeroSlide = {
@@ -348,13 +374,13 @@ export function HomeHero({
     <HeroCarousel
       slides={slides}
       footer={
-        <div className="absolute inset-x-0 bottom-0 z-[5] hidden border-t border-white/15 bg-navy-950/35 backdrop-blur-md sm:block">
-          <ul className="container-site flex items-center justify-center gap-10 py-5 font-label text-sm font-semibold tracking-wide text-white/90">
+        <div className="absolute inset-x-0 bottom-0 z-[5] hidden border-t border-white/15 bg-navy-950/35 backdrop-blur-md transition-colors duration-500 group-data-[tone=light]/hero:border-navy-900/10 group-data-[tone=light]/hero:bg-white/70 sm:block">
+          <ul className="container-site flex items-center justify-center gap-10 py-5 font-label text-sm font-semibold tracking-wide text-white/90 transition-colors duration-500 group-data-[tone=light]/hero:text-navy-900">
             <li className="flex items-center gap-2.5">
-              <HandHeart className="size-5 text-gold-300" aria-hidden="true" /> {HERO.badges[0]}
+              <HandHeart className="size-5 text-gold-300 group-data-[tone=light]/hero:text-gold-700" aria-hidden="true" /> {HERO.badges[0]}
             </li>
             <li className="flex items-center gap-2.5">
-              <Headset className="size-5 text-gold-300" aria-hidden="true" /> {HERO.badges[1]}
+              <Headset className="size-5 text-gold-300 group-data-[tone=light]/hero:text-gold-700" aria-hidden="true" /> {HERO.badges[1]}
             </li>
           </ul>
         </div>

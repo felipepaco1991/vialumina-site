@@ -6,7 +6,8 @@ import { cn } from '@/lib/cn'
 /** Tempo de cada banner da home (4 s). */
 export const HERO_SLIDE_MS = 4000
 
-export type HeroSlide = { id: string; label: string; node: ReactNode }
+/** `light`: fundo claro. O cabeçalho vira branco e o rodapé do carrossel escurece o texto enquanto o slide está ativo. */
+export type HeroSlide = { id: string; label: string; node: ReactNode; tone?: 'light' | 'dark' }
 
 /**
  * Carrossel da Hero: troca automática e contínua a cada {@link HERO_SLIDE_MS}.
@@ -47,12 +48,23 @@ export function HeroCarousel({ slides, footer }: { slides: HeroSlide[]; footer?:
     return () => window.clearTimeout(t)
   }, [running, index, count])
 
+  const tone = slides[index]?.tone ?? 'dark'
+  useEffect(() => {
+    // O cabeçalho (outro componente) lê este atributo para trocar de aparência sobre slides claros.
+    const root = document.documentElement
+    root.dataset.heroTone = tone
+    return () => {
+      delete root.dataset.heroTone
+    }
+  }, [tone])
+
   const go = useCallback((i: number) => setIndex(((i % count) + count) % count), [count])
 
   return (
     <section
       // overflow-clip (e não hidden): hidden criaria um contêiner de rolagem e quebraria o sticky dos controles.
-      className="relative isolate overflow-clip bg-navy-950 text-white"
+      className="group/hero relative isolate overflow-clip bg-navy-950 text-white"
+      data-tone={tone}
       aria-roledescription="carrossel"
       aria-label="Destaques da Via Lumina"
     >

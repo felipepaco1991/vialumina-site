@@ -25,7 +25,7 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
         className="pointer-events-none absolute -top-24 -right-24 w-[340px] opacity-[0.07] select-none"
         aria-hidden="true"
       />
-      <div className="container-site relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:py-20">
+      <div className="container-site relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.15fr_1.1fr_0.7fr_1fr] lg:gap-10 lg:py-20">
         <div className="space-y-6">
           <Image src="/assets/logos/via-lumina-logo-branco.webp" alt="Via Lumina — viagens de fé" width={220} height={90} className="h-auto w-[200px]" />
           <p className="max-w-sm text-[0.95rem] leading-relaxed text-white/70">
@@ -101,7 +101,10 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
               </Link>
             </li>
           </ul>
-          <h2 className="eyebrow-light mt-8 mb-4 font-label">Promoções</h2>
+        </div>
+
+        <div>
+          <h2 className="eyebrow-light mb-5 font-label">Promoções</h2>
           <ul className="space-y-3 text-[0.95rem]">
             {PROMOTION_ITEMS.map((item) => (
               <li key={item.href}>
