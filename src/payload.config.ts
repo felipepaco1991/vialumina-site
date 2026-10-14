@@ -11,7 +11,7 @@ import { Documents } from './collections/Documents'
 import { Guides } from './collections/Guides'
 import { Inquiries } from './collections/Inquiries'
 import { Leads } from './collections/Leads'
-import { AgencyProfiles, PilgrimProfiles, PriestProfiles } from './collections/LeadProfiles'
+import { AgencyProfiles, LeaderProfiles, PilgrimProfiles, PriestProfiles } from './collections/LeadProfiles'
 import { Media } from './collections/Media'
 import { Trips } from './collections/Trips'
 import { Users } from './collections/Users'
@@ -54,7 +54,7 @@ export default buildConfig({
     },
   },
   i18n: { supportedLanguages: { pt }, fallbackLanguage: 'pt' },
-  collections: [Trips, Guides, Media, Documents, Inquiries, Leads, PriestProfiles, AgencyProfiles, PilgrimProfiles, Users],
+  collections: [Trips, Guides, Media, Documents, Inquiries, Leads, PriestProfiles, AgencyProfiles, LeaderProfiles, PilgrimProfiles, Users],
   globals: [SiteSettings, Instagram],
   editor: lexicalEditor(),
   plugins: r2Configured

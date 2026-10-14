@@ -5,6 +5,7 @@ import {
   DESTINATIONS,
   LEAD_STATUS,
   LEAD_TYPES,
+  LEADER_ROLES,
   PARTNERSHIP_STATUS,
   UF_LIST,
   destinationLabel,
@@ -69,7 +70,7 @@ export async function LeadsView({ initPageResult, searchParams }: AdminViewServe
     <div style={{ padding: 'calc(var(--base) * 1) calc(var(--base) * 1.25)' }}>
       <header style={{ marginBottom: 'var(--base)' }}>
         <h1 style={{ margin: 0 }}>Cadastros e Parcerias</h1>
-        <p style={{ margin: '4px 0 0', color: 'var(--theme-elevation-600)' }}>Padres, agências e peregrinos que se cadastraram pelas landing pages. Dados pessoais: use somente para o atendimento.</p>
+        <p style={{ margin: '4px 0 0', color: 'var(--theme-elevation-600)' }}>Padres, agências, formadores e peregrinos que se cadastraram pelas landing pages. Dados pessoais: use somente para o atendimento.</p>
       </header>
 
       <nav aria-label="Perfis" style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 'var(--base)' }}>
@@ -137,7 +138,7 @@ export async function LeadsView({ initPageResult, searchParams }: AdminViewServe
             <tr>
               <th style={th}>Nome</th>
               <th style={th}>Local</th>
-              <th style={th}>{f.tab === 'PADRE' ? 'Paróquia / diocese' : f.tab === 'AGENCIA' ? 'Agência' : 'Destinos'}</th>
+              <th style={th}>{f.tab === 'PADRE' ? 'Paróquia / diocese' : f.tab === 'AGENCIA' ? 'Agência' : f.tab === 'FORMADOR' ? 'Comunidade / atuação' : 'Destinos'}</th>
               <th style={th}>Origem</th>
               <th style={th}>Atendimento</th>
               {showPartnership ? <th style={th}>Parceria</th> : null}
@@ -149,9 +150,10 @@ export async function LeadsView({ initPageResult, searchParams }: AdminViewServe
             {leads.map((l) => {
               const priest = typeof l.priestProfile === 'object' ? l.priestProfile : null
               const agency = typeof l.agencyProfile === 'object' ? l.agencyProfile : null
+              const leader = typeof l.leaderProfile === 'object' ? l.leaderProfile : null
               const assignee = typeof l.assignee === 'object' && l.assignee ? (l.assignee.name ?? l.assignee.email) : '—'
               const detail =
-                f.tab === 'PADRE' ? [priest?.parish, priest?.diocese].filter(Boolean).join(' · ') : f.tab === 'AGENCIA' ? [agency?.tradeName, agency?.cnpj ? `CNPJ ${agency.cnpj}` : null].filter(Boolean).join(' · ') : (l.destinations ?? []).map(destinationLabel).join(', ')
+                f.tab === 'PADRE' ? [priest?.parish, priest?.diocese].filter(Boolean).join(' · ') : f.tab === 'AGENCIA' ? [agency?.tradeName, agency?.cnpj ? `CNPJ ${agency.cnpj}` : null].filter(Boolean).join(' · ') : f.tab === 'FORMADOR' ? [leader?.community, LEADER_ROLES.find((r) => r.value === leader?.role)?.label].filter(Boolean).join(' · ') : (l.destinations ?? []).map(destinationLabel).join(', ')
               return (
                 <tr key={l.id} style={l.status === 'novo' ? { background: 'var(--theme-success-50)' } : undefined}>
                   <td style={td}>

@@ -1,9 +1,9 @@
-import { Building2, Church, Compass } from 'lucide-react'
+import { Building2, Church, Compass, UsersRound } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ScrollReveal } from '@/components/cadastro/motion'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
-import { AGENCY_PAGE, HUB, PILGRIM_PAGE, PRIEST_PAGE } from '@/content/cadastro'
+import { AGENCY_PAGE, HUB, LEADER_PAGE, PILGRIM_PAGE, PRIEST_PAGE } from '@/content/cadastro'
 
 export const metadata: Metadata = {
   title: HUB.meta.title,
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const CARDS = [
   { page: PILGRIM_PAGE, href: '/contato?cadastro=1&origem=hub', icon: Compass, title: 'Sou cliente (peregrino)', text: 'Quero me cadastrar como cliente e receber informações sobre as próximas peregrinações.', cta: 'Cadastre-se como cliente' },
   { page: PRIEST_PAGE, href: `${PRIEST_PAGE.path}?origem=hub`, icon: Church, title: 'Sou padre', text: 'Quero conhecer as possibilidades de parceria e organizar peregrinações com minha comunidade.', cta: 'Conhecer a parceria' },
+  { page: LEADER_PAGE, href: `${LEADER_PAGE.path}?origem=hub`, icon: UsersRound, title: 'Sou formador de grupo', text: 'Tenho influência na minha comunidade e condições de reunir um grupo de peregrinos.', cta: 'Quero formar um grupo' },
   { page: AGENCY_PAGE, href: `${AGENCY_PAGE.path}?origem=hub`, icon: Building2, title: 'Tenho uma agência', text: 'Quero conhecer as oportunidades de colaboração com a Via Lumina.', cta: 'Cadastrar minha agência' },
 ] as const
 
@@ -25,7 +26,7 @@ export default function CadastroHubPage() {
         <p className="eyebrow mb-3">Via Lumina Viagens</p>
         <h1 className="title-rule max-w-3xl text-[2.4rem] leading-[1.08] font-medium sm:text-5xl">{HUB.title}</h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-700">{HUB.text}</p>
-        <ul className="mt-14 grid gap-6 md:grid-cols-3">
+        <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {CARDS.map((c, i) => (
             <ScrollReveal as="li" key={c.page.path} delay={i * 0.08} className="group relative flex flex-col rounded-[var(--radius-card)] bg-white p-8 shadow-soft ring-1 ring-navy-900/5 transition duration-500 hover:-translate-y-1.5 hover:shadow-lift">
               <span className="mb-6 inline-flex size-14 items-center justify-center rounded-full bg-gold-100 text-gold-700">

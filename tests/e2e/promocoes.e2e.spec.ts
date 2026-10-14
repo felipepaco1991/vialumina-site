@@ -35,10 +35,10 @@ test.describe('Promoções e banners da home', () => {
     await expect(page).toHaveURL(/\/promocoes\/crescer$/)
   })
 
-  test('menu Promoções lista as páginas', async ({ page }) => {
+  test('menu Parcerias lista as páginas', async ({ page }) => {
     await page.goto('/')
     const nav = page.getByRole('navigation', { name: 'Principal' })
-    await nav.getByRole('button', { name: 'Promoções' }).click()
+    await nav.getByRole('button', { name: 'Parcerias' }).click()
     await expect(nav.getByRole('link', { name: 'Todas as promoções' })).toBeVisible()
     await nav.getByRole('link', { name: /Trivva/ }).click()
     await expect(page).toHaveURL(/\/promocoes\/trivva$/)

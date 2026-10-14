@@ -7,6 +7,8 @@ import {
   DESTINATION_VALUES,
   ENTRY_POINTS,
   GROUP_INTENT,
+  LEADER_REACH,
+  LEADER_ROLES,
   PARTY_SIZES,
   PRIEST_GROUP_SIZES,
   PRIEST_INTERESTS,
@@ -68,6 +70,29 @@ export const priestSchema = z.object({
 })
 export type PriestInput = z.input<typeof priestSchema>
 export type PriestData = z.output<typeof priestSchema>
+
+/* ------------------------------ Formadores ------------------------------ */
+export const leaderSchema = z.object({
+  ...common,
+  fullName: requiredText('seu nome completo', 5),
+  email,
+  whatsapp: phone,
+  state: uf,
+  city: requiredText('a cidade', 2, 100),
+  community: requiredText('a igreja, comunidade ou movimento a que você pertence', 2, 140),
+  role: z.enum(values(LEADER_ROLES), { message: 'Selecione como você atua.' }),
+  roleDetail: optionalText(100),
+  instagram: optionalText(80).refine((v) => !v || normalizeInstagram(v) !== null, 'Informe o @ do Instagram, ex.: @seuperfil.'),
+  reach: optionalEnum(LEADER_REACH),
+  hasOrganized: optionalEnum([{ value: 'sim' }, { value: 'nao' }]),
+  hasSpiritualGuide: optionalEnum([{ value: 'sim' }, { value: 'nao' }]),
+  groupSize: optionalEnum(PRIEST_GROUP_SIZES),
+  destinations,
+  travelPeriod: z.enum(TRAVEL_PERIOD_VALUES).or(z.literal('')).optional().default(''),
+  message: optionalText(2000),
+})
+export type LeaderInput = z.input<typeof leaderSchema>
+export type LeaderData = z.output<typeof leaderSchema>
 
 /* ------------------------------ Agências ------------------------------ */
 /**
@@ -141,13 +166,18 @@ export const PRIEST_STEPS: (keyof PriestInput)[][] = [
   ['ministry', 'mainInterest'],
   ['hasOrganized', 'groupSize', 'destinations', 'travelPeriod', 'message', 'consentPrivacy', 'consentMarketing'],
 ]
+export const LEADER_STEPS: (keyof LeaderInput)[][] = [
+  ['fullName', 'email', 'whatsapp', 'state', 'city', 'community'],
+  ['role', 'roleDetail', 'instagram', 'reach', 'hasOrganized', 'hasSpiritualGuide'],
+  ['groupSize', 'destinations', 'travelPeriod', 'message', 'consentPrivacy', 'consentMarketing'],
+]
 export const AGENCY_STEPS: (keyof AgencyInput)[][] = [
   ['legalName', 'tradeName', 'profile', 'cnpj', 'state', 'city', 'contactName', 'contactRole'],
   ['email', 'whatsapp', 'interest'],
   ['cadastur', 'website', 'instagram', 'tenure', 'worksWithReligious', 'volume', 'destinations', 'message', 'consentPrivacy', 'consentMarketing'],
 ]
 
-export type LeadFormType = 'padres' | 'agencias' | 'peregrinos'
+export type LeadFormType = 'padres' | 'agencias' | 'formadores' | 'peregrinos'
 
 export type LeadResult =
   | { ok: true }

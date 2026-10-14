@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const PAGES = ['/', '/destinos', '/destinos/europa-sagrada', '/quem-somos', '/nossa-historia', '/contato', '/cadastro', '/cadastro/padres', '/cadastro/agencias', '/contato?cadastro=1']
+const PAGES = ['/', '/destinos', '/destinos/europa-sagrada', '/quem-somos', '/nossa-historia', '/contato', '/cadastro', '/cadastro/padres', '/cadastro/agencias', '/cadastro/formadores', '/contato?cadastro=1']
 const WIDTHS = [360, 390, 430, 768, 1024, 1440]
 
 test.describe('Responsividade', () => {

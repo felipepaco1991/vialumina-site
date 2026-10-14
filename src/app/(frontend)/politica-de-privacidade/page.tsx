@@ -51,7 +51,7 @@ export default async function PrivacyPage() {
         <>
           <p>
             Nos formulários de cadastro (<a href="/cadastro">/cadastro</a>) coletamos apenas os dados necessários à finalidade informada em cada página: contato (nome, e-mail, WhatsApp, cidade e estado), as informações do perfil
-            (por exemplo, diocese e paróquia, no caso de padres; dados da empresa, no caso de agências; destinos e período de interesse, no caso de peregrinos) e a origem do cadastro (página e campanha de divulgação). Não pedimos
+            (por exemplo, diocese e paróquia, no caso de padres; dados da empresa, no caso de agências; igreja ou comunidade e forma de atuação, no caso de formadores de grupo; destinos e período de interesse, no caso de peregrinos) e a origem do cadastro (página e campanha de divulgação). Não pedimos
             CPF nem dados financeiros.
           </p>
           <ul>

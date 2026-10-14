@@ -1,8 +1,9 @@
-/** Constantes compartilhadas pelos cadastros (Padres, Agências e Peregrinos): formulários, CMS e painel. */
+/** Constantes compartilhadas pelos cadastros (Padres, Agências, Formadores e Peregrinos): formulários, CMS e painel. */
 
 export const LEAD_TYPES = [
   { value: 'PADRE', label: 'Padre', plural: 'Padres', formKey: 'padres' },
   { value: 'AGENCIA', label: 'Agência', plural: 'Agências', formKey: 'agencias' },
+  { value: 'FORMADOR', label: 'Formador', plural: 'Formadores', formKey: 'formadores' },
   { value: 'PEREGRINO', label: 'Peregrino', plural: 'Peregrinos', formKey: 'peregrinos' },
 ] as const
 export type LeadType = (typeof LEAD_TYPES)[number]['value']
@@ -11,11 +12,12 @@ export const leadTypeLabel = (t: string) => LEAD_TYPES.find((x) => x.value === t
 export const LEAD_SOURCES = [
   { value: 'lp-padres', label: 'Landing page · Padres' },
   { value: 'lp-agencias', label: 'Landing page · Agências' },
+  { value: 'lp-formadores', label: 'Landing page · Formadores' },
   { value: 'lp-peregrinos', label: 'Landing page · Peregrinos' },
   { value: 'manual', label: 'Cadastro manual' },
 ] as const
 export type LeadSource = (typeof LEAD_SOURCES)[number]['value']
-export const SOURCE_BY_TYPE: Record<LeadType, LeadSource> = { PADRE: 'lp-padres', AGENCIA: 'lp-agencias', PEREGRINO: 'lp-peregrinos' }
+export const SOURCE_BY_TYPE: Record<LeadType, LeadSource> = { PADRE: 'lp-padres', AGENCIA: 'lp-agencias', FORMADOR: 'lp-formadores', PEREGRINO: 'lp-peregrinos' }
 
 /** Status de atendimento (funil comercial). */
 export const LEAD_STATUS = [
@@ -29,7 +31,7 @@ export const LEAD_STATUS = [
 export type LeadStatus = (typeof LEAD_STATUS)[number]['value']
 export const leadStatusLabel = (v: string) => LEAD_STATUS.find((s) => s.value === v)?.label ?? v
 
-/** Aprovação de parceria — separada do status de atendimento. Só se aplica a padres e agências. */
+/** Aprovação de parceria — separada do status de atendimento. Só se aplica a padres, agências e formadores. */
 export const PARTNERSHIP_STATUS = [
   { value: 'nao-se-aplica', label: 'Não se aplica' },
   { value: 'pendente', label: 'Pendente de análise' },
@@ -136,6 +138,21 @@ export const AGENCY_VOLUME = [
   { value: '11-50', label: '11 a 50 clientes/ano' },
   { value: '51-200', label: '51 a 200 clientes/ano' },
   { value: 'acima-200', label: 'Mais de 200 clientes/ano' },
+] as const
+
+/* ----- Formadores de grupo (lideranças leigas que reúnem peregrinos) ----- */
+export const LEADER_ROLES = [
+  { value: 'pastoral', label: 'Liderança de pastoral, movimento ou ministério' },
+  { value: 'formacao', label: 'Catequista ou formador(a) de grupos' },
+  { value: 'comunicacao', label: 'Comunicador(a) ou criador(a) de conteúdo católico' },
+  { value: 'comunidade', label: 'Liderança de comunidade ou grupo de oração' },
+  { value: 'outro', label: 'Outro' },
+] as const
+export const LEADER_REACH = [
+  { value: 'ate-50', label: 'Até 50 pessoas' },
+  { value: '51-200', label: '51 a 200 pessoas' },
+  { value: '201-1000', label: '201 a 1.000 pessoas' },
+  { value: 'acima-1000', label: 'Mais de 1.000 pessoas' },
 ] as const
 
 /* ----- Peregrinos ----- */

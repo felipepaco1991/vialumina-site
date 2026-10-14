@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
-import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, PROMOTION_ITEMS } from '@/lib/nav'
+import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, signupItems } from '@/lib/nav'
 
 
 const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`))
@@ -16,7 +16,9 @@ const isActive = (pathname: string, href: string) => (href === '/' ? pathname ==
 
 type MenuItem = { href: string; path: string; label: string }
 
-/** Menu suspenso ("Promoções", "Parcerias"): abre por clique/teclado (e ao passar o mouse), fecha com Esc ou clique fora. */
+const SIGNUP_ITEMS = signupItems('menu')
+
+/** Menu suspenso ("Parcerias", "Cadastre-se"): abre por clique/teclado (e ao passar o mouse), fecha com Esc ou clique fora. */
 function DropdownMenu({ label, items, pathname, solid, width = 'w-52' }: { label: string; items: readonly MenuItem[]; pathname: string; solid: boolean; width?: string }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLLIElement>(null)
@@ -165,8 +167,8 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                 </li>
               )
             })}
-            <DropdownMenu label="Promoções" items={PROMOTION_ITEMS} pathname={pathname} solid={solid} width="w-64" />
-            <DropdownMenu label="Parcerias" items={PARTNERSHIP_ITEMS} pathname={pathname} solid={solid} />
+            <DropdownMenu label="Parcerias" items={PARTNERSHIP_ITEMS} pathname={pathname} solid={solid} width="w-64" />
+            <DropdownMenu label="Cadastre-se" items={SIGNUP_ITEMS} pathname={pathname} solid={solid} width="w-64" />
             <li className="flex items-center">
               <Link
                 href={CONTACT_ITEM.href}
@@ -246,9 +248,9 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                       )
                     })}
                   </ul>
-                  <p className="eyebrow mt-6 mb-2 px-4">Promoções</p>
+                  <p className="eyebrow mt-6 mb-2 px-4">Parcerias</p>
                   <ul className="space-y-1">
-                    {PROMOTION_ITEMS.map((item) => (
+                    {PARTNERSHIP_ITEMS.map((item) => (
                       <li key={item.path}>
                         <Link
                           href={item.href}
@@ -260,9 +262,9 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                       </li>
                     ))}
                   </ul>
-                  <p className="eyebrow mt-6 mb-2 px-4">Parcerias</p>
+                  <p className="eyebrow mt-6 mb-2 px-4">Cadastre-se</p>
                   <ul className="space-y-1">
-                    {PARTNERSHIP_ITEMS.map((item) => (
+                    {SIGNUP_ITEMS.map((item) => (
                       <li key={item.path}>
                         <Link
                           href={item.href}

@@ -8,7 +8,7 @@ import { LEAD_ROUTING } from './routing.server'
  * (por público) vale como está, sem cópia; senão, o roteamento definido em `routing.server.ts`.
  */
 export function leadRecipients(settings: SiteSettingsData, type: LeadType): { to: string[]; cc: string[] } {
-  const byType = { PADRE: settings.leadRecipientsPadres, AGENCIA: settings.leadRecipientsAgencias, PEREGRINO: settings.leadRecipientsPeregrinos }[type]
+  const byType = { PADRE: settings.leadRecipientsPadres, AGENCIA: settings.leadRecipientsAgencias, FORMADOR: settings.leadRecipientsFormadores, PEREGRINO: settings.leadRecipientsPeregrinos }[type]
   if (byType?.length) return { to: byType, cc: [] }
   const { to, cc } = LEAD_ROUTING[type]
   return { to, cc }

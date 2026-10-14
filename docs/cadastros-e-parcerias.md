@@ -1,18 +1,19 @@
 # Cadastros e Parcerias — landing pages, dados e administração
 
-Extensão do site com três landing pages de captação, formulários reais (com persistência), painel interno e conformidade com a LGPD.
+Extensão do site com landing pages de captação, formulários reais (com persistência), painel interno e conformidade com a LGPD.
 
 | Página | URL | Público | Formulário |
 |---|---|---|---|
 | Seja um Padre Parceiro | `/cadastro/padres` | Sacerdotes | 3 etapas |
 | Seja uma Agência Parceira | `/cadastro/agencias` | Agências, operadoras, consultores | 3 etapas |
+| Seja um Formador de Grupo | `/cadastro/formadores` | Lideranças leigas da igreja (não padres nem pastores) com condições de reunir um grupo de viagem | 3 etapas |
 | Cadastre-se (painel lateral) | `/contato?cadastro=1` | Peregrinos | Curto, 1 etapa |
 | Hub (porta de entrada) | `/cadastro` | Quem não sabe qual escolher | — |
 | Retirada de consentimento | `/cadastro/comunicacoes/[token]` | Titular do cadastro (link único) | Botão de confirmação |
 
 Em `/contato`, o bloco “Faça sua solicitação ou cadastre-se” alterna entre o formulário de informações e o cadastro de clientes, que abre num painel que desliza da direita (`?cadastro=1` abre o painel). A antiga rota `/cadastro/peregrinos` apenas redireciona para ele (preservando `origem` e UTMs) e o conteúdo institucional da landing (texto, destinos, cuidados, comunidade) agora está em **Quem Somos**.
 
-Acesso pelo site: menu **Parcerias** (Para Padres / Para Agências); rodapé (coluna “Cadastre-se”); convite na homepage (“Receba novidades das próximas peregrinações”) e em **Quem Somos** (parcerias). Os links trazem `?origem=menu|rodape|home|institucional|hub` (o cadastro de peregrinos não tem botão no menu), gravado no cadastro.
+Acesso pelo site: menu **Cadastre-se** (peregrinos, padres, agências, formadores) e a mesma lista na coluna “Cadastre-se” do rodapé; convite na homepage (“Receba novidades das próximas peregrinações”) e em **Quem Somos** (parcerias). Os links trazem `?origem=menu|rodape|home|institucional|hub` gravado no cadastro. O menu **Parcerias** (antigo “Promoções”) reúne as empresas parceiras e suas promoções (Trivva, Crescer).
 
 ## 1. Arquitetura
 
@@ -30,14 +31,14 @@ scripts/leads/purge.ts             rotina de retenção
 
 ### Dados
 
-- **`leads`** (central): tipo (`PADRE`/`AGENCIA`/`PEREGRINO`), nome/responsável, e-mail, WhatsApp (`55`+DDD+número), cidade, estado, destinos, origem (`lp-padres|lp-agencias|lp-peregrinos|manual`), ponto de entrada, página, UTMs, consentimentos (finalidade, concedido, data, **versão do aviso**, retirada), `marketingConsent`, `retainUntil`, status de atendimento, aprovação de parceria, responsável, observações internas, indicador e referência de duplicidade, situação dos e-mails. `createdAt`/`updatedAt` do Payload cobrem data de cadastro e última atualização.
+- **`leads`** (central): tipo (`PADRE`/`AGENCIA`/`FORMADOR`/`PEREGRINO`), nome/responsável, e-mail, WhatsApp (`55`+DDD+número), cidade, estado, destinos, origem (`lp-padres|lp-agencias|lp-formadores|lp-peregrinos|manual`), ponto de entrada, página, UTMs, consentimentos (finalidade, concedido, data, **versão do aviso**, retirada), `marketingConsent`, `retainUntil`, status de atendimento, aprovação de parceria, responsável, observações internas, indicador e referência de duplicidade, situação dos e-mails. `createdAt`/`updatedAt` do Payload cobrem data de cadastro e última atualização.
 - **`priest-profiles`**, **`agency-profiles`**, **`pilgrim-profiles`**: dados específicos de cada formulário, ligados ao lead (`lead`) e gravados juntos numa **transação** (se um falhar, nada é salvo). Excluir um lead exclui o perfil.
 - Os dados enviados pelo formulário são **imutáveis** pela API/painel (acesso de atualização negado nos campos); a equipe altera apenas a gestão do atendimento (status, parceria, responsável, observações, retenção, retirada de consentimento) e a verificação de CNPJ/Cadastur.
 
 ### Status
 
 - **Atendimento:** Novo cadastro → Em análise → Contato iniciado → Em negociação → Convertido → Encerrado.
-- **Aprovação de parceria** (campo separado, só padres e agências): Pendente de análise (padrão) → Em avaliação → Parceria aprovada / Não aprovada. **Nenhum cadastro nasce aprovado.**
+- **Aprovação de parceria** (campo separado, só padres, agências e formadores): Pendente de análise (padrão) → Em avaliação → Parceria aprovada / Não aprovada. **Nenhum cadastro nasce aprovado.**
 - **CNPJ e Cadastur** guardam “verificação” própria (Não verificado / Verificado / Divergente): o formulário só confere os dígitos do CNPJ; a conferência cadastral é manual.
 - Consultor independente pode se cadastrar sem CNPJ (regra em `agencyRuleErrors`, `src/lib/leads/schemas.ts`; ajuste se a política comercial mudar).
 
@@ -45,7 +46,7 @@ scripts/leads/purge.ts             rotina de retenção
 
 Entrada: card **“Cadastros novos”** no Painel de Controle (`/admin`) ou diretamente `/admin/cadastros`.
 
-- **Abas:** Padres, Agências, Peregrinos (contagem total e de novos).
+- **Abas:** Padres, Agências, Formadores, Peregrinos (contagem total e de novos).
 - **Busca** por nome, e-mail e cidade; filtros por estado, status, aprovação da parceria, **destino de interesse**, **período de cadastro**, somente novos, possíveis duplicidades.
 - **Tabela** com origem/campanha, status, parceria, responsável e data; linha de novo cadastro destacada.
 - **Detalhe:** clicar no nome abre a edição do cadastro (dados do formulário em leitura, consentimentos, origem/UTM, notificações). Ali se atualiza status, parceria, responsável e observações.
@@ -74,6 +75,7 @@ Após gravar: (1) aviso interno por e-mail, conforme o público (ver tabela abai
 |---|---|---|---|
 | Padres | williton.santos@vialuminaviagens.com.br | fabiola.almeida@vialuminaviagens.com.br | +55 11 91799-2727 |
 | Agências | williton.santos@vialuminaviagens.com.br | fabiola.almeida@vialuminaviagens.com.br | +55 11 91799-2727 |
+| Formadores | williton.santos@vialuminaviagens.com.br | fabiola.almeida@vialuminaviagens.com.br | +55 11 91799-2727 |
 | Peregrinos (cliente final) | fabiola.almeida@vialuminaviagens.com.br | — | +55 11 99252-6053 (WhatsApp do site) |
 
 Para trocar os destinatários de um público sem deploy, preencha **Configurações do site → Cadastros → Substituir destinatários**; nesse caso só os e-mails informados recebem (sem cópia). O contato do formulário geral (`/contato`) segue `CONTACT_RECIPIENTS`.
@@ -99,9 +101,9 @@ Eventos enviados ao `dataLayer` (GTM) / GA4 — **só carregam com o aceite de c
 
 | Evento | Quando |
 |---|---|
-| `view_lp_padres`, `view_lp_agencias` | Abertura da página (`view_lp_peregrinos` deixou de ser disparado: não há mais landing de peregrinos) |
-| `start_form_padres/agencias/peregrinos` | Primeira interação com o formulário (1× por visita) |
-| `submit_form_padres/agencias/peregrinos` | **Somente após o servidor confirmar** que gravou o cadastro |
+| `view_lp_padres`, `view_lp_agencias`, `view_lp_formadores` | Abertura da página (`view_lp_peregrinos` deixou de ser disparado: não há mais landing de peregrinos) |
+| `start_form_padres/agencias/formadores/peregrinos` | Primeira interação com o formulário (1× por visita) |
+| `submit_form_padres/agencias/formadores/peregrinos` | **Somente após o servidor confirmar** que gravou o cadastro |
 | `form_error` | Erro de validação ou do servidor (`form`, `reason`, `fields`, `step`; sem valores digitados) |
 | `click_whatsapp` | Botões de WhatsApp das landing pages e da confirmação |
 | `click_destinos` | Links para `/destinos` (cards, chamada final, confirmação) |
@@ -123,16 +125,16 @@ npm run test:e2e         # inclui tests/e2e/cadastros*.e2e.spec.ts
 npm run leads:purge      # simulação da retenção
 ```
 
-Cobertura: máscaras/CNPJ/esquemas/UTM/CSV (unidade); persistência, consentimentos, duplicidade, antispam, limite de taxa, retirada de consentimento, acesso por função, exportação e exclusão em cascata (integração); fluxos completos dos três formulários, painel, exportação, menu/rodapé e celular (e2e). Os testes criam cadastros com e-mails `@e2e-cadastros.example.com`/`@leads-test.example.com` e os removem ao final.
+Cobertura: máscaras/CNPJ/esquemas/UTM/CSV (unidade); persistência, consentimentos, duplicidade, antispam, limite de taxa, retirada de consentimento, acesso por função, exportação e exclusão em cascata (integração); fluxos completos dos formulários, painel, exportação, menu/rodapé e celular (e2e). Os testes criam cadastros com e-mails `@e2e-cadastros.example.com`/`@leads-test.example.com` e os removem ao final.
 
 
 ## Promoções (Trivva e 30º Crescer)
 
-Menu **Promoções** (cabeçalho, menu celular e rodapé) com três páginas: `/promocoes` (índice), `/promocoes/trivva` e `/promocoes/crescer`. Os textos e links ficam em `src/content/promocoes.ts`; as páginas, em `src/app/(frontend)/promocoes/`.
+Menu **Parcerias** (cabeçalho, menu celular e rodapé; as URLs continuam `/promocoes/*`) com três páginas: `/promocoes` (índice), `/promocoes/trivva` e `/promocoes/crescer`. Os textos e links ficam em `src/content/promocoes.ts`; as páginas, em `src/app/(frontend)/promocoes/`.
 
 - **Trivva:** botão “Inscrever-se na Trivva” abre `TRIVVA_SIGNUP_URL` em nova aba (hero da home, hero da página e cartão de inscrição). O cadastro e os dados ficam no site da Trivva; a Via Lumina não coleta nada. Valores e planos **não** são exibidos, para não ficarem desatualizados.
 - **Crescer:** arte em `public/assets/promocoes/crescer-banner.webp`; inscrição gratuita, programação, caravanas e hospedagens apontam para o site oficial (`encontrodafamiliacatolica.com.br`).
 - **Hero da home** (`src/components/home/HomeHero.tsx` + `HeroCarousel.tsx`): troca continuamente a cada 4 s (`HERO_SLIDE_MS`). Ordem: apresentação, roteiro, Trivva, roteiro, Crescer, demais roteiros (até `HERO_TRIPS`, vindos dos destaques do CMS). Só para pelo botão Pausar (mouse e foco não interrompem), com a aba em segundo plano ou, desde o início, com `prefers-reduced-motion`. Os controles ficam presos à parte visível da tela (`sticky`), acima da barra de endereço do Safari no iPhone.
 - Analytics: `view_promo_trivva`, `view_promo_crescer` e `promo_click` (rótulo identifica o botão).
 
-Para incluir uma promoção: adicione o item em `PROMOTIONS` e em `PROMOTION_ITEMS` (`src/lib/nav.ts`), crie a página e (se for para a home) um slide em `HomeHero.tsx`.
+Para incluir uma promoção: adicione o item em `PROMOTIONS` e em `PARTNERSHIP_ITEMS` (`src/lib/nav.ts`), crie a página e (se for para a home) um slide em `HomeHero.tsx`.

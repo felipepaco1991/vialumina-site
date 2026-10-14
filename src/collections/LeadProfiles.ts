@@ -7,6 +7,8 @@ import {
   AGENCY_VOLUME,
   DESTINATIONS,
   GROUP_INTENT,
+  LEADER_REACH,
+  LEADER_ROLES,
   PARTY_SIZES,
   PRIEST_GROUP_SIZES,
   PRIEST_INTERESTS,
@@ -100,6 +102,27 @@ export const AgencyProfiles: CollectionConfig = {
         },
       ],
     },
+  ],
+}
+
+export const LeaderProfiles: CollectionConfig = {
+  slug: 'leader-profiles',
+  labels: { singular: 'Perfil de formador', plural: 'Perfis de formadores' },
+  admin: { group: 'Cadastros e Parcerias', hidden: true, useAsTitle: 'community' },
+  access: profileAccess,
+  fields: [
+    leadField,
+    { name: 'community', label: 'Igreja, comunidade ou movimento', type: 'text', required: true, admin: readOnly },
+    { name: 'role', label: 'Como atua', type: 'select', options: opts(LEADER_ROLES), required: true, admin: readOnly },
+    { name: 'roleDetail', label: 'Função ou ministério', type: 'text', admin: readOnly },
+    { name: 'instagram', label: 'Instagram', type: 'text', admin: readOnly },
+    { name: 'reach', label: 'Pessoas que alcança (aprox.)', type: 'select', options: opts(LEADER_REACH), admin: readOnly },
+    { name: 'hasOrganized', label: 'Já organizou grupos de viagem?', type: 'select', options: yesNo, admin: readOnly },
+    { name: 'hasSpiritualGuide', label: 'Já conta com padre ou assessor espiritual?', type: 'select', options: yesNo, admin: readOnly },
+    { name: 'groupSize', label: 'Pessoas interessadas (aprox.)', type: 'select', options: opts(PRIEST_GROUP_SIZES), admin: readOnly },
+    destinationsField,
+    { name: 'travelPeriod', label: 'Período previsto', type: 'select', options: opts(TRAVEL_PERIODS), admin: readOnly },
+    messageField,
   ],
 }
 

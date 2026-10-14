@@ -19,7 +19,7 @@ import { whatsappUrl } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
   title: 'Contato',
-  description: 'Fale com a Via Lumina Viagens pelo WhatsApp, telefone, e-mail ou formulário. Atendimento de segunda a sábado.',
+  description: 'Fale com a Via Lumina Viagens pelo WhatsApp, telefone, e-mail ou formulário. Atendimento de segunda a sexta, das 8h às 18h.',
   alternates: { canonical: '/contato' },
 }
 

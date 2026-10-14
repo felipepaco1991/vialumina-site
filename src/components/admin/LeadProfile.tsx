@@ -5,6 +5,8 @@ import {
   AGENCY_TENURE,
   AGENCY_VOLUME,
   GROUP_INTENT,
+  LEADER_REACH,
+  LEADER_ROLES,
   PARTY_SIZES,
   PRIEST_GROUP_SIZES,
   PRIEST_INTERESTS,
@@ -39,6 +41,14 @@ export async function LeadProfile({ payload, id }: UIFieldServerProps) {
       ['Verificação do Cadastur', a.cadasturVerification === 'verificado' ? 'Verificado' : a.cadasturVerification === 'divergente' ? 'Divergente' : 'Não verificado'],
       ['Site', a.website], ['Instagram', a.instagram], ['Tempo de atuação', lab(AGENCY_TENURE, a.tenure)], ['Trabalha com turismo religioso', yn(a.worksWithReligious)], ['Volume', lab(AGENCY_VOLUME, a.volume)],
       ['Destinos de interesse', (a.destinations ?? []).map(destinationLabel).join('; ') || '—'], ['Mensagem', a.message],
+    ]
+  } else if (lead.type === 'FORMADOR' && typeof lead.leaderProfile === 'object' && lead.leaderProfile) {
+    const l = lead.leaderProfile
+    rows = [
+      ['Igreja, comunidade ou movimento', l.community], ['Como atua', lab(LEADER_ROLES, l.role)], ['Função ou ministério', l.roleDetail], ['Instagram', l.instagram],
+      ['Pessoas que alcança', lab(LEADER_REACH, l.reach)], ['Já organizou grupos de viagem', yn(l.hasOrganized)], ['Já conta com padre ou assessor espiritual', yn(l.hasSpiritualGuide)],
+      ['Pessoas interessadas', lab(PRIEST_GROUP_SIZES, l.groupSize)], ['Destinos de interesse', (l.destinations ?? []).map(destinationLabel).join('; ') || '—'],
+      ['Período previsto', l.travelPeriod ? periodLabel(l.travelPeriod) : '—'], ['Mensagem', l.message],
     ]
   } else if (lead.type === 'PEREGRINO' && typeof lead.pilgrimProfile === 'object' && lead.pilgrimProfile) {
     const g = lead.pilgrimProfile

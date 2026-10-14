@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/components/ui/Icons'
 import type { SiteSettingsData } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
-import { CONTACT_ITEM, NAV_ITEMS, PROMOTION_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
+import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, signupItems } from '@/lib/nav'
 
-/** Logos brancas dos parceiros (altura uniforme; Crescer e Trivva levam às páginas de promoção). */
+const SIGNUP_LINKS = signupItems('rodape')
+
+/** Logos brancas dos parceiros (altura uniforme; levam às páginas de parceria). */
 const PARTNERS = [
   { name: 'Crescer — Encontro Nacional da Família Católica', src: '/assets/logos/crescer-branco.webp', width: 733, height: 158, href: '/promocoes/crescer' },
   { name: 'Trivva', src: '/assets/logos/trivva-branco.webp', width: 1598, height: 376, href: '/promocoes/trivva' },
-  { name: 'AD Viagens e Turismo — 40 anos', src: '/assets/logos/ad-viagens-branco.webp', width: 975, height: 297, href: null },
 ] as const
 
 export function Footer({ settings }: { settings: SiteSettingsData }) {
@@ -104,9 +105,9 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
         </div>
 
         <div>
-          <h2 className="eyebrow-light mb-5 font-label">Promoções</h2>
+          <h2 className="eyebrow-light mb-5 font-label">Parcerias</h2>
           <ul className="space-y-3 text-[0.95rem]">
-            {PROMOTION_ITEMS.map((item) => (
+            {PARTNERSHIP_ITEMS.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition hover:text-gold-200">
                   {item.label}
@@ -114,7 +115,7 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
               </li>
             ))}
           </ul>
-          <h2 className="eyebrow-light mt-8 mb-4 font-label">Cadastre-se</h2>
+          <h2 className="eyebrow-light mt-10 mb-5 font-label">Cadastre-se</h2>
           <ul className="space-y-3 text-[0.95rem]">
             {SIGNUP_LINKS.map((item) => (
               <li key={item.href}>
@@ -137,13 +138,9 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
               )
               return (
                 <li key={p.name}>
-                  {p.href ? (
-                    <Link href={p.href} className="block opacity-90 transition hover:opacity-100">
-                      {logo}
-                    </Link>
-                  ) : (
-                    logo
-                  )}
+                  <Link href={p.href} className="block opacity-90 transition hover:opacity-100">
+                    {logo}
+                  </Link>
                 </li>
               )
             })}

@@ -75,6 +75,7 @@ export interface Config {
     leads: Lead;
     'priest-profiles': PriestProfile;
     'agency-profiles': AgencyProfile;
+    'leader-profiles': LeaderProfile;
     'pilgrim-profiles': PilgrimProfile;
     users: User;
     'payload-kv': PayloadKv;
@@ -92,6 +93,7 @@ export interface Config {
     leads: LeadsSelect<false> | LeadsSelect<true>;
     'priest-profiles': PriestProfilesSelect<false> | PriestProfilesSelect<true>;
     'agency-profiles': AgencyProfilesSelect<false> | AgencyProfilesSelect<true>;
+    'leader-profiles': LeaderProfilesSelect<false> | LeaderProfilesSelect<true>;
     'pilgrim-profiles': PilgrimProfilesSelect<false> | PilgrimProfilesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -504,14 +506,14 @@ export interface Inquiry {
   createdAt: string;
 }
 /**
- * Registros de padres, agências e peregrinos recebidos pelas landing pages. Use a tela “Cadastros e Parcerias” (menu lateral) para a visão por abas. Dados pessoais: acesso restrito.
+ * Registros de padres, agências, formadores e peregrinos recebidos pelas landing pages. Use a tela “Cadastros e Parcerias” (menu lateral) para a visão por abas. Dados pessoais: acesso restrito.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "leads".
  */
 export interface Lead {
   id: number;
-  type: 'PADRE' | 'AGENCIA' | 'PEREGRINO';
+  type: 'PADRE' | 'AGENCIA' | 'FORMADOR' | 'PEREGRINO';
   name: string;
   email: string;
   phone?: string | null;
@@ -561,7 +563,7 @@ export interface Lead {
     | null;
   status: 'novo' | 'em-analise' | 'contato-iniciado' | 'em-negociacao' | 'convertido' | 'encerrado';
   /**
-   * Independente do status de atendimento. Só se aplica a padres e agências; o cadastro nunca aprova a parceria automaticamente.
+   * Independente do status de atendimento. Só se aplica a padres, agências e formadores; o cadastro nunca aprova a parceria automaticamente.
    */
   partnershipStatus?: ('nao-se-aplica' | 'pendente' | 'em-avaliacao' | 'aprovada' | 'nao-aprovada') | null;
   assignee?: (number | null) | User;
@@ -571,8 +573,9 @@ export interface Lead {
   internalNotes?: string | null;
   priestProfile?: (number | null) | PriestProfile;
   agencyProfile?: (number | null) | AgencyProfile;
+  leaderProfile?: (number | null) | LeaderProfile;
   pilgrimProfile?: (number | null) | PilgrimProfile;
-  source: 'lp-padres' | 'lp-agencias' | 'lp-peregrinos' | 'manual';
+  source: 'lp-padres' | 'lp-agencias' | 'lp-formadores' | 'lp-peregrinos' | 'manual';
   /**
    * Link do menu, rodapé, homepage etc., quando informado.
    */
@@ -718,6 +721,38 @@ export interface AgencyProfile {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leader-profiles".
+ */
+export interface LeaderProfile {
+  id: number;
+  lead: number | Lead;
+  community: string;
+  role: 'pastoral' | 'formacao' | 'comunicacao' | 'comunidade' | 'outro';
+  roleDetail?: string | null;
+  instagram?: string | null;
+  reach?: ('ate-50' | '51-200' | '201-1000' | 'acima-1000') | null;
+  hasOrganized?: ('sim' | 'nao') | null;
+  hasSpiritualGuide?: ('sim' | 'nao') | null;
+  groupSize?: ('ate-15' | '16-30' | '31-50' | 'acima-50' | 'nao-sei') | null;
+  destinations?:
+    | (
+        | 'brasil'
+        | 'portugal-fatima'
+        | 'italia-vaticano'
+        | 'franca-lourdes'
+        | 'espanha-marianos'
+        | 'mexico-guadalupe'
+        | 'egito-terra-santa'
+        | 'indefinido'
+      )[]
+    | null;
+  travelPeriod?: ('ate-3-meses' | '3-6-meses' | '6-12-meses' | 'mais-de-1-ano' | 'pesquisando') | null;
+  message?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pilgrim-profiles".
  */
 export interface PilgrimProfile {
@@ -799,6 +834,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'agency-profiles';
         value: number | AgencyProfile;
+      } | null)
+    | ({
+        relationTo: 'leader-profiles';
+        value: number | LeaderProfile;
       } | null)
     | ({
         relationTo: 'pilgrim-profiles';
@@ -1162,6 +1201,7 @@ export interface LeadsSelect<T extends boolean = true> {
   internalNotes?: T;
   priestProfile?: T;
   agencyProfile?: T;
+  leaderProfile?: T;
   pilgrimProfile?: T;
   source?: T;
   entryPoint?: T;
@@ -1239,6 +1279,26 @@ export interface AgencyProfilesSelect<T extends boolean = true> {
   message?: T;
   cnpjVerification?: T;
   cadasturVerification?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leader-profiles_select".
+ */
+export interface LeaderProfilesSelect<T extends boolean = true> {
+  lead?: T;
+  community?: T;
+  role?: T;
+  roleDetail?: T;
+  instagram?: T;
+  reach?: T;
+  hasOrganized?: T;
+  hasSpiritualGuide?: T;
+  groupSize?: T;
+  destinations?: T;
+  travelPeriod?: T;
+  message?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1364,6 +1424,10 @@ export interface SiteSetting {
   /**
    * Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).
    */
+  leadRecipientsFormadores?: string[] | null;
+  /**
+   * Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).
+   */
   leadRecipientsPeregrinos?: string[] | null;
   /**
    * Só funciona com SMTP configurado. Desligado por padrão: nenhuma mensagem automática é enviada sem esta autorização.
@@ -1433,6 +1497,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   contactRecipients?: T;
   leadRecipientsPadres?: T;
   leadRecipientsAgencias?: T;
+  leadRecipientsFormadores?: T;
   leadRecipientsPeregrinos?: T;
   leadConfirmationEmail?: T;
   leadRetentionMonths?: T;

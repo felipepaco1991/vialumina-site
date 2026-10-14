@@ -28,7 +28,7 @@ const syncMarketingConsent: CollectionBeforeChangeHook = ({ data }) => {
 
 /** Antes de excluir um cadastro (manualmente ou pela rotina de retenção), remove também o perfil relacionado. */
 const deleteProfiles: CollectionBeforeDeleteHook = async ({ id, req }) => {
-  for (const collection of ['priest-profiles', 'agency-profiles', 'pilgrim-profiles'] as const) {
+  for (const collection of ['priest-profiles', 'agency-profiles', 'leader-profiles', 'pilgrim-profiles'] as const) {
     await req.payload.delete({ collection, where: { lead: { equals: id } }, req, overrideAccess: true })
   }
 }
@@ -70,7 +70,7 @@ export const Leads: CollectionConfig = {
     defaultColumns: ['name', 'type', 'city', 'state', 'status', 'createdAt'],
     listSearchableFields: ['name', 'email', 'city'],
     description:
-      'Registros de padres, agências e peregrinos recebidos pelas landing pages. Use a tela “Cadastros e Parcerias” (menu lateral) para a visão por abas. Dados pessoais: acesso restrito.',
+      'Registros de padres, agências, formadores e peregrinos recebidos pelas landing pages. Use a tela “Cadastros e Parcerias” (menu lateral) para a visão por abas. Dados pessoais: acesso restrito.',
   },
   defaultSort: '-createdAt',
   access: {
@@ -115,8 +115,8 @@ export const Leads: CollectionConfig = {
           options: opts(PARTNERSHIP_STATUS),
           admin: {
             position: 'sidebar',
-            description: 'Independente do status de atendimento. Só se aplica a padres e agências; o cadastro nunca aprova a parceria automaticamente.',
-            condition: (data) => data?.type === 'PADRE' || data?.type === 'AGENCIA',
+            description: 'Independente do status de atendimento. Só se aplica a padres, agências e formadores; o cadastro nunca aprova a parceria automaticamente.',
+            condition: (data) => data?.type === 'PADRE' || data?.type === 'AGENCIA' || data?.type === 'FORMADOR',
           },
         },
       ],
@@ -127,6 +127,7 @@ export const Leads: CollectionConfig = {
     // Perfil relacionado (somente um é preenchido, conforme o tipo)
     { name: 'priestProfile', label: 'Perfil de padre', type: 'relationship', relationTo: 'priest-profiles', access: locked, admin: { hidden: true } },
     { name: 'agencyProfile', label: 'Perfil de agência', type: 'relationship', relationTo: 'agency-profiles', access: locked, admin: { hidden: true } },
+    { name: 'leaderProfile', label: 'Perfil de formador', type: 'relationship', relationTo: 'leader-profiles', access: locked, admin: { hidden: true } },
     { name: 'pilgrimProfile', label: 'Perfil de peregrino', type: 'relationship', relationTo: 'pilgrim-profiles', access: locked, admin: { hidden: true } },
 
     // Origem e campanha
