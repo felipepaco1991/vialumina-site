@@ -95,7 +95,16 @@ function TripSlide({ trip }: { trip: TripCardData }) {
   const director = directorArt && guide ? { art: directorArt, name: guide.name, role: guide.role } : null
   return (
     <div className="relative isolate flex w-full items-center">
-      {photo ? (
+      {director ? (
+        <Image
+          src={director.art.background.src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="-z-10 object-cover object-[62%_center]"
+          aria-hidden="true"
+        />
+      ) : photo ? (
         <Image
           src={photo.url}
           alt=""
@@ -108,15 +117,25 @@ function TripSlide({ trip }: { trip: TripCardData }) {
           aria-hidden="true"
         />
       ) : null}
-      <div
-        className={
-          director
-            ? // Entardecer dourado: azul-marinho à esquerda para o texto, luz quente atrás da figura à direita.
-              'absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_78%_30%,rgb(242_184_70/0.5)_0%,transparent_70%),linear-gradient(90deg,rgb(4_26_54/0.94)_0%,rgb(4_26_54/0.78)_42%,rgb(10_46_92/0.28)_75%,rgb(4_26_54/0.38)_100%),linear-gradient(180deg,rgb(4_26_54/0.5)_0%,transparent_30%,rgb(4_26_54/0.75)_100%)]'
-            : 'absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(4_26_54/0.92)_0%,rgb(4_26_54/0.7)_55%,rgb(4_26_54/0.45)_100%),linear-gradient(180deg,rgb(4_26_54/0.45)_0%,transparent_35%,rgb(4_26_54/0.75)_100%)]'
-        }
-        aria-hidden="true"
-      />
+      {director ? (
+        <>
+          {/* Celular: texto e figura em coluna, véu uniforme para manter o texto legível. */}
+          <div
+            className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(4_26_54/0.82)_0%,rgb(4_26_54/0.62)_45%,rgb(4_26_54/0.35)_100%)] lg:hidden"
+            aria-hidden="true"
+          />
+          {/* Telas largas: azul-marinho à esquerda (texto) abrindo para a luz dourada da foto, como na arte. */}
+          <div
+            className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,rgb(6_28_60/0.88)_0%,rgb(6_28_60/0.76)_28%,rgb(6_28_60/0.4)_50%,transparent_72%),linear-gradient(180deg,rgb(4_26_54/0.45)_0%,transparent_18%,transparent_72%,rgb(4_26_54/0.45)_100%)] lg:block"
+            aria-hidden="true"
+          />
+        </>
+      ) : (
+        <div
+          className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(4_26_54/0.92)_0%,rgb(4_26_54/0.7)_55%,rgb(4_26_54/0.45)_100%),linear-gradient(180deg,rgb(4_26_54/0.45)_0%,transparent_35%,rgb(4_26_54/0.75)_100%)]"
+          aria-hidden="true"
+        />
+      )}
       <div className="container-site grid items-center gap-10 pt-28 pb-40 sm:pb-48 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-16">
         <div>
           <p className="eyebrow-light mb-4 inline-flex items-center gap-2">

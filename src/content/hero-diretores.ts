@@ -1,22 +1,30 @@
 /**
- * Banners da Hero com a direção espiritual em destaque (a pessoa à direita, com luz dourada e nome embaixo).
- * Chave = slug da peregrinação. Sem entrada aqui, o banner usa a arte de divulgação ao lado do texto.
+ * Banners da Hero com a direção espiritual em destaque (a pessoa à direita, nome e função embaixo,
+ * sobre uma foto do destino). Chave = slug da peregrinação. Sem entrada aqui, o banner usa a arte
+ * de divulgação ao lado do texto.
  *
- * `photo` é um recorte (PNG/WebP com fundo transparente) da cabeça à cintura, em public/assets/acompanhantes.
- * O nome e a função vêm do roteiro no CMS (Sacerdotes e acompanhantes); `parish` é opcional.
+ * - `photo`: recorte (fundo transparente) da cabeça à cintura, com o tronco já estendido para baixo,
+ *   de modo que a figura chegue ao pé do banner (a faixa de nome cobre a emenda).
+ * - `background`: foto de fundo do banner (16:9, luz de fim de tarde).
+ * - `parish`: linhas da paróquia (opcional). Nome e função vêm do roteiro no CMS.
  */
 export type HeroDirector = {
   photo: { src: string; width: number; height: number }
-  parish?: string
+  background: { src: string; alt: string }
+  parish?: string[]
 }
 
 export const HERO_DIRECTORS: Record<string, HeroDirector> = {
   'europa-sagrada': {
     photo: {
-      src: '/assets/acompanhantes/padre-marcos-fernando-recorte.webp',
-      width: 490,
-      height: 860,
+      src: '/assets/acompanhantes/padre-marcos-fernando-banner.webp',
+      width: 1280,
+      height: 1654,
     },
-    parish: 'Paróquia Cristo Rei · Celândia Sul',
+    background: {
+      src: '/assets/destinos/europa-sagrada/banner-fundo.webp',
+      alt: 'Basílica de São Pedro, no Vaticano, ao entardecer',
+    },
+    parish: ['Paróquia Cristo Rei', 'Celândia Sul'],
   },
 }

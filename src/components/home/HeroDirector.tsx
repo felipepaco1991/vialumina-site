@@ -1,40 +1,39 @@
-import { Cross } from 'lucide-react'
 import Image from 'next/image'
 import type { HeroDirector } from '@/content/hero-diretores'
 
-/** Estrela de quatro pontas (brilho). Posição em % dentro da figura; `delay` desencontra o cintilar. */
-const SPARKLES = [
-  { left: '8%', top: '10%', size: 22, delay: '0s' },
-  { left: '84%', top: '6%', size: 30, delay: '0.9s' },
-  { left: '-6%', top: '36%', size: 14, delay: '1.7s' },
-  { left: '97%', top: '30%', size: 18, delay: '0.4s' },
-  { left: '22%', top: '-4%', size: 12, delay: '2.2s' },
-  { left: '70%', top: '24%', size: 11, delay: '1.2s' },
-  { left: '2%', top: '60%', size: 16, delay: '2.6s' },
-] as const
+const GOLD = 'text-gold-300'
 
-function Sparkle({ left, top, size, delay }: (typeof SPARKLES)[number]) {
+/** Cruz latina dourada que abre a faixa de nome. */
+function CrossMark() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      aria-hidden="true"
-      className="absolute animate-[twinkle_3.2s_ease-in-out_infinite] text-gold-200 drop-shadow-[0_0_6px_rgb(242_213_138/0.9)]"
-      style={{ left, top, animationDelay: delay }}
-    >
-      <path
-        fill="currentColor"
-        d="M12 0c.6 7 5 11.4 12 12-7 .6-11.4 5-12 12-.6-7-5-11.4-12-12C7 11.4 11.4 7 12 0Z"
-      />
+    <svg viewBox="0 0 24 24" className={`size-[1.15rem] ${GOLD}`} aria-hidden="true">
+      <path fill="currentColor" d="M10.6 1h2.8v6.2H19v2.8h-5.6V23h-2.8V10H5V7.2h5.6V1Z" />
     </svg>
   )
 }
 
+/** Flor-de-lis simplificada que fecha a faixa de nome. */
+function FleurMark() {
+  return (
+    <svg viewBox="0 0 24 24" className={`size-[1.1rem] ${GOLD}`} aria-hidden="true">
+      <g fill="currentColor">
+        <path d="M12 1.5c2.6 3.2 2.6 7.3 0 11.2-2.6-3.9-2.6-8 0-11.2Z" />
+        <path d="M3.5 6c4.2-.4 6.6 2.6 6.4 7.3C6.700 12.600 3.100 10.200 3.500 6Z" />
+        <path d="M20.500 6c-4.200-.4-6.600 2.600-6.400 7.300 3.200-.7 6.800-3.100 6.400-7.300Z" />
+        <path d="M6.500 14.500h11v2h-11z" />
+        <path d="M12 16.500c0 2.300-1 4.200-3.200 5.500 2.200 0 3.200-.5 3.200-1.200 0 .7 1 1.200 3.200 1.200-2.200-1.300-3.200-3.200-3.200-5.500Z" />
+      </g>
+    </svg>
+  )
+}
+
+const rule = (dir: 'l' | 'r') =>
+  `h-px w-[clamp(1.5rem,6svh,3.5rem)] bg-gradient-to-${dir} from-transparent to-gold-300/90`
+
 /**
- * Direção espiritual em destaque no banner: recorte da pessoa sobre uma aura dourada (raios, brilho e
- * estrelas), com a faixa "Direção espiritual · Nome" na base para que ela não fique flutuando.
- * No celular fica abaixo do texto; em telas largas ocupa a altura do banner, à direita.
+ * Direção espiritual em destaque no banner, como na arte de referência: recorte da pessoa encostado no
+ * pé do banner, com a faixa "Direção espiritual · Nome · Paróquia" sobre o tronco para que ela não
+ * fique flutuando. No celular fica abaixo do texto; em telas largas ocupa 88% da altura, à direita.
  */
 export function HeroDirectorFigure({
   director,
@@ -47,92 +46,44 @@ export function HeroDirectorFigure({
 }) {
   const { photo, parish } = director
   return (
-    <div className="relative mx-auto mt-2 h-[30rem] w-full max-w-sm lg:pointer-events-none lg:absolute lg:inset-x-0 lg:top-20 lg:bottom-[4.5rem] lg:mt-0 lg:h-auto lg:max-w-none">
-      <div className="relative mx-auto h-full w-full lg:max-w-[1360px] lg:px-8">
-        <figure className="absolute right-1/2 bottom-0 h-full w-[min(100%,20rem)] translate-x-1/2 lg:right-8 lg:w-auto lg:translate-x-0">
-          {/* Aura: raios e brilho dourado centrados na cabeça */}
-          <div
-            className="absolute top-[17%] left-1/2 aspect-square w-[260%] -translate-x-1/2 -translate-y-1/2 lg:w-[210%]"
-            aria-hidden="true"
-          >
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  'repeating-conic-gradient(from -4deg at 50% 50%, rgb(255 226 150 / 0.26) 0deg 2deg, transparent 2deg 10deg)',
-                maskImage: 'radial-gradient(circle, #000 0%, rgb(0 0 0 / 0.5) 22%, transparent 52%)',
-                WebkitMaskImage:
-                  'radial-gradient(circle, #000 0%, rgb(0 0 0 / 0.5) 22%, transparent 52%)',
-              }}
-            />
-            <div
-              className="absolute inset-[22%]"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, rgb(255 236 180 / 0.95) 0%, rgb(242 195 90 / 0.55) 18%, rgb(226 176 74 / 0.22) 42%, transparent 68%)',
-              }}
-            />
-          </div>
-
-          {/* Chão de luz sob a figura */}
-          <div
-            className="absolute inset-x-[-25%] bottom-[-6%] h-[26%]"
-            style={{
-              backgroundImage:
-                'radial-gradient(ellipse at 50% 100%, rgb(242 195 90 / 0.5) 0%, rgb(226 176 74 / 0.18) 45%, transparent 72%)',
-            }}
-            aria-hidden="true"
+    <div className="relative mx-auto mt-4 w-[min(100%,21rem)] lg:pointer-events-none lg:absolute lg:inset-0 lg:mx-0 lg:mt-0 lg:w-auto">
+      <figure className="relative lg:absolute lg:right-[1.5%] lg:bottom-0 lg:aspect-[1280/1654] lg:h-[88%]">
+        <div className="relative aspect-[1280/1654] w-full lg:absolute lg:inset-0 lg:aspect-auto">
+          <Image
+            src={photo.src}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 660px, 336px"
+            // No celular a figura termina acima da faixa de nome (que fica no fluxo); no desktop encosta no pé do banner.
+            className="object-contain object-bottom max-lg:[mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]"
           />
-
-          <div className="absolute inset-0" aria-hidden="true">
-            {SPARKLES.map((s) => (
-              <Sparkle key={s.left + s.top} {...s} />
-            ))}
-          </div>
-
-          {/* O filtro fica no invólucro: a máscara de baixo corta só a figura, e o contorno dourado acompanha a silhueta. */}
-          <div
-            className="relative h-full"
-            style={{
-              aspectRatio: `${photo.width} / ${photo.height}`,
-              filter:
-                'drop-shadow(0 0 1.5px rgb(255 232 175 / 0.95)) drop-shadow(0 0 20px rgb(226 176 74 / 0.55)) brightness(1.1) contrast(1.04)',
-            }}
-          >
-            <Image
-              src={photo.src}
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 460px, 320px"
-              className="object-contain object-bottom"
-              style={{
-                maskImage: 'linear-gradient(to bottom, #000 0%, #000 74%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 74%, transparent 100%)',
-              }}
-            />
-          </div>
-
-          <figcaption className="absolute inset-x-[-12%] bottom-[1%] flex flex-col items-center text-center">
-            <span className="flex w-full items-center justify-center gap-3 text-gold-300" aria-hidden="true">
-              <span className="h-px w-10 bg-gradient-to-r from-transparent to-gold-300" />
-              <Cross className="size-4" strokeWidth={2.2} />
-              <span className="h-px w-10 bg-gradient-to-l from-transparent to-gold-300" />
-            </span>
-            <span className="mt-2 font-label text-[0.7rem] font-semibold tracking-[0.32em] text-gold-200 uppercase sm:text-xs">
+        </div>
+        <figcaption className="relative -mx-[10%] -mt-[22%] flex flex-col items-center text-center [text-shadow:0_2px_14px_rgb(0_0_0/0.65)] lg:absolute lg:inset-x-[-6%] lg:bottom-[5.25rem] lg:mx-0 lg:mt-0">
+          <CrossMark />
+          <span className="mt-[0.35em] flex items-center gap-3">
+            <span className={rule('r')} aria-hidden="true" />
+            <span className="font-label text-[0.72rem] font-medium tracking-[0.26em] whitespace-nowrap lg:text-[clamp(0.7rem,2.1svh,1.2rem)] lg:tracking-[0.3em] text-gold-300 uppercase">
               {role}
             </span>
-            <span className="mt-1 font-display text-[1.7rem] leading-tight text-white drop-shadow-[0_2px_10px_rgb(4_26_54/0.9)] sm:text-3xl">
-              {name}
+            <span className={rule('l')} aria-hidden="true" />
+          </span>
+          <span className="mt-1 font-display text-[1.6rem] leading-[1.1] whitespace-nowrap lg:text-[clamp(1.5rem,3.7svh,2.45rem)] font-normal tracking-[-0.01em] text-white">
+            {name}
+          </span>
+          {parish?.length ? (
+            <span className="mt-[0.5em] flex flex-col font-label text-[clamp(0.6rem,1.45svh,0.8rem)] font-medium tracking-[0.2em] text-white/85 uppercase">
+              {parish.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
             </span>
-            {parish ? (
-              <span className="mt-1 font-label text-[0.65rem] font-medium tracking-[0.2em] text-white/80 uppercase">
-                {parish}
-              </span>
-            ) : null}
-            <span className="mt-3 h-px w-3/5 bg-gradient-to-r from-transparent via-gold-300/80 to-transparent" aria-hidden="true" />
-          </figcaption>
-        </figure>
-      </div>
+          ) : null}
+          <span className="mt-3 flex items-center gap-3" aria-hidden="true">
+            <span className={rule('r')} />
+            <FleurMark />
+            <span className={rule('l')} />
+          </span>
+        </figcaption>
+      </figure>
     </div>
   )
 }
