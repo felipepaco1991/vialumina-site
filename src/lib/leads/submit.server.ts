@@ -5,13 +5,13 @@ import type { Where } from 'payload'
 import { getPayloadClient } from '@/lib/payload'
 import { getSiteSettings } from '@/lib/settings.server'
 import { SITE_URL } from '@/lib/site-url'
-import { AGENCY_INTERESTS, AGENCY_PROFILES, PRIEST_INTERESTS, PRIVACY_NOTICE_VERSION, SOURCE_BY_TYPE, destinationLabel, periodLabel, type LeadType } from './constants'
+import { AGENCY_INTERESTS, AGENCY_PROFILES, LEADER_REACH, LEADER_ROLES, PRIEST_INTERESTS, PRIVACY_NOTICE_VERSION, SOURCE_BY_TYPE, destinationLabel, periodLabel, type LeadType } from './constants'
 import { dispatchLeadEvent } from './integrations.server'
 import { normalizeInstagram, normalizeUrl, onlyDigits, toStoredPhone } from './masks'
 import { sendConfirmation, sendInternalNotification, smtpConfigured } from './notify.server'
 import { rateLimited } from './rate-limit'
 import { leadRecipients } from './recipients.server'
-import { agencySchema, pilgrimSchema, priestSchema, type LeadResult } from './schemas'
+import { agencySchema, leaderSchema, pilgrimSchema, priestSchema, type LeadResult } from './schemas'
 import { verifyTurnstile } from './turnstile.server'
 import { sanitizeUtm } from './utm'
 
@@ -25,7 +25,7 @@ export type SubmitContext = { ip: string; now?: number }
 
 const labelOf = (list: readonly { value: string; label: string }[], v: string) => list.find((o) => o.value === v)?.label ?? v
 
-const SCHEMAS = { PADRE: priestSchema, AGENCIA: agencySchema, PEREGRINO: pilgrimSchema } as const
+const SCHEMAS = { PADRE: priestSchema, AGENCIA: agencySchema, FORMADOR: leaderSchema, PEREGRINO: pilgrimSchema } as const
 
 type Normalized = {
   name: string
@@ -34,8 +34,8 @@ type Normalized = {
   city: string
   state: string
   destinations: string[]
-  profileCollection: 'priest-profiles' | 'agency-profiles' | 'pilgrim-profiles'
-  profileField: 'priestProfile' | 'agencyProfile' | 'pilgrimProfile'
+  profileCollection: 'priest-profiles' | 'agency-profiles' | 'leader-profiles' | 'pilgrim-profiles'
+  profileField: 'priestProfile' | 'agencyProfile' | 'leaderProfile' | 'pilgrimProfile'
   profile: Record<string, unknown>
   summary: [string, string][]
   common: { sourcePage: string; entryPoint: string; utm: Record<string, string>; consentMarketing: boolean }
@@ -68,6 +68,18 @@ function normalize(type: LeadType, d: any): Normalized {
         tenure: d.tenure || undefined, worksWithReligious: d.worksWithReligious || undefined, volume: d.volume || undefined, destinations: d.destinations, message: d.message || undefined,
       },
       summary: [['Razão social', d.legalName], ['Nome fantasia', d.tradeName], ['CNPJ', d.cnpj || '-'], ['Cargo', d.contactRole], ['Perfil', labelOf(AGENCY_PROFILES, d.profile)], ['Interesse', labelOf(AGENCY_INTERESTS, d.interest)], ['Cadastur', d.cadastur || '-'], ['Destinos', dests || '-']],
+    }
+  }
+  if (type === 'FORMADOR') {
+    return {
+      name: d.fullName, email: d.email, phone, city: d.city, state: d.state, destinations: d.destinations, common,
+      profileCollection: 'leader-profiles', profileField: 'leaderProfile',
+      profile: {
+        community: d.community, role: d.role, roleDetail: d.roleDetail || undefined, instagram: d.instagram ? normalizeInstagram(d.instagram) : undefined,
+        reach: d.reach || undefined, hasOrganized: d.hasOrganized || undefined, hasSpiritualGuide: d.hasSpiritualGuide || undefined,
+        groupSize: d.groupSize || undefined, destinations: d.destinations, travelPeriod: d.travelPeriod || undefined, message: d.message || undefined,
+      },
+      summary: [['Comunidade/movimento', d.community], ['Atuação', labelOf(LEADER_ROLES, d.role)], ['Alcance', d.reach ? labelOf(LEADER_REACH, d.reach) : '-'], ['Instagram', d.instagram || '-'], ['Destinos', dests || '-'], ['Período', d.travelPeriod ? periodLabel(d.travelPeriod) : '-']],
     }
   }
   return {

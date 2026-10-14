@@ -4,7 +4,15 @@ import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/components/ui/Icons'
 import type { SiteSettingsData } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
-import { NAV_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
+import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, signupItems } from '@/lib/nav'
+
+const SIGNUP_LINKS = signupItems('rodape')
+
+/** Logos brancas dos parceiros (altura uniforme; levam às páginas de parceria). */
+const PARTNERS = [
+  { name: 'Crescer — Encontro Nacional da Família Católica', src: '/assets/logos/crescer-branco.webp', width: 733, height: 158, href: '/promocoes/crescer' },
+  { name: 'Trivva', src: '/assets/logos/trivva-branco.webp', width: 1598, height: 376, href: '/promocoes/trivva' },
+] as const
 
 export function Footer({ settings }: { settings: SiteSettingsData }) {
   const a = settings.address
@@ -18,7 +26,7 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
         className="pointer-events-none absolute -top-24 -right-24 w-[340px] opacity-[0.07] select-none"
         aria-hidden="true"
       />
-      <div className="container-site relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr] lg:py-20">
+      <div className="container-site relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.15fr_1.1fr_0.7fr_1fr] lg:gap-10 lg:py-20">
         <div className="space-y-6">
           <Image src="/assets/logos/via-lumina-logo-branco.webp" alt="Via Lumina — viagens de fé" width={220} height={90} className="h-auto w-[200px]" />
           <p className="max-w-sm text-[0.95rem] leading-relaxed text-white/70">
@@ -81,7 +89,7 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
         <div>
           <h2 className="eyebrow-light mb-5 font-label">Navegue</h2>
           <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[0.95rem] lg:grid-cols-1">
-            {NAV_ITEMS.map((item) => (
+            {[...NAV_ITEMS, CONTACT_ITEM].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition hover:text-gold-200">
                   {item.label}
@@ -94,7 +102,20 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
               </Link>
             </li>
           </ul>
-          <h2 className="eyebrow-light mt-8 mb-4 font-label">Cadastre-se</h2>
+        </div>
+
+        <div>
+          <h2 className="eyebrow-light mb-5 font-label">Parcerias</h2>
+          <ul className="space-y-3 text-[0.95rem]">
+            {PARTNERSHIP_ITEMS.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="transition hover:text-gold-200">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h2 className="eyebrow-light mt-10 mb-5 font-label">Cadastre-se</h2>
           <ul className="space-y-3 text-[0.95rem]">
             {SIGNUP_LINKS.map((item) => (
               <li key={item.href}>
@@ -103,6 +124,26 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="container-site flex flex-col items-center gap-6 py-10 sm:flex-row sm:gap-10">
+          <h2 className="eyebrow-light font-label">Nossos parceiros</h2>
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:justify-start">
+            {PARTNERS.map((p) => {
+              const logo = (
+                <Image src={p.src} alt={p.name} width={p.width} height={p.height} className="h-10 w-auto sm:h-12" />
+              )
+              return (
+                <li key={p.name}>
+                  <Link href={p.href} className="block opacity-90 transition hover:opacity-100">
+                    {logo}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>

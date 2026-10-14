@@ -41,7 +41,7 @@ export const SiteSettings: GlobalConfig = {
               ],
             },
             { name: 'email', label: 'E-mail institucional', type: 'email', defaultValue: 'contato@vialuminaviagens.com.br' },
-            { name: 'hours', label: 'Horário de atendimento', type: 'text', defaultValue: 'Seg. a Sáb. 8h - 18h' },
+            { name: 'hours', label: 'Horário de atendimento', type: 'text', defaultValue: 'Seg. a Sex. 8h - 18h' },
             {
               name: 'address',
               label: 'Endereço',
@@ -95,6 +95,7 @@ export const SiteSettings: GlobalConfig = {
               fields: [
                 { name: 'leadRecipientsPadres', label: 'Substituir destinatários · padres (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
                 { name: 'leadRecipientsAgencias', label: 'Substituir destinatários · agências (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
+                { name: 'leadRecipientsFormadores', label: 'Substituir destinatários · formadores (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
                 { name: 'leadRecipientsPeregrinos', label: 'Substituir destinatários · peregrinos (opcional)', type: 'text', hasMany: true, validate: validateEmails, admin: { description: 'Deixe vazio para usar o padrão do site. Se preencher, só estes e-mails recebem (sem cópia).' } },
               ],
             },

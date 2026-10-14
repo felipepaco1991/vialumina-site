@@ -18,7 +18,7 @@ Reconstrução do site [vialuminaviagens.com.br](https://vialuminaviagens.com.br
 | `/destinos/[slug]` | Página do roteiro: resumo, direção espiritual, destaques, galeria com lightbox, programação dia a dia, incluído/não incluído, valores e condições, PDF, contato contextualizado, relacionados |
 | `/quem-somos`, `/nossa-historia` | Páginas institucionais |
 | `/contato` | Canais oficiais, mapa sob demanda e formulário real |
-| `/cadastro`, `/cadastro/padres`, `/cadastro/agencias`, `/cadastro/peregrinos` | Landing pages de cadastro (padres, agências, peregrinos) — ver [docs/cadastros-e-parcerias.md](docs/cadastros-e-parcerias.md) |
+| `/cadastro`, `/cadastro/padres`, `/cadastro/agencias` | Landing pages de cadastro (padres, agências); o cadastro de peregrinos é o painel “Cadastre-se” em `/contato` (`/cadastro/peregrinos` redireciona) — ver [docs/cadastros-e-parcerias.md](docs/cadastros-e-parcerias.md) |
 | `/politica-de-privacidade`, `/links` | Política (texto-base para revisão jurídica) e página de links da bio do Instagram |
 | `/admin`, `/admin/cadastros` | Painel administrativo e visão “Cadastros e Parcerias” |
 

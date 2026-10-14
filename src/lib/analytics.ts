@@ -10,19 +10,27 @@ export type AnalyticsEvent =
   | 'info_request'
   | 'pdf_download'
   | 'form_submit'
-  // Landing pages de cadastro (padres, agências, peregrinos)
+  // Landing pages de cadastro (padres, agências, formadores, peregrinos)
   | 'view_lp_padres'
   | 'view_lp_agencias'
+  | 'view_lp_formadores'
   | 'view_lp_peregrinos'
   | 'start_form_padres'
   | 'start_form_agencias'
+  | 'start_form_formadores'
   | 'start_form_peregrinos'
   | 'submit_form_padres'
   | 'submit_form_agencias'
+  | 'submit_form_formadores'
   | 'submit_form_peregrinos'
   | 'form_error'
   | 'click_whatsapp'
   | 'click_destinos'
+  | 'click_cadastre_se'
+  // Promoções e parcerias (banners da home e páginas /promocoes/*)
+  | 'view_promo_trivva'
+  | 'view_promo_crescer'
+  | 'promo_click'
 
 type Params = Record<string, string | number | boolean | undefined>
 

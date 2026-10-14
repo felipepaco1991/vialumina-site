@@ -22,7 +22,7 @@ export async function BeforeDashboard({ payload }: { payload: Payload }) {
     { label: 'Valores ocultos (aguardando aprovação comercial)', value: hiddenPrices.totalDocs, href: '/admin/collections/trips', tone: hiddenPrices.totalDocs ? 'warn' : 'ok' },
     { label: 'Botões apontando para o site antigo', value: legacyLinks.totalDocs, href: '/admin/collections/trips', tone: legacyLinks.totalDocs ? 'warn' : 'ok' },
     { label: 'Solicitações novas', value: newInquiries.totalDocs, href: '/admin/collections/inquiries?where[status][equals]=novo', tone: newInquiries.totalDocs ? 'warn' : 'ok' },
-    { label: 'Cadastros novos (padres, agências, peregrinos)', value: newLeads.totalDocs, href: '/admin/cadastros', tone: newLeads.totalDocs ? 'warn' : 'ok' },
+    { label: 'Cadastros novos (padres, agências, formadores, peregrinos)', value: newLeads.totalDocs, href: '/admin/cadastros', tone: newLeads.totalDocs ? 'warn' : 'ok' },
     { label: 'Cadastros com possível duplicidade', value: duplicateLeads.totalDocs, href: '/admin/cadastros?dup=1', tone: duplicateLeads.totalDocs ? 'warn' : 'ok' },
   ]
 

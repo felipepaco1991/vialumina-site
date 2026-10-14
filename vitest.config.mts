@@ -5,7 +5,14 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
-  resolve: { alias: { 'server-only': path.resolve(__dirname, 'tests/helpers/server-only-stub.ts') } },
+  resolve: {
+    alias: {
+      'server-only': path.resolve(__dirname, 'tests/helpers/server-only-stub.ts'),
+      // O tsconfig.json da Hostinger inclui só src/**; os testes ficam fora dele, então os aliases são declarados aqui.
+      '@payload-config': path.resolve(__dirname, 'src/payload.config.ts'),
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
   test: {
     environment: 'node',
     setupFiles: ['./vitest.setup.ts'],

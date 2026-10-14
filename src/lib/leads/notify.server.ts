@@ -37,7 +37,7 @@ export async function sendInternalNotification(args: { to: string[]; cc?: string
 /** Confirmação opcional ao cadastrado — só enviada quando habilitada nas configurações e com SMTP pronto. */
 export async function sendConfirmation(args: { to: string; name: string; type: LeadType; unsubscribeUrl?: string }) {
   const first = args.name.split(' ')[0]
-  const what = { PADRE: 'seu interesse em conhecer a parceria', AGENCIA: 'o interesse em conhecer as oportunidades de parceria', PEREGRINO: 'seu interesse nas peregrinações' }[args.type]
+  const what = { PADRE: 'seu interesse em conhecer a parceria', AGENCIA: 'o interesse em conhecer as oportunidades de parceria', FORMADOR: 'seu interesse em reunir um grupo de peregrinos', PEREGRINO: 'seu interesse nas peregrinações' }[args.type]
   const footer = args.unsubscribeUrl ? `\n\nPara deixar de receber comunicações promocionais: ${args.unsubscribeUrl}` : ''
   await transporter().sendMail({
     from: process.env.SMTP_FROM || process.env.SMTP_USER,

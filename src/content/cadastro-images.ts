@@ -20,6 +20,10 @@ export const LANDING_IMAGES = {
     ai: { src: '/assets/cadastro/agencias-hero.webp', alt: 'Ilustração criada por inteligência artificial: consultores de turismo analisando roteiros em um notebook, em escritório contemporâneo' },
     fallback: { src: '/assets/destinos/portugal-italia-vaticano/hero.webp', alt: 'Basílica de São Pedro e a cidade do Vaticano', position: '55% 40%' },
   },
+  formadores: {
+    ai: { src: '/assets/cadastro/formadores-hero.webp', alt: 'Ilustração criada por inteligência artificial: grupo de pessoas conversando animadamente em frente a uma igreja' },
+    fallback: { src: '/assets/destinos/aparecida-agosto-2027/hero.webp', alt: 'Santuário Nacional de Aparecida, no interior de São Paulo', position: 'center 40%' },
+  },
   peregrinos: {
     ai: { src: '/assets/cadastro/peregrinos-hero.webp', alt: 'Ilustração criada por inteligência artificial: peregrinos adultos de diferentes idades diante de um santuário, em luz natural' },
     // Hero imersivo (largura total): precisa de uma foto larga; a de "Quem somos" é quadrada.

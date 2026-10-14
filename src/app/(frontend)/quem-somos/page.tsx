@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { Differentials } from '@/components/home/Differentials'
 import { ValuesSection } from '@/components/home/ValuesSection'
 import { PageCta } from '@/components/institutional/PageCta'
 import { PartnershipInvite } from '@/components/institutional/SignupInvites'
 import { PageHero } from '@/components/layout/PageHero'
+import { ButtonLink } from '@/components/ui/Button'
 import { Reveal } from '@/components/ui/Reveal'
 import { ABOUT, ARBO, PILLARS } from '@/content/institutional'
 import { getSiteSettings } from '@/lib/settings.server'
@@ -44,6 +46,9 @@ export default async function QuemSomosPage() {
               <p>{PILLARS[0].text}</p>
             </div>
             <blockquote className="mt-9 border-l-[3px] border-gold-500 pl-6 font-display text-[1.5rem] leading-snug text-navy-900 italic">{ABOUT.paragraphs[2]}</blockquote>
+            <ButtonLink href="/nossa-historia" variant="outline" className="mt-9" iconAfter={<ArrowRight className="size-4" aria-hidden="true" />}>
+              Conheça a nossa história
+            </ButtonLink>
           </Reveal>
           <Reveal delay={0.1} className="relative mx-auto w-full max-w-[500px]">
             <div className="absolute -right-6 -bottom-6 size-44 rounded-full bg-gold-100" aria-hidden="true" />
@@ -59,7 +64,24 @@ export default async function QuemSomosPage() {
         </div>
       </section>
 
-      <Differentials />
+      <section aria-labelledby="missao-titulo" className="bg-cream-50 pt-20 pb-14 sm:pt-24">
+        <div className="container-site">
+          <Reveal className="mb-10">
+            <p className="eyebrow mb-3">Para onde caminhamos</p>
+            <h2 id="missao-titulo" className="title-rule text-[2rem] leading-tight font-medium sm:text-[2.6rem]">
+              Nossa missão e nossa visão
+            </h2>
+          </Reveal>
+          <div className="grid gap-6 md:grid-cols-2">
+            {PILLARS.slice(1).map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.08} className="rounded-[var(--radius-panel)] bg-white p-9 shadow-soft ring-1 ring-navy-900/5 sm:p-11">
+                <h3 className="font-label text-sm font-bold tracking-[0.18em] text-gold-700 uppercase">{p.title}</h3>
+                <p className="mt-4 font-display text-[1.4rem] leading-snug text-navy-900">{p.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section aria-labelledby="arbo-titulo" className="bg-cream-50 pb-24">
         <div className="container-site">
@@ -92,7 +114,9 @@ export default async function QuemSomosPage() {
       </section>
 
       <ValuesSection />
-      <div className="h-24 bg-cream-50" aria-hidden="true" />
+
+      <Differentials />
+
       <PartnershipInvite />
       <PageCta whatsappHref={wa} />
     </>

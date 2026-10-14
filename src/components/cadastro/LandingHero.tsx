@@ -1,7 +1,7 @@
 import { existsSync } from 'fs'
 import Image from 'next/image'
 import path from 'path'
-import { ArrowDown, BadgeCheck, Building2, Church, Compass } from 'lucide-react'
+import { ArrowDown, BadgeCheck, Building2, Church, Compass, UsersRound } from 'lucide-react'
 import { Breadcrumbs, type Crumb } from '@/components/layout/Breadcrumbs'
 import { LANDING_IMAGES, type LandingImageKey } from '@/content/cadastro-images'
 import { HeroMotion, HeroMotionItem } from './motion'
@@ -13,12 +13,13 @@ function resolveImage(key: LandingImageKey) {
   return aiExists ? { ...spec.ai, position: 'center', isAi: true } : { ...spec.fallback, position: spec.fallback.position ?? 'center', isAi: false }
 }
 
-type Variant = 'padres' | 'agencias' | 'peregrinos'
+type Variant = 'padres' | 'agencias' | 'formadores' | 'peregrinos'
 
 /** Selo que diz, de relance, a quem se destina o cadastro. */
 const AUDIENCE = {
   padres: { label: 'Cadastro para padres', Icon: Church },
   agencias: { label: 'Cadastro para agências', Icon: Building2 },
+  formadores: { label: 'Cadastro para formadores', Icon: UsersRound },
   peregrinos: { label: 'Cadastro de clientes · Peregrinos', Icon: Compass },
 } as const
 
@@ -63,10 +64,10 @@ function AiCaption({ show, className = '' }: { show: boolean; className?: string
 }
 
 /**
- * Hero das três landing pages de cadastro. Mesmo conteúdo e mesma paleta (azul, branco e dourado da marca),
+ * Hero das landing pages de cadastro. Mesmo conteúdo e mesma paleta (azul, branco e dourado da marca),
  * com composições diferentes para que cada público reconheça a sua página de relance:
  *  - padres: arco (janela de igreja) com moldura dourada;
- *  - agencias: fotografia em faixa lateral e barra branca de credenciais;
+ *  - agencias e formadores: fotografia em faixa lateral e barra branca de credenciais;
  *  - peregrinos: fotografia de fundo, texto centralizado (a porta principal do site).
  */
 export function LandingHero({ variant, imageKey, eyebrow, title, text, cta, crumbs, trust }: Props) {
@@ -118,7 +119,7 @@ export function LandingHero({ variant, imageKey, eyebrow, title, text, cta, crum
     )
   }
 
-  if (variant === 'agencias') {
+  if (variant === 'agencias' || variant === 'formadores') {
     return (
       <section className="relative isolate overflow-hidden bg-navy-950 text-white">
         <div className={`relative lg:min-h-[640px] ${NAVY}`}>

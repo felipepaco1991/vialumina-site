@@ -8,17 +8,21 @@ import { useEffect, useRef, useState } from 'react'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
-import { NAV_ITEMS, PARTNERSHIP_ITEMS, SIGNUP_ITEM } from '@/lib/nav'
+import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, signupItems } from '@/lib/nav'
 
 
 const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`))
 
 
-/** Menu suspenso "Parcerias": abre por clique/teclado (e ao passar o mouse), fecha com Esc ou clique fora. */
-function PartnershipMenu({ pathname, solid }: { pathname: string; solid: boolean }) {
+type MenuItem = { href: string; path: string; label: string }
+
+const SIGNUP_ITEMS = signupItems('menu')
+
+/** Menu suspenso ("Parcerias", "Cadastre-se"): abre por clique/teclado (e ao passar o mouse), fecha com Esc ou clique fora. */
+function DropdownMenu({ label, items, pathname, solid, width = 'w-52' }: { label: string; items: readonly MenuItem[]; pathname: string; solid: boolean; width?: string }) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLLIElement>(null)
-  const active = PARTNERSHIP_ITEMS.some((i) => isActive(pathname, i.path))
+  const active = items.some((i) => isActive(pathname, i.path))
 
   useEffect(() => {
     if (!open) return
@@ -33,7 +37,7 @@ function PartnershipMenu({ pathname, solid }: { pathname: string; solid: boolean
   }, [open])
 
   return (
-    <li ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <li ref={ref} className="relative flex items-center" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <button
         type="button"
         aria-expanded={open}
@@ -45,14 +49,14 @@ function PartnershipMenu({ pathname, solid }: { pathname: string; solid: boolean
           solid ? 'text-navy-900 hover:text-gold-700' : 'text-white/90 hover:text-white',
         )}
       >
-        Parcerias
+        {label}
         <ChevronDown className={cn('size-3.5 transition-transform', open && 'rotate-180')} aria-hidden="true" />
         <span aria-hidden="true" className={cn('absolute inset-x-2.5 -bottom-0.5 xl:inset-x-4 h-0.5 origin-left rounded-full bg-gold-500 transition-transform duration-500', active ? 'scale-x-100' : 'scale-x-0')} />
       </button>
       {open ? (
-        <div className="absolute top-full left-0 z-10 w-52 pt-2">
+        <div className={cn('absolute top-full left-0 z-10 pt-2', width)}>
           <ul className="overflow-hidden rounded-2xl bg-white py-2 shadow-deep ring-1 ring-navy-900/10">
-            {PARTNERSHIP_ITEMS.map((item) => (
+            {items.map((item) => (
               <li key={item.path}>
                 <Link
                   href={item.href}
@@ -77,6 +81,17 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [heroTone, setHeroTone] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Na home, o carrossel marca o slide ativo claro (data-hero-tone) e o cabeçalho passa a ser branco.
+    const root = document.documentElement
+    const sync = () => setHeroTone(root.dataset.heroTone ?? null)
+    sync()
+    const observer = new MutationObserver(sync)
+    observer.observe(root, { attributes: true, attributeFilter: ['data-hero-tone'] })
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -91,13 +106,19 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
     setOpen(false)
   }
 
-  const solid = scrolled || open
+  // Slide claro: cabeçalho branco. Slide roxo (Crescer): faixa roxa com o texto branco, como na arte.
+  const solid = scrolled || open || heroTone === 'light'
+  const purple = !solid && heroTone === 'purple'
 
   return (
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500',
-        solid ? 'bg-white/95 shadow-[0_8px_30px_rgb(10_46_92/0.08)] backdrop-blur-md' : 'bg-gradient-to-b from-navy-950/55 to-transparent',
+        solid
+          ? 'bg-white/95 shadow-[0_8px_30px_rgb(10_46_92/0.08)] backdrop-blur-md'
+          : purple
+            ? 'bg-[#28055f] shadow-[inset_0_6px_0_#511b8e]'
+            : 'bg-gradient-to-b from-navy-950/55 to-transparent',
       )}
     >
       <div className="container-site flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
@@ -125,12 +146,12 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
             {NAV_ITEMS.map((item) => {
               const active = isActive(pathname, item.href)
               return (
-                <li key={item.href}>
+                <li key={item.href} className="flex items-center">
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
+                      'relative inline-flex items-center rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
                       solid ? 'text-navy-900 hover:text-gold-700' : 'text-white/90 hover:text-white',
                     )}
                   >
@@ -146,17 +167,25 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                 </li>
               )
             })}
-            <PartnershipMenu pathname={pathname} solid={solid} />
-            <li>
+            <DropdownMenu label="Parcerias" items={PARTNERSHIP_ITEMS} pathname={pathname} solid={solid} width="w-64" />
+            <DropdownMenu label="Cadastre-se" items={SIGNUP_ITEMS} pathname={pathname} solid={solid} width="w-64" />
+            <li className="flex items-center">
               <Link
-                href={SIGNUP_ITEM.href}
-                aria-current={isActive(pathname, SIGNUP_ITEM.path) ? 'page' : undefined}
+                href={CONTACT_ITEM.href}
+                aria-current={isActive(pathname, CONTACT_ITEM.href) ? 'page' : undefined}
                 className={cn(
-                  'ml-1 inline-flex items-center rounded-full border px-3 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
-                  solid ? 'border-gold-500 text-navy-900 hover:bg-gold-100' : 'border-gold-300/80 text-white hover:bg-white/10',
+                  'relative inline-flex items-center rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
+                  solid ? 'text-navy-900 hover:text-gold-700' : 'text-white/90 hover:text-white',
                 )}
               >
-                {SIGNUP_ITEM.label}
+                {CONTACT_ITEM.label}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    'absolute inset-x-2.5 -bottom-0.5 xl:inset-x-4 h-0.5 origin-left rounded-full bg-gold-500 transition-transform duration-500 ease-[var(--ease-out-soft)]',
+                    isActive(pathname, CONTACT_ITEM.href) ? 'scale-x-100' : 'scale-x-0',
+                  )}
+                />
               </Link>
             </li>
           </ul>
@@ -233,12 +262,30 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                       </li>
                     ))}
                   </ul>
+                  <p className="eyebrow mt-6 mb-2 px-4">Cadastre-se</p>
+                  <ul className="space-y-1">
+                    {SIGNUP_ITEMS.map((item) => (
+                      <li key={item.path}>
+                        <Link
+                          href={item.href}
+                          aria-current={isActive(pathname, item.path) ? 'page' : undefined}
+                          className={cn('flex items-center rounded-2xl px-4 py-3 font-display text-xl transition-colors', isActive(pathname, item.path) ? 'bg-navy-900 text-white' : 'text-navy-900 hover:bg-navy-900/5')}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                   <Link
-                    href={SIGNUP_ITEM.href}
-                    aria-current={isActive(pathname, SIGNUP_ITEM.path) ? 'page' : undefined}
-                    className="mt-5 flex items-center justify-center rounded-full border border-gold-500 px-4 py-3.5 font-label text-sm font-semibold text-navy-900 transition-colors hover:bg-gold-100"
+                    href={CONTACT_ITEM.href}
+                    aria-current={isActive(pathname, CONTACT_ITEM.href) ? 'page' : undefined}
+                    className={cn(
+                      'mt-5 flex items-center justify-between rounded-2xl px-4 py-3.5 font-display text-2xl transition-colors',
+                      isActive(pathname, CONTACT_ITEM.href) ? 'bg-navy-900 text-white' : 'text-navy-900 hover:bg-navy-900/5',
+                    )}
                   >
-                    {SIGNUP_ITEM.label} · Para Peregrinos
+                    {CONTACT_ITEM.label}
+                    {isActive(pathname, CONTACT_ITEM.href) ? <span className="size-2 rounded-full bg-gold-300" aria-hidden="true" /> : null}
                   </Link>
                 </nav>
                 <div className="space-y-3 border-t border-navy-900/10 p-5">

@@ -40,6 +40,8 @@ export type TripCardData = {
   href: string
   external: boolean
   image: ImageData | null
+  /** Arte de divulgação (pôster) — a mesma peça exibida nos cards do site Via Lumina. */
+  cardArt: ImageData | null
   regions: string[]
   countries: string[]
   cities: string[]
@@ -75,7 +77,6 @@ export type TripDetailData = TripCardData & {
   guidance: { eyebrow: string | null; heading: string | null; lead: string | null; points: string[] }
   highlights: { heading: string | null; intro: string | null; cards: { place: string | null; title: string; text: string | null }[] }
   gallery: { eyebrow: string | null; heading: string | null; items: (ImageData & { place: string | null; title: string | null })[] }
-  cardArt: ImageData | null
   itinerary: ItineraryDay[]
   packageSummary: { heading: string | null; text: string | null; tags: string[] }
   included: { title: string; items: string[] }
@@ -148,6 +149,7 @@ export function toCard(trip: Trip): TripCardData {
     href: external ? trip.legacyUrl! : internal,
     external,
     image: toImage(trip.featuredImage, trip.title),
+    cardArt: toImage(trip.cardArt, `Arte de divulgação — ${trip.title}`),
     regions: strings(trip.regions),
     countries,
     cities,
@@ -220,7 +222,6 @@ export function toDetail(trip: Trip): TripDetailData {
         return img ? [{ ...img, place: it.place ?? null, title: it.title ?? null }] : []
       }),
     },
-    cardArt: toImage(trip.cardArt, `Arte de divulgação — ${trip.title}`),
     itinerary: (trip.itinerary ?? []).map((d) => ({
       day: d.day,
       dateLabel: d.dateLabel ?? null,

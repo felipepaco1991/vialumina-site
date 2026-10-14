@@ -35,6 +35,7 @@ export const cardFixtures: TripCardData[] = migratedTrips.map((t, i) => ({
   href: t.legacyUrl,
   external: true,
   image: null,
+  cardArt: null,
   regions: t.regions,
   countries: t.countries,
   cities: t.cities,

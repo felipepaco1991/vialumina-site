@@ -1,7 +1,7 @@
 'use server'
 import { headers } from 'next/headers'
 import type { LeadType } from '@/lib/leads/constants'
-import type { AgencyInput, LeadResult, PilgrimInput, PriestInput } from '@/lib/leads/schemas'
+import type { AgencyInput, LeaderInput, LeadResult, PilgrimInput, PriestInput } from '@/lib/leads/schemas'
 import { submitLead, withdrawMarketingConsent } from '@/lib/leads/submit.server'
 
 /**
@@ -26,6 +26,7 @@ async function run(type: LeadType, input: unknown): Promise<LeadResult> {
 
 export const submitPriest = async (input: PriestInput) => run('PADRE', input)
 export const submitAgency = async (input: AgencyInput) => run('AGENCIA', input)
+export const submitLeader = async (input: LeaderInput) => run('FORMADOR', input)
 export const submitPilgrim = async (input: PilgrimInput) => run('PEREGRINO', input)
 
 export async function withdrawConsent(token: string) {

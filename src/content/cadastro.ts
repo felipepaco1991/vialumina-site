@@ -1,5 +1,5 @@
 /**
- * Textos das landing pages de cadastro (/cadastro/padres, /cadastro/agencias, /cadastro/peregrinos).
+ * Textos das landing pages de cadastro (/cadastro/padres, /cadastro/agencias, /cadastro/formadores, /cadastro/peregrinos).
  * Redação conforme o briefing; qualquer promessa comercial (comissão, gratuidade, exclusividade, preços)
  * depende de aprovação e NÃO deve ser acrescentada aqui sem validação da Via Lumina.
  */
@@ -63,6 +63,65 @@ export const PRIEST_PAGE = {
       { q: 'Preciso ter um grupo formado para fazer o cadastro?', a: 'Não. O cadastro também pode ser utilizado para conhecer possibilidades de peregrinação e conversar sobre uma futura organização.' },
       { q: 'É possível conversar sobre destinos específicos?', a: 'Sim. Informe os destinos de interesse para que a equipe possa avaliar as possibilidades disponíveis.' },
       { q: 'O cadastro significa que a parceria está confirmada?', a: 'Não. O cadastro representa uma manifestação de interesse. Qualquer parceria dependerá de avaliação e alinhamento posterior.' },
+    ] satisfies FaqItem[],
+  },
+}
+
+export const LEADER_PAGE = {
+  slug: 'formadores',
+  path: '/cadastro/formadores',
+  crumb: 'Formadores de Grupo',
+  meta: {
+    title: 'Seja um Formador de Grupo',
+    description:
+      'Você é uma liderança dentro da igreja e tem condições de reunir um grupo de peregrinos? Conheça a Via Lumina Viagens, cadastre seu interesse e converse com nossa equipe.',
+  },
+  hero: {
+    eyebrow: 'Para lideranças da comunidade',
+    title: 'Reúna seu grupo e caminhe com a Via Lumina.',
+    text: 'Se você é uma pessoa de referência na sua igreja, comunidade ou movimento e sonha em levar pessoas a um lugar sagrado, a Via Lumina Viagens cuida da organização para que você possa se dedicar ao grupo.',
+    cta: 'Quero formar um grupo',
+  },
+  about: {
+    title: 'Quem reúne as pessoas também faz a peregrinação acontecer.',
+    paragraphs: [
+      'Muitas peregrinações nascem da iniciativa de alguém que a comunidade já conhece e em quem confia: uma liderança de pastoral, de movimento, de grupo de oração ou um comunicador que caminha com as pessoas.',
+      'Se esse é o seu caso, podemos conversar sobre como reunir um grupo e viver essa jornada com planejamento, acompanhamento e cuidado em cada etapa.',
+      'Não é preciso ser padre ou pastor. O que importa é o desejo de conduzir pessoas ao encontro com Deus.',
+    ],
+  },
+  benefits: {
+    title: 'Você reúne as pessoas. Nós cuidamos do restante.',
+    items: [
+      { icon: 'planning', title: 'Planejamento especializado', text: 'Roteiros organizados com atenção aos deslocamentos, hospedagens, visitas e às necessidades do grupo.' },
+      { icon: 'support', title: 'Suporte durante a viagem', text: 'Estrutura de apoio e assistência durante toda a peregrinação, conforme cada pacote.' },
+      { icon: 'destinations', title: 'Destinos de espiritualidade', text: 'Peregrinações a Santuários e lugares de relevância religiosa no Brasil e no exterior.' },
+      { icon: 'experience', title: 'Experiência no turismo', text: 'A Via Lumina integra um grupo com mais de quatro décadas de trajetória no setor turístico.' },
+    ] satisfies Benefit[],
+  },
+  steps: {
+    title: 'Do primeiro contato à saída do grupo.',
+    items: [
+      { n: '01', title: 'Conte-nos sobre você e sua comunidade', text: 'Preencha o cadastro com sua atuação e com o grupo que você imagina reunir.' },
+      { n: '02', title: 'Converse com nossa equipe', text: 'A equipe da Via Lumina entra em contato para entender seu objetivo e apresentar destinos e formatos de viagem.' },
+      { n: '03', title: 'Construa a peregrinação do seu grupo', text: 'Havendo interesse e condições adequadas, a proposta poderá ser desenhada de acordo com as características do grupo.' },
+    ] satisfies Step[],
+  },
+  form: {
+    title: 'Vamos conversar sobre o seu grupo?',
+    description: 'Preencha seus dados para que nossa equipe conheça sua atuação e entre em contato. O cadastro é uma manifestação de interesse e não representa parceria confirmada.',
+    submit: 'Enviar meu interesse',
+    success: {
+      title: 'Cadastro recebido',
+      text: 'Recebemos seu cadastro. Agradecemos seu interesse em reunir um grupo com a Via Lumina Viagens. Nossa equipe poderá entrar em contato pelos canais informados.',
+    },
+  },
+  faq: {
+    title: 'Perguntas frequentes',
+    items: [
+      { q: 'Preciso ser padre ou pastor para me cadastrar?', a: 'Não. Este cadastro é para lideranças e pessoas de referência na comunidade que têm condições de reunir um grupo de peregrinos.' },
+      { q: 'Já preciso ter um grupo formado?', a: 'Não. Você pode se cadastrar para conhecer as possibilidades e conversar sobre como reunir o grupo.' },
+      { q: 'O cadastro significa que a parceria está confirmada?', a: 'Não. O cadastro representa uma manifestação de interesse. Qualquer parceria dependerá de avaliação e alinhamento posterior com a equipe.' },
     ] satisfies FaqItem[],
   },
 }
@@ -199,7 +258,7 @@ export const HUB = {
   crumb: 'Cadastro',
   meta: {
     title: 'Cadastre-se e Parcerias',
-    description: 'Cadastre-se na Via Lumina Viagens como peregrino, padre ou agência parceira e receba contato da nossa equipe.',
+    description: 'Cadastre-se na Via Lumina Viagens como peregrino, padre, formador de grupo ou agência parceira e receba contato da nossa equipe.',
   },
   title: 'Cadastre-se e conheça as parcerias',
   text: 'Escolha o cadastro que melhor representa você. Cada um leva a uma página com informações e um formulário próprio.',

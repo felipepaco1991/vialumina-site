@@ -1,6 +1,6 @@
 import type { Payload } from 'payload'
-import type { Lead, PriestProfile, AgencyProfile, PilgrimProfile } from '@/payload-types'
-import { destinationLabel, leadStatusLabel, leadTypeLabel, partnershipLabel, periodLabel, PRIEST_INTERESTS, AGENCY_PROFILES, AGENCY_INTERESTS } from './constants'
+import type { Lead, PriestProfile, AgencyProfile, LeaderProfile, PilgrimProfile } from '@/payload-types'
+import { destinationLabel, leadStatusLabel, leadTypeLabel, partnershipLabel, periodLabel, PRIEST_INTERESTS, AGENCY_PROFILES, AGENCY_INTERESTS, LEADER_ROLES, LEADER_REACH } from './constants'
 import { toCsv } from './csv'
 import { formatStoredPhone } from './masks'
 import { buildLeadsWhere, type LeadFilters } from './query'
@@ -18,6 +18,7 @@ export async function exportLeadsCsv(payload: Payload, filters: LeadFilters, use
   const extraHeaders = {
     PADRE: ['Nome de identificação', 'Diocese', 'Paróquia/comunidade', 'Função', 'Interesse principal', 'Já organizou peregrinação', 'Pessoas interessadas', 'Período previsto', 'Mensagem'],
     AGENCIA: ['Razão social', 'Nome fantasia', 'CNPJ', 'Cargo', 'Perfil de atuação', 'Interesse', 'Cadastur', 'Site', 'Instagram', 'Tempo de atuação', 'Já trabalha com turismo religioso', 'Volume', 'Mensagem'],
+    FORMADOR: ['Igreja/comunidade/movimento', 'Como atua', 'Função ou ministério', 'Instagram', 'Pessoas que alcança', 'Já organizou grupos', 'Já conta com assessor espiritual', 'Pessoas interessadas', 'Período previsto', 'Mensagem'],
     PEREGRINO: ['Quando pretende viajar', 'Embarque', 'Pessoas', 'Já fez peregrinação', 'Viajar com grupo da comunidade', 'Mensagem'],
   }[profileKind]
 
@@ -38,6 +39,11 @@ export async function exportLeadsCsv(payload: Payload, filters: LeadFilters, use
       const a = l.agencyProfile as AgencyProfile | null | undefined
       const o = typeof a === 'object' && a ? a : ({} as Partial<AgencyProfile>)
       return [...head, o.legalName ?? '', o.tradeName ?? '', o.cnpj ?? '', o.contactRole ?? '', label(AGENCY_PROFILES, o.profile), label(AGENCY_INTERESTS, o.interest), o.cadastur ?? '', o.website ?? '', o.instagram ?? '', o.tenure ?? '', yn(o.worksWithReligious), o.volume ?? '', o.message ?? '']
+    }
+    if (l.type === 'FORMADOR') {
+      const f = l.leaderProfile as LeaderProfile | null | undefined
+      const o = typeof f === 'object' && f ? f : ({} as Partial<LeaderProfile>)
+      return [...head, o.community ?? '', label(LEADER_ROLES, o.role), o.roleDetail ?? '', o.instagram ?? '', label(LEADER_REACH, o.reach), yn(o.hasOrganized), yn(o.hasSpiritualGuide), o.groupSize ?? '', o.travelPeriod ? periodLabel(o.travelPeriod) : '', o.message ?? '']
     }
     const g = l.pilgrimProfile as PilgrimProfile | null | undefined
     const o = typeof g === 'object' && g ? g : ({} as Partial<PilgrimProfile>)

@@ -1,0 +1,78 @@
+[
+  {
+    "source": "/elementor-pagina-899",
+    "destination": "/destinos/portugal-e-franca"
+  },
+  {
+    "source": "/elementor-pagina-942",
+    "destination": "/destinos/sao-paulo-aparecida-cancao-nova"
+  },
+  {
+    "source": "/mexicoguadalupe-e-cancun",
+    "destination": "/destinos/mexico-guadalupe-cancun-2027"
+  },
+  {
+    "source": "/rio-de-janeiro-e-aparecida",
+    "destination": "/destinos/rio-de-janeiro-aparecida"
+  },
+  {
+    "source": "/portugal-italia-e-vaticano",
+    "destination": "/destinos/portugal-italia-vaticano"
+  },
+  {
+    "source": "/santuarios-marianos",
+    "destination": "/destinos/santuarios-marianos-brasilia"
+  },
+  {
+    "source": "/santuarios-marianos-2",
+    "destination": "/destinos/santuarios-marianos-londrina"
+  },
+  {
+    "source": "/elementor-pagina-1071",
+    "destination": "/destinos/aparecida-agosto-2027"
+  },
+  {
+    "source": "/europa-sagrada",
+    "destination": "/destinos/europa-sagrada"
+  },
+  {
+    "source": "/santuarios-italianos-2",
+    "destination": "/destinos/santuarios-italianos"
+  },
+  {
+    "source": "/aparecida-do-norte-carlos",
+    "destination": "/destinos/aparecida-carlos-2027"
+  },
+  {
+    "source": "/santuarios-marianos-tito",
+    "destination": "/destinos/santuarios-marianos-tito"
+  },
+  {
+    "source": "/mexico-guadalupe-e-cancun",
+    "destination": "/destinos/mexico-guadalupe-cancun-2028"
+  },
+  {
+    "source": "/egito-e-terra-santa",
+    "destination": "/destinos/egito-terra-santa"
+  },
+  {
+    "source": "/lp-roteiro-guadalupe-2026",
+    "destination": "/destinos"
+  },
+  {
+    "source": "/page-backup",
+    "destination": "/"
+  },
+  {
+    "source": "/sample-page",
+    "destination": "/"
+  },
+  {
+    "source": "/feed",
+    "destination": "/"
+  },
+  {
+    "source": "/comments/feed",
+    "destination": "/"
+  }
+]

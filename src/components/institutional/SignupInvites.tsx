@@ -21,7 +21,7 @@ export function NewsletterInvite() {
               <p className="mt-1.5 max-w-xl text-slate-700">Conte quais destinos lhe interessam e a Via Lumina compartilha roteiros e informações relevantes para você.</p>
             </div>
           </div>
-          <ButtonLink href="/cadastro/peregrinos?origem=home" variant="primary" className="shrink-0">
+          <ButtonLink href="/contato?cadastro=1&origem=home" variant="primary" className="shrink-0">
             Quero receber informações
           </ButtonLink>
         </Reveal>
@@ -41,11 +41,14 @@ export function PartnershipInvite() {
             <h2 id="parcerias-titulo" className="title-rule text-[1.9rem] leading-tight font-medium sm:text-[2.3rem]">
               Caminhe ao lado da Via Lumina
             </h2>
-            <p className="mt-6 max-w-xl text-lg text-slate-700">Padres e agências de turismo interessados em peregrinações podem se cadastrar para conhecer as possibilidades de parceria e conversar com a nossa equipe.</p>
+            <p className="mt-6 max-w-xl text-lg text-slate-700">Padres, formadores de grupo e agências de turismo interessados em peregrinações podem se cadastrar para conhecer as possibilidades de parceria e conversar com a nossa equipe.</p>
           </div>
           <div className="flex flex-col gap-3">
             <ButtonLink href="/cadastro/padres?origem=institucional" variant="primary" icon={<Handshake className="size-5" aria-hidden="true" />}>
               Para padres
+            </ButtonLink>
+            <ButtonLink href="/cadastro/formadores?origem=institucional" variant="outline">
+              Para formadores de grupo
             </ButtonLink>
             <ButtonLink href="/cadastro/agencias?origem=institucional" variant="outline">
               Para agências
