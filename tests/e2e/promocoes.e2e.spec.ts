@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 const TRIVVA = 'https://trivva.com.br/cadastro-via-lumina'
 
 test.describe('Promoções e banners da home', () => {
-  test('a hero é um carrossel com banners dos parceiros e troca sozinha a cada 2,5 s e só para no botão', async ({ page }) => {
+  test('a hero é um carrossel com banners dos parceiros e troca sozinha a cada 4 s e só para no botão', async ({ page }) => {
     await page.goto('/')
     const slides = page.locator('[aria-roledescription="slide"]')
     expect(await slides.count()).toBeGreaterThanOrEqual(3)
@@ -13,11 +13,11 @@ test.describe('Promoções e banners da home', () => {
     const first = await active()
     // Mouse sobre o banner não interrompe a rotação.
     await page.mouse.move(400, 400)
-    await expect.poll(active, { timeout: 6_000 }).not.toBe(first)
+    await expect.poll(active, { timeout: 7_000 }).not.toBe(first)
 
     await page.getByRole('button', { name: /Pausar troca automática/ }).click()
     const paused = await active()
-    await page.waitForTimeout(3_500)
+    await page.waitForTimeout(5_000)
     expect(await active()).toBe(paused)
   })
 

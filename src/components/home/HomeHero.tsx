@@ -25,7 +25,7 @@ export const HERO_TRIPS = 3
 
 function BrandSlide({ whatsappHref }: { whatsappHref: string }) {
   return (
-    <div className="relative isolate flex w-full items-center">
+    <div className="relative isolate flex w-full items-start lg:items-center">
       <Image
         src="/assets/home/hero-banner-topo.webp"
         alt="Muralhas da Cidade Antiga de Jerusalém ao entardecer, com os raios dourados da Via Lumina"
@@ -94,7 +94,7 @@ function TripSlide({ trip }: { trip: TripCardData }) {
   const guide = trip.guides.find((g) => /dire[cç][aã]o espiritual/i.test(g.role)) ?? trip.guides[0]
   const director = directorArt && guide ? { art: directorArt, name: guide.name, role: guide.role } : null
   return (
-    <div className="relative isolate flex w-full items-center">
+    <div className="relative isolate flex w-full items-start lg:items-center">
       {director ? (
         <Image
           src={director.art.background.src}
@@ -211,7 +211,7 @@ function TripSlide({ trip }: { trip: TripCardData }) {
 
 function TrivvaSlide() {
   return (
-    <div className="relative isolate flex w-full items-center bg-[linear-gradient(135deg,#041a36_0%,#0a2e5c_55%,#0f4c81_100%)]">
+    <div className="relative isolate flex w-full items-start lg:items-center bg-[linear-gradient(135deg,#041a36_0%,#0a2e5c_55%,#0f4c81_100%)]">
       <Image
         src="/assets/logos/raios-via-lumina.webp"
         alt=""
@@ -258,7 +258,7 @@ function TrivvaSlide() {
 function CrescerSlide() {
   return (
     <div
-      className="relative isolate flex w-full flex-col justify-center pt-20"
+      className="relative isolate flex w-full flex-col justify-start pt-20 lg:justify-center"
       style={{ backgroundColor: CRESCER.banner.color }}
     >
       <Image

@@ -3,8 +3,8 @@ import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
 import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { cn } from '@/lib/cn'
 
-/** Tempo de cada banner da home (2,5 s). */
-export const HERO_SLIDE_MS = 2500
+/** Tempo de cada banner da home (4 s). */
+export const HERO_SLIDE_MS = 4000
 
 export type HeroSlide = { id: string; label: string; node: ReactNode }
 

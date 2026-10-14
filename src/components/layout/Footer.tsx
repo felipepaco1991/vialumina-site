@@ -6,6 +6,13 @@ import type { SiteSettingsData } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
 import { CONTACT_ITEM, NAV_ITEMS, PROMOTION_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
 
+/** Logos brancas dos parceiros (altura uniforme; Crescer e Trivva levam às páginas de promoção). */
+const PARTNERS = [
+  { name: 'Crescer — Encontro Nacional da Família Católica', src: '/assets/logos/crescer-branco.webp', width: 733, height: 158, href: '/promocoes/crescer' },
+  { name: 'Trivva', src: '/assets/logos/trivva-branco.webp', width: 1598, height: 376, href: '/promocoes/trivva' },
+  { name: 'AD Viagens e Turismo — 40 anos', src: '/assets/logos/ad-viagens-branco.webp', width: 975, height: 297, href: null },
+] as const
+
 export function Footer({ settings }: { settings: SiteSettingsData }) {
   const a = settings.address
   return (
@@ -113,6 +120,30 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="container-site flex flex-col items-center gap-6 py-10 sm:flex-row sm:gap-10">
+          <h2 className="eyebrow-light font-label">Nossos parceiros</h2>
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:justify-start">
+            {PARTNERS.map((p) => {
+              const logo = (
+                <Image src={p.src} alt={p.name} width={p.width} height={p.height} className="h-10 w-auto sm:h-12" />
+              )
+              return (
+                <li key={p.name}>
+                  {p.href ? (
+                    <Link href={p.href} className="block opacity-90 transition hover:opacity-100">
+                      {logo}
+                    </Link>
+                  ) : (
+                    logo
+                  )}
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>
