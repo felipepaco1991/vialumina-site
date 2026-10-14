@@ -12,11 +12,13 @@ import Image from 'next/image'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { HERO } from '@/content/institutional'
+import { HERO_DIRECTORS } from '@/content/hero-diretores'
 import { CRESCER, TRIVVA_SIGNUP_URL } from '@/content/promocoes'
 import { formatDateRange } from '@/lib/format'
 import type { TripCardData } from '@/lib/trip-model'
 import { durationLabel } from '@/components/trips/TripCard'
 import { HeroCarousel, type HeroSlide } from './HeroCarousel'
+import { HeroDirectorFigure } from './HeroDirector'
 
 /** Quantas peregrinações entram no carrossel (além da apresentação e dos banners de parceiros). */
 export const HERO_TRIPS = 3
@@ -87,6 +89,10 @@ function TripSlide({ trip }: { trip: TripCardData }) {
   const duration = durationLabel(trip.days, trip.nights)
   const art = trip.cardArt
   const photo = trip.image ?? art
+  // Direção espiritual em destaque (só roteiros cadastrados em HERO_DIRECTORS e com o guia no CMS).
+  const directorArt = HERO_DIRECTORS[trip.slug]
+  const guide = trip.guides.find((g) => /dire[cç][aã]o espiritual/i.test(g.role)) ?? trip.guides[0]
+  const director = directorArt && guide ? { art: directorArt, name: guide.name, role: guide.role } : null
   return (
     <div className="relative isolate flex w-full items-center">
       {photo ? (
@@ -103,7 +109,12 @@ function TripSlide({ trip }: { trip: TripCardData }) {
         />
       ) : null}
       <div
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(4_26_54/0.92)_0%,rgb(4_26_54/0.7)_55%,rgb(4_26_54/0.45)_100%),linear-gradient(180deg,rgb(4_26_54/0.45)_0%,transparent_35%,rgb(4_26_54/0.75)_100%)]"
+        className={
+          director
+            ? // Entardecer dourado: azul-marinho à esquerda para o texto, luz quente atrás da figura à direita.
+              'absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_60%_at_78%_30%,rgb(242_184_70/0.5)_0%,transparent_70%),linear-gradient(90deg,rgb(4_26_54/0.94)_0%,rgb(4_26_54/0.78)_42%,rgb(10_46_92/0.28)_75%,rgb(4_26_54/0.38)_100%),linear-gradient(180deg,rgb(4_26_54/0.5)_0%,transparent_30%,rgb(4_26_54/0.75)_100%)]'
+            : 'absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(4_26_54/0.92)_0%,rgb(4_26_54/0.7)_55%,rgb(4_26_54/0.45)_100%),linear-gradient(180deg,rgb(4_26_54/0.45)_0%,transparent_35%,rgb(4_26_54/0.75)_100%)]'
+        }
         aria-hidden="true"
       />
       <div className="container-site grid items-center gap-10 pt-28 pb-40 sm:pb-48 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-16">
@@ -155,7 +166,9 @@ function TripSlide({ trip }: { trip: TripCardData }) {
             </ButtonLink>
           </div>
         </div>
-        {trip.cardArt ? (
+        {director ? (
+          <HeroDirectorFigure director={director.art} name={director.name} role={director.role} />
+        ) : trip.cardArt ? (
           <div className="relative mx-auto hidden w-full max-w-[340px] lg:block">
             <div
               className="relative overflow-hidden rounded-[var(--radius-card)] shadow-deep ring-1 ring-white/25"
