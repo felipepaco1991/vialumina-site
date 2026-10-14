@@ -12,7 +12,7 @@ Extensão do site com três landing pages de captação, formulários reais (com
 
 Em `/contato`, o bloco “Faça sua solicitação ou cadastre-se” alterna entre o formulário de informações e o cadastro de clientes, que abre num painel que desliza da direita (`?cadastro=1` abre o painel). A antiga rota `/cadastro/peregrinos` apenas redireciona para ele (preservando `origem` e UTMs) e o conteúdo institucional da landing (texto, destinos, cuidados, comunidade) agora está em **Quem Somos**.
 
-Acesso pelo site: menu **Parcerias** (Para Padres / Para Agências) e **Cadastre-se** (peregrinos); rodapé (coluna “Cadastre-se”); convite na homepage (“Receba novidades das próximas peregrinações”) e em **Quem Somos** (parcerias). Os links trazem `?origem=menu|rodape|home|institucional|hub`, gravado no cadastro.
+Acesso pelo site: menu **Parcerias** (Para Padres / Para Agências); rodapé (coluna “Cadastre-se”); convite na homepage (“Receba novidades das próximas peregrinações”) e em **Quem Somos** (parcerias). Os links trazem `?origem=menu|rodape|home|institucional|hub` (o cadastro de peregrinos não tem botão no menu), gravado no cadastro.
 
 ## 1. Arquitetura
 

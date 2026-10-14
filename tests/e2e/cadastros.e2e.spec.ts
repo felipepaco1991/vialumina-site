@@ -39,16 +39,12 @@ test.describe('Landing pages: estrutura e navegação', () => {
     await expect(page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })).toBeVisible()
   })
 
-  test('/contato: escolha entre solicitar informações e cadastre-se; painel abre pelo botão, fecha com Esc e reabre pelo menu', async ({ page }) => {
+  test('/contato: escolha entre solicitar informações e cadastre-se; painel abre pelo botão e fecha com Esc', async ({ page }) => {
     await page.goto('/contato')
     await expect(page.getByRole('heading', { level: 2, name: 'Faça sua solicitação ou cadastre-se' })).toBeVisible()
     await expect(page.getByRole('button', { name: 'Solicitar informações' })).toHaveAttribute('aria-pressed', 'true')
     await page.getByRole('button', { name: 'Cadastre-se' }).click()
     const panel = page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })
-    await expect(panel).toBeVisible()
-    await page.keyboard.press('Escape')
-    await expect(panel).toBeHidden()
-    await page.getByRole('navigation', { name: 'Principal' }).getByRole('link', { name: 'Cadastre-se' }).click()
     await expect(panel).toBeVisible()
     await page.keyboard.press('Escape')
     await expect(panel).toBeHidden()
@@ -67,13 +63,13 @@ test.describe('Landing pages: estrutura e navegação', () => {
     await expect(items.last()).toHaveText('Contato')
   })
 
-  test('menu principal e rodapé levam aos três cadastros; hub e links existem', async ({ page }) => {
+  test('menu Parcerias e rodapé levam aos cadastros; hub e links existem', async ({ page }) => {
     await page.goto('/')
     const nav = page.getByRole('navigation', { name: 'Principal' })
     await nav.getByRole('button', { name: 'Parcerias' }).click()
     await expect(nav.getByRole('link', { name: 'Para Padres' })).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Para Agências' })).toBeVisible()
-    await expect(nav.getByRole('link', { name: 'Cadastre-se' })).toHaveAttribute('href', /\/contato\?cadastro=1/)
+    await expect(nav.getByRole('link', { name: 'Cadastre-se' })).toHaveCount(0)
     const footer = page.locator('footer')
     for (const [name, href] of [['Cadastro de peregrinos', 'cadastro=1'], ['Seja um padre parceiro', 'padres'], ['Seja uma agência parceira', 'agencias']] as const)
       await expect(footer.getByRole('link', { name })).toHaveAttribute('href', new RegExp(href))

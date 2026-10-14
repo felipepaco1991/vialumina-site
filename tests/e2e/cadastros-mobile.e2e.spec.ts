@@ -12,16 +12,14 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.describe('Cadastros no celular', () => {
-  test('menu mobile organiza Parcerias e Cadastre-se', async ({ page }) => {
+  test('menu mobile organiza Parcerias e não tem o botão Cadastre-se', async ({ page }) => {
     await page.goto('/')
     await page.getByRole('button', { name: 'Abrir menu' }).click()
     const dialog = page.getByRole('dialog', { name: 'Menu' })
     await expect(dialog.getByText('Parcerias')).toBeVisible()
     await expect(dialog.getByRole('link', { name: 'Para Padres' })).toBeVisible()
     await expect(dialog.getByRole('link', { name: 'Para Agências' })).toBeVisible()
-    await dialog.getByRole('link', { name: /Cadastre-se/ }).click()
-    await expect(page).toHaveURL(/\/contato\?cadastro=1/)
-    await expect(page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })).toBeVisible()
+    await expect(dialog.getByRole('link', { name: /Cadastre-se/ })).toHaveCount(0)
   })
 
   test('"Cadastre-se" em /contato abre o painel lateral e o fecha com o botão', async ({ page }) => {

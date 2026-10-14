@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
-import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, PROMOTION_ITEMS, SIGNUP_ITEM } from '@/lib/nav'
+import { CONTACT_ITEM, NAV_ITEMS, PARTNERSHIP_ITEMS, PROMOTION_ITEMS } from '@/lib/nav'
 
 
 const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`))
@@ -152,17 +152,6 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
             <DropdownMenu label="Parcerias" items={PARTNERSHIP_ITEMS} pathname={pathname} solid={solid} />
             <li>
               <Link
-                href={SIGNUP_ITEM.href}
-                className={cn(
-                  'ml-1 inline-flex items-center rounded-full border px-3 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
-                  solid ? 'border-gold-500 text-navy-900 hover:bg-gold-100' : 'border-gold-300/80 text-white hover:bg-white/10',
-                )}
-              >
-                {SIGNUP_ITEM.label}
-              </Link>
-            </li>
-            <li>
-              <Link
                 href={CONTACT_ITEM.href}
                 aria-current={isActive(pathname, CONTACT_ITEM.href) ? 'page' : undefined}
                 className={cn(
@@ -268,12 +257,6 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={SIGNUP_ITEM.href}
-                    className="mt-5 flex items-center justify-center rounded-full border border-gold-500 px-4 py-3.5 font-label text-sm font-semibold text-navy-900 transition-colors hover:bg-gold-100"
-                  >
-                    {SIGNUP_ITEM.label} · Para Peregrinos
-                  </Link>
                   <Link
                     href={CONTACT_ITEM.href}
                     aria-current={isActive(pathname, CONTACT_ITEM.href) ? 'page' : undefined}
