@@ -101,7 +101,8 @@ function TripSlide({ trip }: { trip: TripCardData }) {
           alt=""
           fill
           sizes="100vw"
-          className="-z-10 object-cover object-[62%_center]"
+          className="-z-10 object-cover"
+          style={{ objectPosition: director.art.background.position ?? 'center' }}
           aria-hidden="true"
         />
       ) : photo ? (

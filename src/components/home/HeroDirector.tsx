@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import type { CSSProperties } from 'react'
 import type { HeroDirector } from '@/content/hero-diretores'
 
 const GOLD = 'text-gold-300'
@@ -27,13 +28,16 @@ function FleurMark() {
   )
 }
 
-const rule = (dir: 'l' | 'r') =>
-  `h-px w-[clamp(1.5rem,6svh,3.5rem)] bg-gradient-to-${dir} from-transparent to-gold-300/90`
+const RULE = 'h-px w-[clamp(1.5rem,6svh,3.5rem)] from-transparent to-gold-300/90'
+
+/** Quanto a largura (em vw) pode crescer em telas mais baixas que 16:9: acompanha a altura (svh). */
+const WIDE = 16 / 9
 
 /**
- * Direção espiritual em destaque no banner, como na arte de referência: recorte da pessoa encostado no
- * pé do banner, com a faixa "Direção espiritual · Nome · Paróquia" sobre o tronco para que ela não
- * fique flutuando. No celular fica abaixo do texto; em telas largas ocupa 88% da altura, à direita.
+ * Direção espiritual em destaque no banner, como nas artes de referência: recorte da pessoa à direita,
+ * com a faixa "Direção espiritual · Nome" sobre o tronco para que ela não fique flutuando.
+ * No celular fica abaixo do texto (faixa de nome logo abaixo); em telas largas a posição, o tamanho e a
+ * faixa de nome seguem `director.placement` e `director.nameplate`, em % do banner.
  */
 export function HeroDirectorFigure({
   director,
@@ -44,30 +48,51 @@ export function HeroDirectorFigure({
   name: string
   role: string
 }) {
-  const { photo, parish } = director
+  const { photo, parish, placement, nameplate, mobileCrop = 1 } = director
+  const vars = {
+    '--hero-w': `min(${placement.width}vw, ${(placement.width * WIDE).toFixed(1)}svh)`,
+    '--hero-top': `${placement.top}%`,
+    '--hero-right': `${placement.right}%`,
+    '--hero-ar': `${photo.width} / ${photo.height}`,
+    '--hero-ar-m': `${photo.width} / ${Math.round(photo.height * mobileCrop)}`,
+    '--np-x': `${nameplate.x}%`,
+    '--np-bottom': `${nameplate.bottom}%`,
+  } as CSSProperties
   return (
-    <div className="relative mx-auto mt-4 w-[min(100%,21rem)] lg:pointer-events-none lg:absolute lg:inset-0 lg:mx-0 lg:mt-0 lg:w-auto">
-      <figure className="relative lg:absolute lg:right-[1.5%] lg:bottom-0 lg:aspect-[1280/1654] lg:h-[88%]">
-        <div className="relative aspect-[1280/1654] w-full lg:absolute lg:inset-0 lg:aspect-auto">
+    <div
+      style={vars}
+      className="relative mx-auto mt-4 w-[min(100%,21rem)] lg:pointer-events-none lg:absolute lg:inset-0 lg:mx-0 lg:mt-0 lg:w-auto"
+    >
+      <figure className="relative lg:static">
+        <div className="relative aspect-[var(--hero-ar-m)] w-full overflow-hidden lg:absolute lg:top-[var(--hero-top)] lg:right-[var(--hero-right)] lg:aspect-[var(--hero-ar)] lg:w-[var(--hero-w)] lg:overflow-visible">
           <Image
             src={photo.src}
             alt=""
             fill
-            sizes="(min-width: 1024px) 660px, 336px"
-            // No celular a figura termina acima da faixa de nome (que fica no fluxo); no desktop encosta no pé do banner.
-            className="object-contain object-bottom max-lg:[mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]"
+            sizes="(min-width: 1024px) 50vw, 336px"
+            // No celular a figura termina numa transparência acima da faixa de nome; no desktop sai pelo pé do banner.
+            className="object-cover object-top max-lg:[mask-image:linear-gradient(to_bottom,#000_72%,transparent_100%)]"
           />
         </div>
-        <figcaption className="relative -mx-[10%] -mt-[22%] flex flex-col items-center text-center [text-shadow:0_2px_14px_rgb(0_0_0/0.65)] lg:absolute lg:inset-x-[-6%] lg:bottom-[5.25rem] lg:mx-0 lg:mt-0">
+        {/* Sombra atrás da faixa de nome (só em telas largas, onde ela fica sobre a veste), como na arte. */}
+        <div
+          className="pointer-events-none absolute hidden lg:bottom-0 lg:left-[var(--np-x)] lg:block lg:h-[42%] lg:w-[54vw] lg:-translate-x-1/2"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse 50% 100% at 50% 100%, rgb(3 12 28 / 0.92) 0%, rgb(3 12 28 / 0.7) 45%, transparent 100%)',
+          }}
+          aria-hidden="true"
+        />
+        <figcaption className="relative -mx-[10%] -mt-[22%] flex flex-col items-center text-center [text-shadow:0_2px_14px_rgb(0_0_0/0.65)] lg:absolute lg:inset-x-auto lg:bottom-[max(5.25rem,var(--np-bottom))] lg:left-[var(--np-x)] lg:mx-0 lg:mt-0 lg:w-[36vw] lg:-translate-x-1/2">
           <CrossMark />
           <span className="mt-[0.35em] flex items-center gap-3">
-            <span className={rule('r')} aria-hidden="true" />
-            <span className="font-label text-[0.72rem] font-medium tracking-[0.26em] whitespace-nowrap lg:text-[clamp(0.7rem,2.1svh,1.2rem)] lg:tracking-[0.3em] text-gold-300 uppercase">
+            <span className={`${RULE} bg-gradient-to-r`} aria-hidden="true" />
+            <span className="font-label text-[0.72rem] font-medium tracking-[0.26em] whitespace-nowrap text-gold-300 uppercase lg:text-[clamp(0.7rem,2.1svh,1.2rem)] lg:tracking-[0.3em]">
               {role}
             </span>
-            <span className={rule('l')} aria-hidden="true" />
+            <span className={`${RULE} bg-gradient-to-l`} aria-hidden="true" />
           </span>
-          <span className="mt-1 font-display text-[1.6rem] leading-[1.1] whitespace-nowrap lg:text-[clamp(1.5rem,3.7svh,2.45rem)] font-normal tracking-[-0.01em] text-white">
+          <span className="mt-1 font-display text-[1.6rem] leading-[1.1] font-normal tracking-[-0.01em] whitespace-nowrap text-white lg:text-[clamp(1.5rem,3.7svh,2.45rem)]">
             {name}
           </span>
           {parish?.length ? (
@@ -78,9 +103,9 @@ export function HeroDirectorFigure({
             </span>
           ) : null}
           <span className="mt-3 flex items-center gap-3" aria-hidden="true">
-            <span className={rule('r')} />
+            <span className={`${RULE} bg-gradient-to-r`} />
             <FleurMark />
-            <span className={rule('l')} />
+            <span className={`${RULE} bg-gradient-to-l`} />
           </span>
         </figcaption>
       </figure>
