@@ -23,6 +23,7 @@ export type AnalyticsEvent =
   | 'form_error'
   | 'click_whatsapp'
   | 'click_destinos'
+  | 'click_cadastre_se'
   // Promoções e parcerias (banners da home e páginas /promocoes/*)
   | 'view_promo_trivva'
   | 'view_promo_crescer'

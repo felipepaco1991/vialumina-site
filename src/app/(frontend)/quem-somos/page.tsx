@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { MotionRoot } from '@/components/cadastro/motion'
+import { CommunityInvite, FinalCtaDestinations } from '@/components/cadastro/Extras'
+import { AboutBlock, CareList, DestinationCards } from '@/components/cadastro/Sections'
 import { Differentials } from '@/components/home/Differentials'
 import { ValuesSection } from '@/components/home/ValuesSection'
 import { PageCta } from '@/components/institutional/PageCta'
 import { PartnershipInvite } from '@/components/institutional/SignupInvites'
 import { PageHero } from '@/components/layout/PageHero'
 import { Reveal } from '@/components/ui/Reveal'
+import { PILGRIM_PAGE as P } from '@/content/cadastro'
 import { ABOUT, ARBO, PILLARS } from '@/content/institutional'
 import { getSiteSettings } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
@@ -19,6 +23,7 @@ export const metadata: Metadata = {
 
 export default async function QuemSomosPage() {
   const settings = await getSiteSettings()
+  const community = settings.communityUrl || undefined
   const wa = whatsappUrl(settings.whatsapp, settings.defaultWhatsappMessage ?? undefined)
   return (
     <>
@@ -92,6 +97,20 @@ export default async function QuemSomosPage() {
       </section>
 
       <ValuesSection />
+
+      {/* Conteúdo da antiga página "Cadastre-se" (o formulário agora é o painel lateral em /contato). */}
+      <MotionRoot>
+        {/* Sem JavaScript, as revelações animadas não podem manter o conteúdo oculto. */}
+        <noscript>
+          <style>{'[data-m-reveal]{opacity:1!important;transform:none!important}'}</style>
+        </noscript>
+        <AboutBlock id="peregrinos-sobre" eyebrow="Viajar também pode ser uma experiência de fé" title={P.about.title} paragraphs={P.about.paragraphs} />
+        <DestinationCards id="peregrinos-destinos" eyebrow="Descubra onde sua fé pode te levar" title={P.destinations.title} items={P.destinations.items} />
+        <CareList id="peregrinos-cuidado" eyebrow="Por que viajar com a Via Lumina?" title={P.care.title} keys={P.care.items} />
+        {community ? <CommunityInvite href={community} {...P.community} /> : null}
+        <FinalCtaDestinations title={P.finalCta.title} text={P.finalCta.text} cta={P.finalCta.cta} />
+      </MotionRoot>
+
       <div className="h-24 bg-cream-50" aria-hidden="true" />
       <PartnershipInvite />
       <PageCta whatsappHref={wa} />

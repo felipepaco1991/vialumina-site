@@ -21,7 +21,7 @@ export function NewsletterInvite() {
               <p className="mt-1.5 max-w-xl text-slate-700">Conte quais destinos lhe interessam e a Via Lumina compartilha roteiros e informações relevantes para você.</p>
             </div>
           </div>
-          <ButtonLink href="/cadastro/peregrinos?origem=home" variant="primary" className="shrink-0">
+          <ButtonLink href="/contato?cadastro=1&origem=home" variant="primary" className="shrink-0">
             Quero receber informações
           </ButtonLink>
         </Reveal>

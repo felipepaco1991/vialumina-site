@@ -1,12 +1,17 @@
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import type { Metadata } from 'next'
-import { MapEmbed } from '@/components/contact/MapEmbed'
+import { Suspense } from 'react'
+import { PilgrimForm } from '@/components/cadastro/form/PilgrimForm'
+import { ContactChoice } from '@/components/contact/ContactChoice'
 import { ContactForm } from '@/components/contact/ContactForm'
+import { MapEmbed } from '@/components/contact/MapEmbed'
 import { PageHero } from '@/components/layout/PageHero'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { Reveal } from '@/components/ui/Reveal'
 import { SectionHeading } from '@/components/ui/SectionHeading'
+import { PILGRIM_PAGE } from '@/content/cadastro'
 import { CONTACT } from '@/content/institutional'
+import { leadWhatsapp } from '@/lib/leads/routing.server'
 import { periodBadge } from '@/lib/format'
 import { getSiteSettings } from '@/lib/settings.server'
 import { getListedTrips } from '@/lib/trips.server'
@@ -24,6 +29,8 @@ export default async function ContatoPage({ searchParams }: PageProps<'/contato'
   const tripOptions = [...trips]
     .sort((a, b) => (a.startDate ?? '').localeCompare(b.startDate ?? ''))
     .map((t) => ({ slug: t.slug, label: `${t.title} — ${periodBadge(t.startDate, t.endDate) ?? ''}${t.departureCity ? ` · saída de ${t.departureCity}` : ''}` }))
+  const signupWhatsapp = whatsappUrl(leadWhatsapp('PEREGRINO', settings.whatsapp), 'Olá! Gostaria de receber informações sobre as peregrinações da Via Lumina Viagens.')
+  const contactForm = <ContactForm trips={tripOptions} defaultTrip={tripOptions.some((t) => t.slug === requested) ? requested : undefined} />
   const a = settings.address
   const fullAddress = a ? `${a.street}, ${a.complement} - ${a.district}, ${a.city} - ${a.state}, ${a.zip}` : ''
 
@@ -109,10 +116,24 @@ export default async function ContatoPage({ searchParams }: PageProps<'/contato'
 
           <div id="formulario" className="scroll-mt-28">
             <Reveal>
-              <SectionHeading eyebrow="Formulário" title="Solicite informações" intro="Conte para nós qual peregrinação desperta seu interesse. Retornamos pelo canal de sua preferência." />
+              <SectionHeading
+                eyebrow="Formulário"
+                title="Faça sua solicitação ou cadastre-se"
+                intro="Conte para nós qual peregrinação desperta seu interesse ou cadastre-se para entrar na nossa base de peregrinos. Retornamos pelo canal de sua preferência."
+              />
             </Reveal>
             <Reveal delay={0.08} className="mt-8">
-              <ContactForm trips={tripOptions} defaultTrip={tripOptions.some((t) => t.slug === requested) ? requested : undefined} />
+              {/* useSearchParams exige Suspense; o fallback é o próprio formulário de solicitação. */}
+              <Suspense fallback={contactForm}>
+                <ContactChoice
+                  eyebrow="Cadastro de clientes"
+                  title="Cadastre-se na Via Lumina"
+                  description={PILGRIM_PAGE.form.description}
+                  signup={<PilgrimForm whatsappHref={signupWhatsapp} communityHref={settings.communityUrl || undefined} />}
+                >
+                  {contactForm}
+                </ContactChoice>
+              </Suspense>
             </Reveal>
           </div>
         </div>

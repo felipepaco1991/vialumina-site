@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from '@/components/ui/Icons'
 import type { SiteSettingsData } from '@/lib/settings.server'
 import { whatsappUrl } from '@/lib/whatsapp'
-import { NAV_ITEMS, PROMOTION_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
+import { CONTACT_ITEM, NAV_ITEMS, PROMOTION_ITEMS, SIGNUP_LINKS } from '@/lib/nav'
 
 export function Footer({ settings }: { settings: SiteSettingsData }) {
   const a = settings.address
@@ -81,7 +81,7 @@ export function Footer({ settings }: { settings: SiteSettingsData }) {
         <div>
           <h2 className="eyebrow-light mb-5 font-label">Navegue</h2>
           <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-[0.95rem] lg:grid-cols-1">
-            {NAV_ITEMS.map((item) => (
+            {[...NAV_ITEMS, CONTACT_ITEM].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition hover:text-gold-200">
                   {item.label}

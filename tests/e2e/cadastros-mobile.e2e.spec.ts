@@ -20,19 +20,22 @@ test.describe('Cadastros no celular', () => {
     await expect(dialog.getByRole('link', { name: 'Para Padres' })).toBeVisible()
     await expect(dialog.getByRole('link', { name: 'Para Agências' })).toBeVisible()
     await dialog.getByRole('link', { name: /Cadastre-se/ }).click()
-    await expect(page).toHaveURL(/\/cadastro\/peregrinos/)
+    await expect(page).toHaveURL(/\/contato\?cadastro=1/)
+    await expect(page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })).toBeVisible()
   })
 
-  test('CTA do hero fica visível sem rolar e leva ao formulário', async ({ page }) => {
-    await page.goto('/cadastro/peregrinos')
-    const cta = page.getByRole('link', { name: 'Quero me cadastrar como cliente' })
-    await expect(cta).toBeInViewport()
-    await cta.click()
-    await expect(page.locator('#cadastro')).toBeInViewport()
+  test('"Cadastre-se" em /contato abre o painel lateral e o fecha com o botão', async ({ page }) => {
+    await page.goto('/contato')
+    await page.getByRole('button', { name: 'Cadastre-se' }).tap()
+    const panel = page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })
+    await expect(panel).toBeVisible()
+    await expect(panel.getByLabel(/^Nome completo/)).toBeVisible()
+    await panel.getByRole('button', { name: 'Fechar cadastro' }).tap()
+    await expect(panel).toBeHidden()
   })
 
   test('campos confortáveis (altura mínima de toque) e envio completo no celular', async ({ page }) => {
-    await page.goto('/cadastro/peregrinos')
+    await page.goto('/contato?cadastro=1')
     const form = page.locator('#cadastro form')
     const nome = form.getByLabel(/^Nome completo/)
     const box = await nome.boundingBox()

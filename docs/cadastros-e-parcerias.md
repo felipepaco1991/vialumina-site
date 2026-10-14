@@ -6,9 +6,11 @@ Extensão do site com três landing pages de captação, formulários reais (com
 |---|---|---|---|
 | Seja um Padre Parceiro | `/cadastro/padres` | Sacerdotes | 3 etapas |
 | Seja uma Agência Parceira | `/cadastro/agencias` | Agências, operadoras, consultores | 3 etapas |
-| Faça Parte da Via Lumina | `/cadastro/peregrinos` | Peregrinos | Curto, 1 etapa |
+| Cadastre-se (painel lateral) | `/contato?cadastro=1` | Peregrinos | Curto, 1 etapa |
 | Hub (porta de entrada) | `/cadastro` | Quem não sabe qual escolher | — |
 | Retirada de consentimento | `/cadastro/comunicacoes/[token]` | Titular do cadastro (link único) | Botão de confirmação |
+
+Em `/contato`, o bloco “Faça sua solicitação ou cadastre-se” alterna entre o formulário de informações e o cadastro de clientes, que abre num painel que desliza da direita (`?cadastro=1` abre o painel). A antiga rota `/cadastro/peregrinos` apenas redireciona para ele (preservando `origem` e UTMs) e o conteúdo institucional da landing (texto, destinos, cuidados, comunidade) agora está em **Quem Somos**.
 
 Acesso pelo site: menu **Parcerias** (Para Padres / Para Agências) e **Cadastre-se** (peregrinos); rodapé (coluna “Cadastre-se”); convite na homepage (“Receba novidades das próximas peregrinações”) e em **Quem Somos** (parcerias). Os links trazem `?origem=menu|rodape|home|institucional|hub`, gravado no cadastro.
 
@@ -97,7 +99,7 @@ Eventos enviados ao `dataLayer` (GTM) / GA4 — **só carregam com o aceite de c
 
 | Evento | Quando |
 |---|---|
-| `view_lp_padres`, `view_lp_agencias`, `view_lp_peregrinos` | Abertura da página |
+| `view_lp_padres`, `view_lp_agencias` | Abertura da página (`view_lp_peregrinos` deixou de ser disparado: não há mais landing de peregrinos) |
 | `start_form_padres/agencias/peregrinos` | Primeira interação com o formulário (1× por visita) |
 | `submit_form_padres/agencias/peregrinos` | **Somente após o servidor confirmar** que gravou o cadastro |
 | `form_error` | Erro de validação ou do servidor (`form`, `reason`, `fields`, `step`; sem valores digitados) |

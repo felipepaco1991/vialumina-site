@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 }
 
 const CARDS = [
-  { page: PILGRIM_PAGE, icon: Compass, title: 'Sou cliente (peregrino)', text: 'Quero me cadastrar como cliente e receber informações sobre as próximas peregrinações.', cta: 'Cadastre-se como cliente' },
-  { page: PRIEST_PAGE, icon: Church, title: 'Sou padre', text: 'Quero conhecer as possibilidades de parceria e organizar peregrinações com minha comunidade.', cta: 'Conhecer a parceria' },
-  { page: AGENCY_PAGE, icon: Building2, title: 'Tenho uma agência', text: 'Quero conhecer as oportunidades de colaboração com a Via Lumina.', cta: 'Cadastrar minha agência' },
+  { page: PILGRIM_PAGE, href: '/contato?cadastro=1&origem=hub', icon: Compass, title: 'Sou cliente (peregrino)', text: 'Quero me cadastrar como cliente e receber informações sobre as próximas peregrinações.', cta: 'Cadastre-se como cliente' },
+  { page: PRIEST_PAGE, href: `${PRIEST_PAGE.path}?origem=hub`, icon: Church, title: 'Sou padre', text: 'Quero conhecer as possibilidades de parceria e organizar peregrinações com minha comunidade.', cta: 'Conhecer a parceria' },
+  { page: AGENCY_PAGE, href: `${AGENCY_PAGE.path}?origem=hub`, icon: Building2, title: 'Tenho uma agência', text: 'Quero conhecer as oportunidades de colaboração com a Via Lumina.', cta: 'Cadastrar minha agência' },
 ] as const
 
 export default function CadastroHubPage() {
@@ -33,7 +33,7 @@ export default function CadastroHubPage() {
               </span>
               <h2 className="font-display text-2xl text-navy-900">{c.title}</h2>
               <p className="mt-3 flex-1 text-slate-700">{c.text}</p>
-              <Link href={`${c.page.path}?origem=hub`} className="mt-7 inline-flex font-label text-sm font-bold text-navy-900 underline decoration-gold-500 decoration-2 underline-offset-6 after:absolute after:inset-0 hover:text-gold-700">
+              <Link href={c.href} className="mt-7 inline-flex font-label text-sm font-bold text-navy-900 underline decoration-gold-500 decoration-2 underline-offset-6 after:absolute after:inset-0 hover:text-gold-700">
                 {c.cta}
               </Link>
             </ScrollReveal>

@@ -197,7 +197,7 @@ export default async function TrivvaPage() {
               <ButtonLink href="/destinos" variant="primary">
                 Explorar peregrinações
               </ButtonLink>
-              <ButtonLink href="/cadastro/peregrinos?origem=promocao-trivva" variant="outline">
+              <ButtonLink href="/contato?cadastro=1&origem=promocao-trivva" variant="outline">
                 Quero receber novidades
               </ButtonLink>
             </div>

@@ -20,7 +20,6 @@ test.describe('Landing pages: estrutura e navegação', () => {
   for (const [path, h1, cta] of [
     ['/cadastro/padres', 'Sua missão pode levar a fé ainda mais longe.', 'Quero conhecer a parceria'],
     ['/cadastro/agencias', 'Amplie as possibilidades da sua agência com o turismo religioso.', 'Quero ser uma agência parceira'],
-    ['/cadastro/peregrinos', 'Sua próxima jornada de fé pode começar aqui.', 'Quero me cadastrar como cliente'],
   ] as const) {
     test(`${path}: conteúdo, CTA para o formulário, metadados e breadcrumbs`, async ({ page }) => {
       await page.goto(path)
@@ -30,9 +29,43 @@ test.describe('Landing pages: estrutura e navegação', () => {
       await page.getByRole('link', { name: cta }).click()
       await expect(page).toHaveURL(/#cadastro$/)
       await expect(page.locator('#cadastro')).toBeInViewport()
-      expect(await events(page)).toContain(path.endsWith('padres') ? 'view_lp_padres' : path.endsWith('agencias') ? 'view_lp_agencias' : 'view_lp_peregrinos')
+      expect(await events(page)).toContain(path.endsWith('padres') ? 'view_lp_padres' : 'view_lp_agencias')
     })
   }
+
+  test('/cadastro/peregrinos redireciona para o painel "Cadastre-se" de /contato preservando origem e UTMs', async ({ page }) => {
+    await page.goto('/cadastro/peregrinos?origem=home&utm_source=e2e')
+    await expect(page).toHaveURL(/\/contato\?origem=home&utm_source=e2e&cadastro=1$/)
+    await expect(page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })).toBeVisible()
+  })
+
+  test('/contato: escolha entre solicitar informações e cadastre-se; painel abre pelo botão, fecha com Esc e reabre pelo menu', async ({ page }) => {
+    await page.goto('/contato')
+    await expect(page.getByRole('heading', { level: 2, name: 'Faça sua solicitação ou cadastre-se' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Solicitar informações' })).toHaveAttribute('aria-pressed', 'true')
+    await page.getByRole('button', { name: 'Cadastre-se' }).click()
+    const panel = page.getByRole('dialog', { name: 'Cadastre-se na Via Lumina' })
+    await expect(panel).toBeVisible()
+    await page.keyboard.press('Escape')
+    await expect(panel).toBeHidden()
+    await page.getByRole('navigation', { name: 'Principal' }).getByRole('link', { name: 'Cadastre-se' }).click()
+    await expect(panel).toBeVisible()
+    await page.keyboard.press('Escape')
+    await expect(panel).toBeHidden()
+    await expect(page).not.toHaveURL(/cadastro=1/)
+  })
+
+  test('/quem-somos reúne o conteúdo da antiga página de cadastro', async ({ page }) => {
+    await page.goto('/quem-somos')
+    for (const name of ['Existem destinos que marcam a memória. Outros também tocam a alma.', 'Caminhos de fé pelo Brasil e pelo mundo.', 'Cuidado em cada etapa da sua peregrinação.'])
+      await expect(page.getByRole('heading', { name })).toBeVisible()
+  })
+
+  test('Contato é o último item do menu, logo antes do WhatsApp', async ({ page }) => {
+    await page.goto('/')
+    const items = page.getByRole('navigation', { name: 'Principal' }).locator('> ul > li')
+    await expect(items.last()).toHaveText('Contato')
+  })
 
   test('menu principal e rodapé levam aos três cadastros; hub e links existem', async ({ page }) => {
     await page.goto('/')
@@ -40,11 +73,11 @@ test.describe('Landing pages: estrutura e navegação', () => {
     await nav.getByRole('button', { name: 'Parcerias' }).click()
     await expect(nav.getByRole('link', { name: 'Para Padres' })).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Para Agências' })).toBeVisible()
-    await expect(nav.getByRole('link', { name: 'Cadastre-se' })).toHaveAttribute('href', /\/cadastro\/peregrinos/)
+    await expect(nav.getByRole('link', { name: 'Cadastre-se' })).toHaveAttribute('href', /\/contato\?cadastro=1/)
     const footer = page.locator('footer')
-    for (const [name, href] of [['Cadastro de peregrinos', 'peregrinos'], ['Seja um padre parceiro', 'padres'], ['Seja uma agência parceira', 'agencias']] as const)
+    for (const [name, href] of [['Cadastro de peregrinos', 'cadastro=1'], ['Seja um padre parceiro', 'padres'], ['Seja uma agência parceira', 'agencias']] as const)
       await expect(footer.getByRole('link', { name })).toHaveAttribute('href', new RegExp(href))
-    await expect(page.getByRole('link', { name: 'Quero receber informações' })).toHaveAttribute('href', /\/cadastro\/peregrinos\?origem=home/)
+    await expect(page.getByRole('link', { name: 'Quero receber informações' })).toHaveAttribute('href', /\/contato\?cadastro=1&origem=home/)
     await page.goto('/cadastro')
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Cadastre-se')
     await page.getByRole('link', { name: 'Conhecer a parceria' }).click()
@@ -53,7 +86,7 @@ test.describe('Landing pages: estrutura e navegação', () => {
 
   test('todos os links internos das landing pages respondem 200', async ({ page, request }) => {
     const seen = new Set<string>()
-    for (const path of ['/cadastro/padres', '/cadastro/agencias', '/cadastro/peregrinos']) {
+    for (const path of ['/cadastro/padres', '/cadastro/agencias', '/quem-somos']) {
       await page.goto(path)
       const hrefs = await page.locator('main a[href]').evaluateAll((as) => as.map((a) => a.getAttribute('href') ?? ''))
       for (const h of hrefs) if (h.startsWith('/') && !seen.has(h)) {
@@ -62,7 +95,7 @@ test.describe('Landing pages: estrutura e navegação', () => {
         expect(res.status(), `${h} em ${path}`).toBeLessThan(400)
       }
     }
-    expect(seen.has('/destinos')).toBe(true)
+    expect([...seen].some((h) => h.startsWith('/destinos'))).toBe(true)
   })
 
   test('perguntas frequentes expandem e recolhem', async ({ page }) => {
@@ -198,7 +231,7 @@ test.describe('Formulário de agências (em etapas)', () => {
 test.describe('Formulário de peregrinos (curto)', () => {
   test('valida, envia e grava; marketing é opcional e separado', async ({ page }) => {
     const email = mail('peregrino')
-    await page.goto('/cadastro/peregrinos?origem=home&utm_source=e2e')
+    await page.goto('/contato?cadastro=1&origem=home&utm_source=e2e')
     const form = page.locator('#cadastro form')
     await form.getByRole('button', { name: 'Cadastrar-me como cliente' }).click()
     await expect(form.getByText('Informe seu nome completo.')).toBeVisible()
@@ -228,7 +261,7 @@ test.describe('Formulário de peregrinos (curto)', () => {
 
   test('erro do servidor (envio rápido demais) não dispara submit_form_*', async ({ page }) => {
     const email = mail('rapido')
-    await page.goto('/cadastro/peregrinos')
+    await page.goto('/contato?cadastro=1')
     const form = page.locator('#cadastro form')
     await L(form, 'Nome completo').fill('Pessoa Apressada')
     await L(form, 'E-mail').fill(email)
@@ -258,7 +291,7 @@ test.describe('Formulário de peregrinos (curto)', () => {
 
   test('link de retirada de consentimento promocional', async ({ page }) => {
     const email = mail('retirada')
-    await page.goto('/cadastro/peregrinos')
+    await page.goto('/contato?cadastro=1')
     const form = page.locator('#cadastro form')
     await L(form, 'Nome completo').fill('Pessoa Retirada')
     await L(form, 'E-mail').fill(email)
@@ -295,7 +328,7 @@ test.describe('Painel “Cadastros e Parcerias”', () => {
     const config = (await import('../../src/payload.config.js')).default
     const payload = await getPayload({ config })
     // Cadastro real pelo formulário público
-    await page.goto('/cadastro/peregrinos?utm_campaign=painel-e2e')
+    await page.goto('/contato?cadastro=1&utm_campaign=painel-e2e')
     const form = page.locator('#cadastro form')
     await L(form, 'Nome completo').fill('Cadastro Painel E2E')
     await L(form, 'E-mail').fill(email)
