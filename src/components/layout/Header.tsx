@@ -35,7 +35,7 @@ function DropdownMenu({ label, items, pathname, solid, width = 'w-52' }: { label
   }, [open])
 
   return (
-    <li ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <li ref={ref} className="relative flex items-center" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <button
         type="button"
         aria-expanded={open}
@@ -79,12 +79,12 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [lightHero, setLightHero] = useState(false)
+  const [heroTone, setHeroTone] = useState<string | null>(null)
 
   useEffect(() => {
     // Na home, o carrossel marca o slide ativo claro (data-hero-tone) e o cabeçalho passa a ser branco.
     const root = document.documentElement
-    const sync = () => setLightHero(root.dataset.heroTone === 'light')
+    const sync = () => setHeroTone(root.dataset.heroTone ?? null)
     sync()
     const observer = new MutationObserver(sync)
     observer.observe(root, { attributes: true, attributeFilter: ['data-hero-tone'] })
@@ -104,13 +104,19 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
     setOpen(false)
   }
 
-  const solid = scrolled || open || lightHero
+  // Slide claro: cabeçalho branco. Slide roxo (Crescer): faixa roxa com o texto branco, como na arte.
+  const solid = scrolled || open || heroTone === 'light'
+  const purple = !solid && heroTone === 'purple'
 
   return (
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500',
-        solid ? 'bg-white/95 shadow-[0_8px_30px_rgb(10_46_92/0.08)] backdrop-blur-md' : 'bg-gradient-to-b from-navy-950/55 to-transparent',
+        solid
+          ? 'bg-white/95 shadow-[0_8px_30px_rgb(10_46_92/0.08)] backdrop-blur-md'
+          : purple
+            ? 'bg-[#28055f] shadow-[inset_0_6px_0_#511b8e]'
+            : 'bg-gradient-to-b from-navy-950/55 to-transparent',
       )}
     >
       <div className="container-site flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
@@ -138,12 +144,12 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
             {NAV_ITEMS.map((item) => {
               const active = isActive(pathname, item.href)
               return (
-                <li key={item.href}>
+                <li key={item.href} className="flex items-center">
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
+                      'relative inline-flex items-center rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
                       solid ? 'text-navy-900 hover:text-gold-700' : 'text-white/90 hover:text-white',
                     )}
                   >
@@ -161,12 +167,12 @@ export function Header({ whatsappHref, phoneHref, phoneDisplay, whatsappDisplay 
             })}
             <DropdownMenu label="Promoções" items={PROMOTION_ITEMS} pathname={pathname} solid={solid} width="w-64" />
             <DropdownMenu label="Parcerias" items={PARTNERSHIP_ITEMS} pathname={pathname} solid={solid} />
-            <li>
+            <li className="flex items-center">
               <Link
                 href={CONTACT_ITEM.href}
                 aria-current={isActive(pathname, CONTACT_ITEM.href) ? 'page' : undefined}
                 className={cn(
-                  'relative rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
+                  'relative inline-flex items-center rounded-full px-2.5 py-2 font-label text-[0.8125rem] font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 xl:px-4',
                   solid ? 'text-navy-900 hover:text-gold-700' : 'text-white/90 hover:text-white',
                 )}
               >

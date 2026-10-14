@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import Image from 'next/image'
+import type { CSSProperties } from 'react'
 import { ButtonLink } from '@/components/ui/Button'
 import { WhatsAppIcon } from '@/components/ui/Icons'
 import { HERO } from '@/content/institutional'
@@ -280,47 +281,164 @@ function TrivvaSlide() {
   )
 }
 
+/** Data e local do 30º Crescer, em destaque (como na arte do encontro). */
+function CrescerDate({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <p className="font-label leading-[0.95] font-extrabold text-[#fbbf24]">
+        <span className="text-[length:var(--cr-digit)]">5</span>
+        <span className="mx-[0.15em] align-baseline text-[length:var(--cr-a)] text-white">a</span>
+        <span className="text-[length:var(--cr-digit)]">9</span>
+      </p>
+      <p className="mt-[0.5em] font-label text-[length:var(--cr-small)] leading-[1.2] font-bold tracking-[0.1em] text-white uppercase">
+        de fevereiro
+        <br />
+        de 2027
+      </p>
+      <div className="my-[1em] ml-auto h-px w-[72%] bg-[#fbbf24]/80" aria-hidden="true" />
+      <p className="font-label text-[length:var(--cr-place)] leading-[1.1] font-extrabold tracking-[0.04em] text-white uppercase">
+        Campina
+        <br />
+        Grande <span className="text-[#fbbf24]">– PB</span>
+      </p>
+    </div>
+  )
+}
+
+/**
+ * Banner do 30º Crescer, recriado em camadas (fundo roxo com vitrais, logotipo, Sagrada Família, data
+ * e passarinho/coração) com a barra de informações embaixo. Em telas largas a composição é um "palco"
+ * proporcional (medidas em cqw) e se reduz em telas mais baixas para caber com os controles.
+ */
 function CrescerSlide() {
   return (
-    <div
-      className="relative isolate flex w-full flex-col justify-start pt-20 lg:justify-center"
-      style={{ backgroundColor: CRESCER.banner.color }}
-    >
+    <div className="relative isolate flex w-full flex-col justify-start bg-[#28055f] pt-[4.5rem] pb-32 lg:pt-20">
       <Image
-        src={CRESCER.banner.src}
-        alt={CRESCER.bannerAlt}
-        width={CRESCER.banner.width}
-        height={CRESCER.banner.height}
+        src="/assets/promocoes/crescer-fundo.webp"
+        alt=""
+        fill
         sizes="100vw"
-        className="h-auto w-full"
+        className="-z-10 object-cover"
+        aria-hidden="true"
       />
-      <div className="container-site flex flex-col items-center justify-between gap-5 pt-6 pb-40 text-center sm:pb-48 lg:flex-row lg:text-left">
-        <div>
-          <h2 className="text-2xl leading-tight font-medium text-white sm:text-3xl">
-            {CRESCER.name} — {CRESCER.fullName}
-          </h2>
-          <p className="mt-1 text-lg text-white/85">
-            {CRESCER.dates} · {CRESCER.place}
+
+      {/* Telas largas: palco proporcional 1672 × 685 */}
+      <div
+        className="relative mx-auto hidden aspect-[1672/685] w-[min(100%,calc((100svh-20.5rem)*2.44))] overflow-hidden [container-type:inline-size] lg:block"
+        style={
+          {
+            '--cr-digit': '7.9cqw',
+            '--cr-a': '3.1cqw',
+            '--cr-small': '1.7cqw',
+            '--cr-place': '1.95cqw',
+          } as CSSProperties
+        }
+      >
+        <Image
+          src="/assets/promocoes/crescer-logo.webp"
+          alt="30 anos do Crescer — Encontro Nacional da Família Católica"
+          width={519}
+          height={341}
+          sizes="30vw"
+          className="absolute top-[20%] left-[10.5%] h-auto w-[29.5%]"
+        />
+        <div className="absolute top-[69.5%] left-[10.3%] w-[31%]">
+          <div className="mb-[1.5cqw] h-px w-[88%] bg-[#fbbf24]/70" aria-hidden="true" />
+          <p className="font-label text-[1.3cqw] font-bold tracking-[0.09em] whitespace-nowrap text-white uppercase">
+            <span className="text-[#fbbf24]">Ame sua família,</span> encontre a paz.
           </p>
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink
-            href={CRESCER.signupUrl}
-            variant="gold"
-            iconAfter={<ExternalLink className="size-5" aria-hidden="true" />}
-            data-track="promo_click"
-            data-track-label="hero-crescer-inscricao"
-          >
-            Inscreva-se grátis
-          </ButtonLink>
-          <ButtonLink
-            href="/promocoes/crescer"
-            variant="ghost-light"
-            data-track="promo_click"
-            data-track-label="hero-crescer-saiba-mais"
-          >
-            Saiba mais
-          </ButtonLink>
+        <Image
+          src="/assets/promocoes/crescer-familia.webp"
+          alt="Sagrada Família: Maria, José e o Menino Jesus"
+          width={1122}
+          height={1402}
+          sizes="32vw"
+          className="absolute bottom-0 left-[39.8%] h-auto w-[31.8%]"
+        />
+        <CrescerDate className="absolute top-[25.5%] right-[12.2%] text-right" />
+        <Image
+          src="/assets/promocoes/crescer-passaro.webp"
+          alt=""
+          width={406}
+          height={258}
+          sizes="10vw"
+          className="absolute top-[80%] left-[3.3%] h-auto w-[9.7%]"
+          aria-hidden="true"
+        />
+        <Image
+          src="/assets/promocoes/crescer-coracao.webp"
+          alt=""
+          width={324}
+          height={266}
+          sizes="8vw"
+          className="absolute top-[80%] right-[4.9%] h-auto w-[7.9%]"
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* Celular: composição em coluna */}
+      <div className="container-site flex flex-col items-center pt-6 text-center lg:hidden">
+        <Image
+          src="/assets/promocoes/crescer-logo.webp"
+          alt="30 anos do Crescer — Encontro Nacional da Família Católica"
+          width={519}
+          height={341}
+          sizes="80vw"
+          className="h-auto w-[min(78%,20rem)]"
+        />
+        <p className="mt-4 font-label text-[0.8rem] font-bold tracking-[0.1em] text-white uppercase">
+          <span className="text-[#fbbf24]">Ame sua família,</span> encontre a paz.
+        </p>
+        <div className="mt-6 flex w-full items-center justify-center gap-6">
+          <Image
+            src="/assets/promocoes/crescer-familia.webp"
+            alt="Sagrada Família: Maria, José e o Menino Jesus"
+            width={1122}
+            height={1402}
+            sizes="50vw"
+            className="h-auto w-[min(58%,13rem)]"
+          />
+          <CrescerDate
+            className="text-left [--cr-a:1.5rem] [--cr-digit:3.6rem] [--cr-place:0.92rem] [--cr-small:0.9rem]"
+          />
+        </div>
+      </div>
+
+      {/* Barra de informações (como no rodapé da arte) */}
+      <div className="container-site mt-5 lg:mt-3">
+        <div className="mx-auto flex flex-col items-center justify-between gap-5 border-t border-white/20 pt-5 text-center lg:flex-row lg:text-left">
+          <div>
+            <h2 className="font-display text-2xl leading-tight font-semibold text-white sm:text-3xl lg:text-[1.45rem] xl:text-[1.6rem]">
+              {CRESCER.name} — {CRESCER.fullName}
+            </h2>
+            <p className="mt-1 text-base text-white/85 sm:text-lg">
+              {CRESCER.dates} · {CRESCER.place}
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <ButtonLink
+              href={CRESCER.signupUrl}
+              variant="gold"
+              size="lg"
+              className="bg-[#fbbf24] hover:bg-[#fcd34d]"
+              iconAfter={<ExternalLink className="size-5" aria-hidden="true" />}
+              data-track="promo_click"
+              data-track-label="hero-crescer-inscricao"
+            >
+              Inscreva-se grátis
+            </ButtonLink>
+            <ButtonLink
+              href="/promocoes/crescer"
+              variant="ghost-light"
+              size="lg"
+              className="border-white/30 bg-[#3a0a86]/70"
+              data-track="promo_click"
+              data-track-label="hero-crescer-saiba-mais"
+            >
+              Saiba mais
+            </ButtonLink>
+          </div>
         </div>
       </div>
     </div>
@@ -354,6 +472,7 @@ export function HomeHero({
   const crescer: HeroSlide = {
     id: 'promo-crescer',
     label: `${CRESCER.name}: ${CRESCER.fullName}`,
+    tone: 'purple',
     node: <CrescerSlide />,
   }
 

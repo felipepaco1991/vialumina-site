@@ -6,8 +6,11 @@ import { cn } from '@/lib/cn'
 /** Tempo de cada banner da home (4 s). */
 export const HERO_SLIDE_MS = 4000
 
-/** `light`: fundo claro. O cabeçalho vira branco e o rodapé do carrossel escurece o texto enquanto o slide está ativo. */
-export type HeroSlide = { id: string; label: string; node: ReactNode; tone?: 'light' | 'dark' }
+/**
+ * `light`: fundo claro (cabeçalho branco e rodapé do carrossel com texto escuro enquanto o slide está ativo).
+ * `purple`: banner do Crescer (cabeçalho em roxo, igual ao fundo da arte).
+ */
+export type HeroSlide = { id: string; label: string; node: ReactNode; tone?: 'light' | 'dark' | 'purple' }
 
 /**
  * Carrossel da Hero: troca automática e contínua a cada {@link HERO_SLIDE_MS}.
